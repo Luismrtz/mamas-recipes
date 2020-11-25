@@ -30,6 +30,20 @@ router.get("/", async (req, res) => {
 });
 
 
+router.get("/filter", async (req, res) => {
+    try {
+        let q = req.query.q;
+      //  let poopers = JSON.stringify(poop)
+      //  console.log(poopers)
+        const someRecipes = await Recipe.find({ $text: {$search: q }});
+        res.json(someRecipes);
+      //  console.log(someRecipes)
+    } catch (error) {
+        res.json({message: error.message})
+    }
+});
+
+
 
 router.delete("/:id",  async (req, res) => {
     const recipe = await Recipe.findOne({ _id: req.params.id });

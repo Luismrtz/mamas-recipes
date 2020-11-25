@@ -58,6 +58,7 @@ import mongoose from 'mongoose';
       { timestamps: true }
     );
 
+  recipeSchema.index({nameOfRecipe: 'text', description: 'text'})
 const recipeModel = mongoose.model("Recipe", recipeSchema);
 
 export default recipeModel;

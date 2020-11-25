@@ -1,6 +1,6 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
-import { recipeDeleteReducer, recipeListReducer, recipeSaveReducer } from '../reducer/recipeReducer';
+import { recipeDeleteReducer, recipeFilterReducer, recipeListReducer, recipeSaveReducer } from '../reducer/recipeReducer';
 //import Cookie from 'js-cookie';
 
 
@@ -12,7 +12,8 @@ import { recipeDeleteReducer, recipeListReducer, recipeSaveReducer } from '../re
 const reducer = combineReducers({
     rList: recipeListReducer,
     recipeSave: recipeSaveReducer,
-    recipeDelete: recipeDeleteReducer
+    recipeDelete: recipeDeleteReducer,
+    recipeFilter: recipeFilterReducer
 })
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 //thunk: to run async operations inside action in redux

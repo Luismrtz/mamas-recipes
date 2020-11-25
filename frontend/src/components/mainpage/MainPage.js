@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import styles from './MainPage.module.css';
+import Searchbar from '../searchbar/SearchBar'
+import CardList from '../cardlist/CardList'
 // import {Link} from 'react-router-dom';
 // import Banner from '../Banner/Banner';
 // import Loading from '../spinner/Loading'
@@ -8,32 +10,31 @@ import styles from './MainPage.module.css';
 // import ErrorMsg from '../ErrorMsg/ErrorMsg';
 import { useSelector, useDispatch } from 'react-redux';
 // import { bannerProduct} from '../../actions/bannerActions';
-import { listRecipes} from '../../actions/recipeActions';
+import { listRecipes, filterRecipes} from '../../actions/recipeActions';
+
 // import Footer from '../Footer/Footer';
 
 
-const MainPage = () => {
+const MainPage = (props) => {
 
 
-//*let value = useContext(ProductContext);  every products had value.products/currentPosts, originally. But can just destructure
-// let {products, isGlobalSpinnerOn} = useContext(ProductContext);
-
-// const pList = useSelector(state => state.pList);
-// const bList = useSelector(state => state.bList);
-// const { products, loading, error } = pList;
-// const { banners} = bList;
-// const dispatch = useDispatch();
-
-// useEffect(() => {
-//     dispatch(listProducts());
-//     dispatch(bannerProduct());
-//     return () => {
-//        //
-//     }
-// }, [dispatch])
 
 const rList = useSelector(state => state.rList);
 const {recipes, loading, error } = rList;
+
+const recipeFilter = useSelector(state => state.recipeFilter);
+const {rFilter, loading: rLoading, error: rError} = recipeFilter;
+
+// const [state, setState] = useState({
+//   results: []
+// })
+
+
+const shit = (e) => {
+
+    props.history.push("/search");
+  
+}
 
 
 const dispatch = useDispatch();
@@ -48,42 +49,9 @@ useEffect(() => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-const unitsLong = ['tablespoons','ounces','tsp','cups','pounds'];
-const unitsShort = ['tbsp','oz','tsp','cup','pound'];
-//unitShort doesnt includ grams or kilograms, so we doing a seperate
-// const units = [...unitsShort, 'kg','g'] //destructuring: instead of having an array inside of an array, it will take these elements from unitShort and put them here
-
-
-// const newIngredients = recipes && recipes.map(recInst => {
-//   const newIng = recIng.ingredients.map(ingredient => {
-//     let newType = ingredient.type.toLowerCase(); 
-//    if (ingredient.quantity <= 1) {
-//     unitsLong.forEach((unit,i) => {
-//      newType = newType.replace(unit, unitsShort[i]);
-//     //  newType = newType.replace(/ *\([^)]*\) */g, ' ');
-//     }); 
-//    } 
-   
-//   }
-
-// })
-
-
-
-
-
 console.log(recipes)
 console.log(recipes && recipes[0])
+
     // return loading ? <div><Loading/></div> :
     // error || !banners ? <ErrorMsg variant="danger">{error}</ErrorMsg> :
     return (
@@ -96,6 +64,11 @@ console.log(recipes && recipes[0])
           <Link to={"/new"} className={styles.btn}>
             <button>Create Recipe</button>
           </Link>
+
+          <button onClick={shit}>shit</button>
+<Searchbar props={props}/>
+<CardList  recipes={rFilter}/>
+
       {recipes && recipes.map((recipe) => (
         <div key={recipe._id} style={{marginTop:"50px"}}>
             <div>
