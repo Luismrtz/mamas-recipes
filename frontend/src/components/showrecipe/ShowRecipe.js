@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-
+import { useSelector, useDispatch } from "react-redux";
+import { detailsRecipe } from '../../actions/recipeActions';
 import styles from './ShowRecipe.module.css';
 // import {Link} from 'react-router-dom';
 // import Banner from '../Banner/Banner';
@@ -12,9 +13,24 @@ import styles from './ShowRecipe.module.css';
 // import Footer from '../Footer/Footer';
 
 
-const ShowRecipe = () => {
+const ShowRecipe = (props) => {
+  const dispatch = useDispatch();
+  const rDetails = useSelector((state) => state.rDetails);
+  const { recipe, loading, error } = rDetails;
+
+  const productId = props.match.params.id;
 
 
+
+  useEffect(() => {
+    dispatch(detailsRecipe(productId))
+    return () => {
+      
+    }
+  }, [dispatch, productId])
+
+
+  console.log(recipe)
 //*let value = useContext(ProductContext);  every products had value.products/currentPosts, originally. But can just destructure
 // let {products, isGlobalSpinnerOn} = useContext(ProductContext);
 
@@ -40,7 +56,10 @@ const ShowRecipe = () => {
     return (
 
       <React.Fragment>
-          <div className={styles.color}>ShowRecipe</div>
+          <div className={styles.color} style={{ whiteSpace:"pre-wrap"}}>{recipe && recipe.nameOfRecipe}</div>
+          <div className={styles.color} style={{marginLeft:"150px", whiteSpace:"pre-wrap"}}>{recipe && recipe.description}</div>
+          <div className={styles.color} style={{marginLeft:"150px", whiteSpace:"pre-wrap"}}>{recipe && recipe.ingredients}</div>
+          <div className={styles.color} style={{marginLeft:"150px", whiteSpace:"pre-wrap"}}>{recipe && recipe.instructions}</div>
 
       </React.Fragment>
     )

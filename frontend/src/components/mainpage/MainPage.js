@@ -32,7 +32,7 @@ const {rFilter, loading: rLoading, error: rError} = recipeFilter;
 
 const shit = (e) => {
 
-    props.history.push("/search");
+    props.history.push("/search?q=test");
   
 }
 

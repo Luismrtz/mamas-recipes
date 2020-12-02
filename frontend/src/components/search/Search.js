@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // import { bannerProduct} from '../../actions/bannerActions';
 import { listRecipes, filterRecipes} from '../../actions/recipeActions';
 import {useLocation} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 import Searchbar from '../searchbar/SearchBar'
 
@@ -34,7 +35,10 @@ const q = searchParams.get('q')
 
 
 const dispatch = useDispatch();
+console.log(q)
     console.log(recipes)
+    console.log(rec.message)
+    console.log(rError)
 console.log(props.location.pathname)
     useEffect(() => {
         if(q === null) {
@@ -50,17 +54,21 @@ console.log(props.location.pathname)
       }, [dispatch, q, props.history])
       console.log(rec && rec);
 
-    return  (
+    return  error  ? <div>{error}</div> :  (
         <div>
 <Searchbar props={props}/>
 
 
           <h1>name: {q}</h1>  
+
+          {rError ? <div>{rError}</div> :
           <h3>{rec && rec.map(recipe => {
                return  <div key={recipe._id} style={{marginTop:"50px"}}>
-                     <div>
-                     {recipe.nameOfRecipe}
-                   </div>
+                    <Link to={'/showrecipe/' + recipe._id}>
+                        <div>
+                        {recipe.nameOfRecipe}
+                      </div>
+                      </Link> 
                    <div style={{marginBottom:"50px"}}>
                      <p>{recipe.description}</p>
                    </div>
@@ -71,7 +79,7 @@ console.log(props.location.pathname)
                      <p>{recipe.instructions}</p>
                    </div>
                  </div>
-          })}</h3>
+          })}</h3>}
         </div>
     )
 }

@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 // import userRoute from './routes/userRoute';
 import bodyParser from 'body-parser';
 import recipeRoute from './routes/recipeRoute';
+import userRoute from './routes/userRoute';
 import "regenerator-runtime/runtime.js";
 
 const app = express();
@@ -38,6 +39,7 @@ mongoose.connect( uri, {
 
 
 app.use('/recipes', recipeRoute);
+app.use('/users', userRoute);
 // app.use('/users', userRoute);
 
 // app.use('/uploads', express.static(path.join(__dirname, '/../uploads')));

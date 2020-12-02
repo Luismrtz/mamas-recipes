@@ -1,6 +1,6 @@
 import Axios from 'axios';
 // import { async } from 'regenerator-runtime';
-import { RECIPE_LIST_FAIL, RECIPE_LIST_REQUEST, RECIPE_LIST_SUCCESS, RECIPE_SAVE_REQUEST, RECIPE_SAVE_SUCCESS, RECIPE_SAVE_FAIL, RECIPE_DELETE_REQUEST, RECIPE_DELETE_SUCCESS, RECIPE_DELETE_FAIL, RECIPE_FILTER_REQUEST, RECIPE_FILTER_SUCCESS, RECIPE_FILTER_FAIL } from '../constants/recipeConstants';
+import { RECIPE_LIST_FAIL, RECIPE_LIST_REQUEST, RECIPE_LIST_SUCCESS, RECIPE_SAVE_REQUEST, RECIPE_SAVE_SUCCESS, RECIPE_SAVE_FAIL, RECIPE_DELETE_REQUEST, RECIPE_DELETE_SUCCESS, RECIPE_DELETE_FAIL, RECIPE_FILTER_REQUEST, RECIPE_FILTER_SUCCESS, RECIPE_FILTER_FAIL, RECIPE_DETAILS_REQUEST, RECIPE_DETAILS_SUCCESS, RECIPE_DETAILS_FAIL } from '../constants/recipeConstants';
 
 
 const listRecipes = () => async (dispatch) => {
@@ -122,4 +122,19 @@ const filterRecipes = (q) => async (dispatch) => {
     }
 }
 
-export { listRecipes, saveRecipe, deleteRecipe, filterRecipes}
+const detailsRecipe = (recipeId) => async (dispatch) => {
+    try {
+        dispatch({type: RECIPE_DETAILS_REQUEST, payload: recipeId});
+        const {data} = await Axios.get('/recipes/show' + recipeId);
+        dispatch({type: RECIPE_DETAILS_SUCCESS, payload: data});
+    } catch(error) {
+        dispatch({type: RECIPE_DETAILS_FAIL, 
+        payload:   error.response && error.response.data.message ?
+        error.response.data.message
+         :
+        error.message
+        })
+    }
+}
+
+export { listRecipes, detailsRecipe, saveRecipe, deleteRecipe, filterRecipes}

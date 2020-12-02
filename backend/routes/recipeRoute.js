@@ -29,6 +29,16 @@ router.get("/", async (req, res) => {
     }
 });
 
+router.get("/show:id", async (req, res) => {
+    try {
+        const recipes = await Recipe.findOne({_id: req.params.id});
+        res.json(recipes);
+
+    } catch (error) {
+        res.status(404).send({message: "Product Not Found."})
+    }
+});
+
 
 router.get("/filter", async (req, res) => {
     try {
