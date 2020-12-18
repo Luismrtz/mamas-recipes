@@ -4,7 +4,7 @@ function recipeListReducer(state= { loading: true, recipes: []}, action) {
 
     switch (action.type) {
         case RECIPE_LIST_REQUEST: //send request to server to get list of products
-            return { loading: true}; // for loading box during this case
+            return { loading: true, recipes: []}; // for loading box during this case
         case RECIPE_LIST_SUCCESS: // received data from server
             return { ...state, loading: false, recipes: action.payload}; // 
         case RECIPE_LIST_FAIL: // in case of an error

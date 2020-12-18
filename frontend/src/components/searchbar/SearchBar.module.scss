@@ -1,0 +1,63 @@
+
+
+.color {
+    background-color: pink;
+}
+
+.color2 {
+    background-color: green;
+}
+.color3 {
+    background-color: teal;
+}
+
+
+.flex {
+
+    display: flex;
+
+    input {
+        width: 55rem;
+        height: 5rem;
+       border-bottom-left-radius: 10px;
+       border-top-left-radius: 10px;
+        border: none;
+    }
+
+}
+.bannerBtn {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    // margin-top: 2rem;
+    // left: 1rem;
+    // bottom: 2rem;
+    // position: absolute;
+    z-index: 3;
+    width: 10rem;
+    height: 5rem;
+
+    text-align: center;
+
+    cursor:pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color:var(--mainDark);
+    color: var(--mainWhite);
+    // padding: 1rem 0;
+    transition: all 250ms ease-out;
+
+    &:hover {
+        color:var(--mainDark);
+        background:var(--mainWhite);
+
+
+
+    }
+}
+
+.bWrapper {
+    display: flex;
+}

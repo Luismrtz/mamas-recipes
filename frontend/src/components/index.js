@@ -1,7 +1,11 @@
 
 export { default as MainPage } from './mainpage/MainPage'
+export { default as Navbar } from './navbar/Navbar'
 export { default as ShowRecipe } from './showrecipe/ShowRecipe'
 export { default as AllRecipes } from './allrecipes/AllRecipes'
+export { default as Dishes } from './allrecipes/Dishes'
+export { default as Beverages } from './allrecipes/Beverages'
+export { default as Desserts } from './allrecipes/Desserts'
 export { default as NewRecipe } from './newrecipe/NewRecipe'
 export { default as Search } from './search/Search.js'
 export { default as Signin } from './signin/Signin.js'

@@ -6,7 +6,6 @@ import cx from 'classnames';
 // import Loading from '../spinner/Loading';
 // import ErrorMsg from '../ErrorMsg/ErrorMsg';
 import { listRecipes, saveRecipe, deleteRecipe} from '../../actions/recipeActions';
-import Beverages from '../allrecipes/Beverages';
 // import Axios from 'axios';
 
 
@@ -14,11 +13,8 @@ const NewRecipe = (props) => {
     const [id, setId] = useState('');
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [ingredients, setIngredients] = useState([]);
-    const [instructions, setInstructions] = useState([]);
-    const [isDessert, setIsDessert] = useState(false);
-    const [isBeverage, setIsBeverage] = useState(false);
-    const [isDish, setIsDish] = useState(false);
+    const [ingredients, setIngredients] = useState([{ ingredient:''}]);
+    const [instructions, setInstructions] = useState([{step: ''}]);
 
     // const onChangeField = fieldName => ({target}) => setIngredients(state => {(...state, [fieldName]:target.value)})
 
@@ -55,19 +51,16 @@ const NewRecipe = (props) => {
         setId(recipe._id);
         setName(recipe.nameOfRecipe);
         setDescription(recipe.description);
-        setIngredients(recipe.ingredients || '');
-        setInstructions(recipe.instructions || '');
-        setIsDessert(recipe.dessert);
-        setIsBeverage(recipe.beverage);
-        setIsDish(recipe.dish);
-       
+        setIngredients(recipe.ingredients);
+        setInstructions(recipe.instructions);
+
        
     }
     
 
     const submitHandler = (e) => {
         e.preventDefault();
-        dispatch(saveRecipe({ _id: id, nameOfRecipe: name, description, ingredients, instructions, beverage: isBeverage, dish: isDish, dessert: isDessert
+        dispatch(saveRecipe({ _id: id, nameOfRecipe: name, description, ingredients, instructions,
         }));
     }
 
@@ -118,8 +111,6 @@ const NewRecipe = (props) => {
       }
 
     console.log(recipes)
-    console.log(ingredients)
-    console.log(instructions)
 
 
     return (
@@ -205,10 +196,10 @@ const NewRecipe = (props) => {
                          +
                     </button>
                     {
-                        ingredients && ingredients.map((ingredient, idx) => {
+                        ingredients.map((ingredient, idx) => {
                             return(
                                 <div key={`${ingredient}-${idx}`}>
-                                    <textarea 
+                                    <input 
                                         type="text"
                                         name="ingredient"
                                         id="ingredient"
@@ -233,10 +224,10 @@ const NewRecipe = (props) => {
                          +
                     </button>
                     {
-                        instructions && instructions.map((step, idx) => {
+                        instructions.map((step, idx) => {
                             return(
                                 <div key={`${step}-${idx}`}>
-                                    <textarea 
+                                    <input 
                                         type="text"
                                         name="step"
                                         id="step"
@@ -253,24 +244,7 @@ const NewRecipe = (props) => {
                     }
                     {/* <textarea type="text" name="instructions" id="instructions" value={instructions || ''} onChange={(e) => setInstructions(e.target.value)}></textarea> */}
                 </li>
-                <li>
-                    <label htmlFor="isDessert">
-                        Dessert? {isDessert}
-                    </label>
-                    <input type="checkbox"  checked={isDessert || ''}   name="isDessert" id="isDessert" value={isDessert || ''} onChange={(e) => setIsDessert(!isDessert)}></input>
-                </li>
-                <li>
-                    <label htmlFor="isDish">
-                        Dish? {isDish}
-                    </label>
-                    <input type="checkbox"  checked={isDish || ''}   name="isDish" id="isDish" value={isDish || ''} onChange={(e) => setIsDish(!isDish)}></input>
-                </li>
-                <li>
-                    <label htmlFor="isBeverage">
-                        Beverage {isBeverage}
-                    </label>
-                    <input type="checkbox"  checked={isBeverage || ''}   name="isBeverage" id="isBeverage" value={isBeverage || ''} onChange={(e) => setIsBeverage(!isBeverage)}></input>
-                </li>
+
 
   
                 <li>

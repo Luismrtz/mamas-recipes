@@ -1,0 +1,323 @@
+//? Main container
+.container {
+    padding-bottom: 2rem;
+    border-radius: 5px;
+    overflow: hidden;
+    box-sizing: border-box;
+    // border: 1px solid #ddd;
+ }
+ 
+ //? Alt. container
+ .containerFlip {
+     padding-bottom: 2rem;
+     display: grid;
+     grid-template-columns: .5fr 1fr;
+     grid-gap: 10px;
+     align-items: flex-start;
+     
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ //? Main image container
+ .imgOverlay {
+   height: 300px;
+     display: grid;
+     //display: block;
+    // overflow: hidden;
+     position: relative;
+ }
+ 
+ .image {
+     grid-column: 1 / -1;
+     grid-row: 1 / -1;
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     background-position: center;
+ }
+ 
+ //? container for image overlay
+ .overlayContainer {
+     opacity: 0;
+ 
+     //background-color: black;
+     grid-column: 1 / -1;
+     grid-row: 1 / -1;
+     position: relative;
+     display: grid;
+     grid-template-columns: repeat(4, 1fr);
+     grid-template-rows: repeat(4, 1fr);
+     transition: all 250ms ease-out;
+     
+     &:hover {
+         opacity: 1;
+     }
+ 
+     .liked {
+        
+         z-index: 10;
+         top: 20px;
+         right: 20px;
+        position: absolute;
+ 
+        
+     }
+ 
+ }
+ //? global for reusability
+ .liked {
+     transition: all 250ms ease-out;
+     cursor: pointer;
+     text-decoration: none;
+     color: var(--mainDark);
+     font-size: 3rem;
+          &:hover {
+            
+             color: var(--mainWhite);
+          }
+ 
+ }
+ 
+ .saleWrapper {
+     position: absolute;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    z-index: 5;
+    top: 2rem;
+    left: 1.5rem;
+ }
+ 
+ .circle{
+      
+    line-height: 3rem;
+    text-align: center;
+     width:3rem;
+     height:3rem;
+     padding: .6rem;
+     border-radius: 50%;
+     background-color: aqua;
+   // position: absolute;
+ 
+ 
+ }
+ 
+ .circleNum {
+     margin-bottom: 1rem;
+   
+ }
+ 
+ .circleString {
+ 
+ }
+ 
+ .saleString {
+     font-size: 1.3rem;
+ }
+ 
+ 
+ //? visible during list View
+ .listIcons {
+     width: 100%;
+     justify-content: flex-start;
+     padding-left: 2rem;
+     //flex-wrap: wrap;
+     display: flex;
+         .button2 {
+             color: var(--mainWhite);
+             background-color:var(--mainDark);
+             margin-right: 2rem;
+             &:hover {
+                 color: var(--mainDark);
+                 background-color: var(--mainWhite);
+             }
+         }
+ }
+ 
+ //? add Link tag to image
+ .overlay {
+   
+     z-index: 5;
+     background-color: var(--hoverColor);
+     grid-column: 1 / -1;
+     grid-row: 1 / -1;
+     position: relative;
+ 
+   
+ }
+ 
+ //? button wrapper
+ .bwrapper {
+     z-index: 9;
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     transform: translate(-50%, -50%);
+     min-width: 1.5rem;
+ 
+      display: flex;
+     flex-direction: column;
+     justify-content: center;
+     font-size: 1.3rem;
+ 
+ }
+ 
+ //? global for transition reusability
+ .button1:hover, .button2:hover {
+     transition: all 250ms ease-out;
+     background-color:var(--mainDark);
+     color: var(--mainWhite);
+    }
+ 
+ 
+ 
+ 
+ .button1 {
+   
+     z-index: 2;
+     margin-bottom: 5px;
+     border: none;
+     cursor:pointer;
+     text-decoration: none;
+     background: none;
+   //  border: 2px solid red;
+     color:var(--mainDark);
+     text-transform: uppercase;
+     background:var(--mainWhite);
+     padding: 10px;
+ }
+ 
+ 
+ .button2 {
+ 
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+     text-decoration: none;
+     z-index: 3;
+     cursor:pointer;
+     background: none;
+     border: none;
+     color: var(--mainDark);
+     text-transform: uppercase;
+     background: var(--mainWhite);
+     padding: 10px;
+ 
+   
+ }
+ 
+ 
+ //? item description/ icons wrapper
+ .contents {
+    
+     z-index: 4;
+     overflow: hidden;
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+ }
+ 
+ //? default description
+ .contDesc {
+     .title {
+         font-size: 2rem;
+     }
+ 
+     .price {
+         font-size: 2rem;
+        padding-top:5px;
+     }
+     .discountWrapper {
+         display: flex;
+         align-content: center;
+         
+         .sale{
+             font-size: 1rem;
+             padding-left: .5rem;
+             padding-top: .7rem;
+ 
+         }
+ 
+         .price {
+           font-size: 2rem;
+         }
+     }
+ }
+ 
+ //? list view description
+ .contNope {
+   
+ 
+     padding-bottom: 4rem;
+     margin-left: 2rem;
+ 
+ 
+     .title {
+         font-size: 2.5rem;
+         padding-bottom: 1.6rem;
+     }
+ 
+     .price {
+         font-size: 2rem;
+        padding-top:.5rem;
+        padding-bottom: 3rem;
+     }
+ 
+     .discountWrapper {
+         display: flex;
+         align-content: center;
+         
+         .sale{
+             font-size: 1rem;
+             padding-left: .5rem;
+ 
+         }
+ 
+     }
+ 
+     .descript {
+         font-size: 1.5rem;
+       
+     }
+ }
+ 
+ 
+ //? manually display block
+ .visible {
+     display: block;
+ }
+ 
+ 
+ //? manually display none
+ .nope {
+     display: none;
+ }
+ 
+ 
+ 
+ //! media queries
+ //1000px
+ @media (max-width: 62.5rem) {
+     .containerFlip {
+ 
+         grid-template-columns: .75fr 1fr;
+   
+     }
+ }
+ 
+ //600px
+ @media (max-width: 37.5rem) {
+     .containerFlip {
+         grid-template-columns: 1fr;
+     }
+ }
+ 
+ 
+ 
+ 

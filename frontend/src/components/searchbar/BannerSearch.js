@@ -4,7 +4,7 @@ import { listRecipes, filterRecipes} from '../../actions/recipeActions';
 import { useHistory } from 'react-router-dom';
 import styles from './SearchBar.module.scss'
 import cx from "classnames";
-const SearchBar = ({props, location}) => {
+const BannerSearch = ({props, location}) => {
 
   const history = useHistory();
 
@@ -90,8 +90,12 @@ useEffect(() => {
 
     return (
         <div ref={wrapRef}  >
-         <form onSubmit={handleSubmit}>
-      <input  type="text" placeholder="Search" value={searchTerm} onClick={displayTextbox} onChange={handleChange} onKeyPress={keySubmit}/>
+         <form   onSubmit={handleSubmit} >
+         <div className={styles.flex}>
+            <input  type="text" placeholder="Search" value={searchTerm} onClick={displayTextbox} onChange={handleChange} onKeyPress={keySubmit}/>
+            <div type="submit" className={styles.bannerBtn}>mag</div>
+
+           </div>
         <ul>
           {searchTerm !== '' && display === true ?
           (results && results.slice(0,5).map(recipe => {
@@ -104,10 +108,10 @@ useEffect(() => {
           : ''
         }
         </ul>
-        <button type="submit" className={styles.color3}>submit form</button>
+       
       </form>
         </div>
     )
 }
 
-export default SearchBar
+export default BannerSearch

@@ -11,6 +11,9 @@ router.post("/add", async(req, res) => {
             description: req.body.description,
             ingredients: req.body.ingredients,
             instructions: req.body.instructions,
+            dessert: req.body.dessert,
+            beverage: req.body.beverage,
+            dish: req.body.dish
         });
         const newRecipeCreated = await newRecipe.save();
         res.status(201).send({ message: "New Recipe Created", recipe: newRecipeCreated });
@@ -55,7 +58,17 @@ router.get("/filter", async (req, res) => {
 
 
 
-router.delete("/:id",  async (req, res) => {
+// router.delete("/",  async (req, res) => {
+//     try {
+//         const deleteAll = await Recipe.remove();
+//         res.send(deleteAll);
+//     } catch(error) {
+//         res.status(404).send("product NOt fpoundsa");
+//     }
+//   });
+
+
+  router.delete("/:id",  async (req, res) => {
     const recipe = await Recipe.findOne({ _id: req.params.id });
     if (recipe) {
       const deletedRecipe = await recipe.remove();

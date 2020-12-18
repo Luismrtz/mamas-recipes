@@ -1,0 +1,35 @@
+//WHOLE container
+.pagination {
+    display: flex;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+
+}
+// each individual container
+.pageItem {
+    font-size: 2rem;
+    cursor: pointer;
+    margin: 5px;
+    border: solid transparent 1px;
+
+    &:hover {
+        border: solid black 1px;
+      background: gray;
+    }
+
+
+}
+//number
+.pageLink {
+
+    padding: 5px 20px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    outline:none;
+     text-decoration: none;
+    //font-size: 3rem;
+
+}
+

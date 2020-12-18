@@ -20,7 +20,7 @@ import cx from 'classnames';
 // import Footer from '../Footer/Footer';
 
 
-const AllRecipes = () => {
+const Beverages = () => {
 
 
   const rList = useSelector(state => state.rList);
@@ -123,11 +123,8 @@ const newCurP = [...currentPosts].sort((a,b) => {
 const onePage = Math.ceil((recipes.length) / postsPerPage);
 
 const paginate = (pageNumber) => setCurrentPage(pageNumber)
-
-
-
-return loading ? <div><Loading/></div> :
-error || !recipes ? <ErrorMsg variant="danger">{error}</ErrorMsg> :(
+    return loading ? <div><Loading/></div> :
+    error || !recipes ? <ErrorMsg variant="danger">{error}</ErrorMsg> :(
 
 <div className={styles.mainContainer}>
 
@@ -191,4 +188,4 @@ error || !recipes ? <ErrorMsg variant="danger">{error}</ErrorMsg> :(
     )
 }
 
-export default AllRecipes;
+export default Beverages;

@@ -1,0 +1,39 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+
+body {
+    /* // font-family: 'Oswald', sans-serif; */
+    /* // font-family: 'Raleway', sans-serif; */
+     font-family: 'Open Sans', sans-serif;
+    background-color: var(--mainWhite);
+    position:relative;
+    top:5rem;
+}
+
+
+
+
+:root {
+    --hoverColor: rgba(0, 0, 0, 0.196);
+    --hoverColor2: #ac9d6732;
+    --lightBlack: #242526;
+    --black: #1c1b1b;
+    --grey: #484a4d;
+    --lightGrey:  #afafaf;
+    --mainBlue: #2a2a72;
+    --lightBlue: #009ffd;
+    --mainWhite: #ececec;
+    --mainDark: #232528;
+    --orange: orange;
+    --red:  rgb(134, 11, 11);
+    --red2: #c04000;
+}

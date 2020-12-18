@@ -1,12 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import styles from './Search.module.scss';
 // import { bannerProduct} from '../../actions/bannerActions';
 import { listRecipes, filterRecipes} from '../../actions/recipeActions';
 import {useLocation} from 'react-router-dom'
 import {Link} from 'react-router-dom';
 
 import Searchbar from '../searchbar/SearchBar'
-
+import Footer from '../footer/Footer';
+import RecipeItem from '../recipeitem/RecipeItem';
+import cx from 'classnames';
 
 const Search = (props) => {
 const {search} = useLocation();
@@ -54,33 +57,73 @@ console.log(props.location.pathname)
       }, [dispatch, q, props.history])
       console.log(rec && rec);
 
+
+
+
+
     return  error  ? <div>{error}</div> :  (
-        <div>
-<Searchbar props={props}/>
+<div className={styles.mainContainer}>
+
+<div className={styles.titleContainer}>
 
 
-          <h1>name: {q}</h1>  
+        <Searchbar />
+      <h1 className={cx(styles.title, styles.center)}>name: {q}</h1>
 
-          {rError ? <div>{rError}</div> :
-          <h3>{rec && rec.map(recipe => {
-               return  <div key={recipe._id} style={{marginTop:"50px"}}>
-                    <Link to={'/showrecipe/' + recipe._id}>
-                        <div>
-                        {recipe.nameOfRecipe}
-                      </div>
-                      </Link> 
-                   <div style={{marginBottom:"50px"}}>
-                     <p>{recipe.description}</p>
-                   </div>
-                   <div style={{marginLeft:"150px", whiteSpace:"pre-wrap"}}>
-                    <p>{recipe.ingredients}</p> 
-                   </div>
-                   <div style={{marginLeft:"250px", whiteSpace:"pre-wrap"}}>
-                     <p>{recipe.instructions}</p>
-                   </div>
-                 </div>
-          })}</h3>}
-        </div>
+
+  </div>
+
+      
+      
+     <div className={ styles.itemsContainer }> 
+    
+  
+    {/* <div className={styles.flex}>
+          <div className={styles.numPerPageGrid}>
+            {onePage === 1 ? <div className={styles.textPerPage}>Showing all {(filter === null ? (defNew) : (filter)).length} results</div> 
+                      :
+              <div className={styles.textPerPage}>Showing {indexOfFirstPost + 1}-{indexOfFirstPost + currentPosts.length} of {(filter === null ? (defNew) : (filter)).length} results</div>
+              }
+              <div className={styles.numPerPageWrap}>
+                  <div className={styles.showBtn}>show</div>
+                  <button className={fivePage ? cx(styles.numPerPage, styles.borderLine) : styles.numPerPage} onClick={() => five()}>5</button>
+                  <button className={tenPage ?cx(styles.numPerPage, styles.borderLine) : styles.numPerPage} onClick={() => ten()}>10</button>
+                  <button className={fifPage ? cx(styles.numPerPage, styles.borderLine) : styles.numPerPage} onClick={() => fifteen()}>15</button>    
+              </div>
+          </div>
+              
+
+      <div className={styles.icons}>
+          <div onClick={() => setToggled(true)}><Grid alt="grid" className={styles.svg1}/></div>
+        
+          <div onClick={() => setToggled(false)}><List alt="list" className={styles.svg2}/></div>
+      </div>
+
+    </div> */}
+   
+
+          <div className={styles.grid}>
+              {rec && rec.map(recipe => {
+                 
+                  return (
+                      <RecipeItem  key={recipe._id} recipe={recipe} />
+                      ) 
+                  
+              })}
+          </div>
+
+          {/* <nav className={styles.navPagination}>
+               <Pagination  postsPerPage={postsPerPage} totalPosts={ (filter === null ? (defNew) : (filter)).length} paginate={paginate}/>
+          </nav> */}
+          
+
+              
+    </div>
+
+<Footer/>
+</div>
+
+
     )
 }
 
