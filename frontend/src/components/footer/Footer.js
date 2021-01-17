@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-// import * as FaIcons from 'react-icons/fa';
-// import * as AiIcons from 'react-icons/ai';
 import styles from "./Footer.module.scss";
 import {useSelector } from "react-redux";
 
@@ -20,26 +18,25 @@ function Footer() {
 
                 <div >
                     <h2 className={styles.textLarge}>Navigation</h2>
-                    <div className={styles.textSmall}><Link to="/shop/jars">Jars</Link></div>
-                    <div className={styles.textSmall}><Link to="/shop/cups">Cups</Link></div>
-                    <div className={styles.textSmall}><Link to="/shop">Sales</Link></div>
+                    <div className={styles.textSmall}><Link to="/showall">All</Link></div>
                 </div>
     
                 <div >
                     <h2 className={styles.textLarge}>Profile</h2>
-                    <div className={styles.textSmall}><Link to="/profile">Account</Link></div>
-                    <div className={styles.textSmall}><Link to="/cart">Cart</Link></div>
-                    {userInfo && (
-                    <div className={styles.textSmall}><Link to="/ordermenu">Orders</Link></div>
+                    {userInfo && ( 
+                        <>
+                    <div className={styles.textSmall}><Link to="/profile">Profile</Link></div>
+                    <div className={styles.textSmall}><Link to="/new">Create</Link></div>
+                        </>
                     )}
                 </div>
                 <div >
                     <h2 className={styles.textLarge}>Info</h2>
-                    <div className={styles.textSmall}><Link to="/">About</Link></div>
+                    <div className={styles.textSmall}><Link to="/">Home</Link></div>
                     
                 </div>
                 <div >
-                    <h2 className={styles.textLarge}>SYMBOLS</h2>
+                    <h2 className={styles.textLarge}><Link to="/">SYMBOLS</Link></h2>
 
                 </div>
             </div>

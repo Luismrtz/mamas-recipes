@@ -1,23 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { listRecipes, filterRecipes} from '../../actions/recipeActions';
-import {Link} from 'react-router-dom';
+import { listRecipes} from '../../actions/recipeActions';
 import styles from './AllRecipes.module.scss';
 import RecipeItem from '../recipeitem/RecipeItem';
 import Pagination from '../pagination/Pagination';
 import Loading from '../spinner/Loading';
 import ErrorMsg from '../errormsg/ErrorMsg';
 import Footer from '../footer/Footer';
+import Filter from './Filter'
 import cx from 'classnames';
-// import {Link} from 'react-router-dom';
-// import Banner from '../Banner/Banner';
-// import Loading from '../spinner/Loading'
-// import MainSales from '../mainPageSales/MainSales';
-// import ErrorMsg from '../ErrorMsg/ErrorMsg';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { bannerProduct} from '../../actions/bannerActions';
-// import { listProducts} from '../../actions/productActions';
-// import Footer from '../Footer/Footer';
+
 
 
 const AllRecipes = () => {
@@ -28,37 +20,15 @@ const {recipes, loading, error } = rList;
 
 
 const [filter, setFilter] = useState(null);
-const [isToggled, setToggled] = useState(true);
 const [currentPage, setCurrentPage] = useState(1);
 const [postsPerPage, setPostsPerPage] = useState(10);
-//temp borderLine fix
-const [borderNew, setBorderNew] = useState(true);
-const [borderSpecial, setBorderSpecial] = useState(false);
-const [borderAll, setBorderAll] = useState(false);
-// temp numPage fix
 const [fivePage, setFivePage] = useState(false);
 const [tenPage, setTenPage] = useState(true);
 const [fifPage, setFifPage] = useState(false);
 
 
+const [sort, setSort]= useState('');
 
-
-//*let value = useContext(ProductContext);  every products had value.products/currentPosts, originally. But can just destructure
-// let {products, isGlobalSpinnerOn} = useContext(ProductContext);
-
-// const pList = useSelector(state => state.pList);
-// const bList = useSelector(state => state.bList);
-// const { products, loading, error } = pList;
-// const { banners} = bList;
-// const dispatch = useDispatch();
-
-// useEffect(() => {
-//     dispatch(listProducts());
-//     dispatch(bannerProduct());
-//     return () => {
-//        //
-//     }
-// }, [dispatch])
 
 const dispatch = useDispatch();
 
@@ -75,14 +45,8 @@ useEffect(() => {
 
 
 
-const showAll = () => {
-  setFilter(recipes);
-  ten(); //! quick fix to reset item entries
-  setCurrentPage(1);
-  setBorderNew(false);
-  setBorderSpecial(false);
-  setBorderAll(true);
-}
+
+
 
 const five = () => {
   setPostsPerPage(5);
@@ -111,17 +75,62 @@ const fifteen = () => {
 
 
 
+
+
+
+
+let sorting = (e) => {
+  console.log(e.target.value);
+
+   const sorting = e.target.value;
+  
+  let recipesNew = recipes.filter(filtRec => {
+    switch (sorting) {
+      case 'all':
+        return  filtRec;
+      case 'dish':
+        return filtRec.dish === true;
+      case 'dessert':
+        return filtRec.dessert === true;
+      case 'beverage':
+        return filtRec.beverage === true;
+        default:
+          return null;
+    }
+  })
+  setSort(sorting)
+  setFilter(recipesNew);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const indexOfLastPost = currentPage * postsPerPage;
 const indexOfFirstPost = indexOfLastPost - postsPerPage;
-const currentPosts = recipes && recipes.slice(indexOfFirstPost, indexOfLastPost); 
+const currentPosts =(filter === null ? (recipes && recipes) : (filter && filter)).slice(indexOfFirstPost, indexOfLastPost); 
 
 const newCurP = [...currentPosts].sort((a,b) => {
 
    return a.nameOfRecipe.localeCompare(b.nameOfRecipe)
 })
 
-const onePage = Math.ceil((recipes.length) / postsPerPage);
 
+
+
+
+
+const onePage = Math.ceil(((filter === null ? (recipes) : (filter)).length) / postsPerPage);
 const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
 
@@ -145,9 +154,13 @@ error || !recipes ? <ErrorMsg variant="danger">{error}</ErrorMsg> :(
   
     <div className={styles.flex}>
           <div className={styles.numPerPageGrid}>
-            {onePage === 1 ? <div className={styles.textPerPage}>Showing all {recipes.length} results</div> 
+
+
+           
+            {onePage === 1 ?
+             <div className={styles.textPerPage}>Showing all {(filter === null ? (recipes) : (filter)).length} results</div> 
                       :
-              <div className={styles.textPerPage}>Showing {indexOfFirstPost + 1}-{indexOfFirstPost + currentPosts.length} of {recipes.length} results</div>
+              <div className={styles.textPerPage}>Showing {indexOfFirstPost + 1}-{indexOfFirstPost + currentPosts.length} of {(filter === null ? (recipes) : (filter)).length} results</div>
               }
               <div className={styles.numPerPageWrap}>
                   <div className={styles.showBtn}>show</div>
@@ -155,14 +168,17 @@ error || !recipes ? <ErrorMsg variant="danger">{error}</ErrorMsg> :(
                   <button className={tenPage ?cx(styles.numPerPage, styles.borderLine) : styles.numPerPage} onClick={() => ten()}>10</button>
                   <button className={fifPage ? cx(styles.numPerPage, styles.borderLine) : styles.numPerPage} onClick={() => fifteen()}>15</button>    
               </div>
-          </div>
-              
 
-      {/* <div className={styles.icons}>
-          <div onClick={() => setToggled(true)}><Grid alt="grid" className={styles.svg1}/></div>
-        
-          <div onClick={() => setToggled(false)}><List alt="list" className={styles.svg2}/></div>
-      </div> */}
+
+          </div>
+          <div>
+            <Filter 
+                sorting={sorting}
+                sort={sort}
+              />
+            </div> 
+
+ 
 
     </div>
    
@@ -178,7 +194,7 @@ error || !recipes ? <ErrorMsg variant="danger">{error}</ErrorMsg> :(
           </div>
 
           <nav className={styles.navPagination}>
-               <Pagination  postsPerPage={postsPerPage} totalPosts={ recipes.length} paginate={paginate}/>
+               <Pagination  postsPerPage={postsPerPage} totalPosts={(filter === null ? (recipes) : (filter)).length} paginate={paginate}/>
           </nav>
           
 

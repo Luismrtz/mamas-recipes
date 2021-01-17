@@ -4,7 +4,12 @@ import Recipe from '../models/recipeModel';
 const router = express.Router();
 
 router.post("/add", async(req, res) => {
+    
     try {
+
+        // if (req.body.dish == false && req.body.dessert== false && req.body.beverage === false ) {
+        //     return res.status(400).send({message: "Please checkmark at least one! :)"})
+        // }
 
         const newRecipe = new Recipe({
             nameOfRecipe: req.body.nameOfRecipe,

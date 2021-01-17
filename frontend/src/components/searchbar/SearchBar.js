@@ -89,13 +89,19 @@ useEffect(() => {
       }
 
     return (
-        <div ref={wrapRef}  >
+        <div ref={wrapRef}  className={styles.bannerForm}>
          <form onSubmit={handleSubmit}>
-      <input  type="text" placeholder="Search" value={searchTerm} onClick={displayTextbox} onChange={handleChange} onKeyPress={keySubmit}/>
-        <ul>
+
+         <div className={styles.banFlex}>
+         <input  type="text" placeholder="Search" value={searchTerm} onClick={displayTextbox} onChange={handleChange} onKeyPress={keySubmit}/>
+         <button type="submit" className={cx(styles.bannerBtn, 'fa fa-search')}></button>
+
+           </div>
+
+        <ul className={styles.queryWrap}>
           {searchTerm !== '' && display === true ?
           (results && results.slice(0,5).map(recipe => {
-            return <li onClick={setTextName(recipe)} onKeyPress={setTextName(recipe)} key={recipe._id} tabIndex="0">
+            return <li  className={styles.query} onClick={setTextName(recipe)} onKeyPress={setTextName(recipe)} key={recipe._id} tabIndex="0">
                 
                 {recipe.nameOfRecipe}
                 
@@ -104,7 +110,7 @@ useEffect(() => {
           : ''
         }
         </ul>
-        <button type="submit" className={styles.color3}>submit form</button>
+        
       </form>
         </div>
     )

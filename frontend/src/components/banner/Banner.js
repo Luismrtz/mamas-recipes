@@ -35,18 +35,14 @@ const Banner = (props) => {
           <div className={styles.slider}>
           <div className={styles.slide}>
           <div className={styles.bContainer}>
-                <img src={width < breakpoint ? 'images/bannerLarge1.jpg' : 'images/bannerLarge2.jpg'} alt="slider-img"  className={styles.imgStyles}></img>
+              <div className={styles.cover}></div>
+                <img src={width < breakpoint ? 'images/lemon_1280.jpg' : 'images/lemon_1920.jpg'} alt="slider-img"  className={styles.imgStyles}></img>
                <div className={styles.bannerTitle}>
-                    <h3>Do you like cooking?</h3>
+                    <h3>Need a recipe?</h3>
                     <h1>Mama's got you covered</h1>
                     <BannerSearch />
                </div>
-                
-                {/* <Link to={`${link}`} className={styles.block}>
-                    <div className={styles.innerBlock}>
-                        <div  className={styles.bannerText}>{info}</div>
-                    </div>
-                </Link> */}
+     
             </div>
 
 

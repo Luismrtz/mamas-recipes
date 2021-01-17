@@ -6,15 +6,7 @@
 .mainContainer {
     
 
-    button {
-        background: none;
-        color: inherit;
-        border: none;
-        font: inherit;
-        cursor: pointer;
-        outline: none;
-        list-style: none;
-        }
+
     
     
     .itemsContainer {
@@ -22,10 +14,10 @@
         margin: 6rem auto 0 auto;
     }
     
-    .nope {
+    // .nope {
     
-       margin: 6rem auto 0 auto;
-    }
+    //    margin: 6rem auto 0 auto;
+    // }
     
     
     
@@ -35,7 +27,8 @@
       }
     
       .title {
-        font-size: 2.5rem;
+        //! ADD FONT SIZE HERE
+        font-size: var(--xl);
         padding-bottom: 1rem;
       }
     
@@ -46,47 +39,48 @@
       
       }
     
-      .subTitle {
-        font-size: 1.3rem;
-        font-weight: 400;
-      }
+    //   .subTitle {
+    //     font-size: 1.3rem;
+    //     font-weight: 400;
+    //   }
     
-      .cStyle {
-        text-decoration: none;
-        color: var(--mainDark);
-       }
+    //   .cStyle {
+    //     text-decoration: none;
+    //     color: var(--mainDark);
+    //    }
     
        // type of products Filter 
-    .typeFilter {
-        display: flex;
-        align-content: center;
-        text-align: center;
-        justify-content: center;
-        margin-top: 4rem;
-        .typePerPage {
-            margin: 0 2rem;
-            text-align: center;
-            font-size: 1.9rem;
-            font-weight: 400;
-            letter-spacing: .2rem;
-            padding: 0 .3rem;
-            transition: all .3s ease;
-            border-bottom: 1px solid transparent;
+    // .typeFilter {
+    //     display: flex;
+    //     align-content: center;
+    //     text-align: center;
+    //     justify-content: center;
+    //     margin-top: 4rem;
+    //     .typePerPage {
+    //         margin: 0 2rem;
+    //         text-align: center;
+    //         font-size: 1.9rem;
+    //         font-weight: 400;
+    //         letter-spacing: .2rem;
+    //         padding: 0 .3rem;
+    //         transition: all .3s ease;
+    //         border-bottom: 1px solid transparent;
              
-        }
-        .borderLine {
+    //     }
+    //     .borderLine {
                 
-            border-bottom: 1px solid black;
+    //         border-bottom: 1px solid black;
     
-        }  
-    }
+    //     }  
+    // }
        
     
     
     //number filter
     
     .textPerPage {
-        font-size: 1.3rem;
+        //! ADD FONT SIZE HERE
+        font-size: var(--sm);
         margin-right:1rem;
         width: 18rem;
     }
@@ -96,17 +90,20 @@
         max-width: 115rem;
         display: flex;
         margin: auto;
+        align-content: space-between;
         justify-content: space-between;
     
         .numPerPageGrid {
             display: flex;
+            align-content: space-between;
+            justify-content: space-between;
             
             .numPerPageWrap {
                 display: flex;
                 
                 .showBtn {
-                    font-size: 1.3rem;
-                 
+                    //! ADD FONT SIZE HERE
+                    font-size: var(--sm);
                     margin-right: .5rem;
                 }
     
@@ -129,25 +126,7 @@
     
     
         }
-        .icons {
-            display: grid;
-            grid-gap: 1.5rem;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr;
-    
-            .svg1 {
-                cursor: pointer;
-                height: 1.9rem;
-                width: 1.9rem;
-                fill:var(--mainDark);
-            }
-            .svg2 {
-                cursor: pointer;
-                height: 2.04rem;
-                width: 2.04rem;
-                fill:var(--mainDark);
-            }
-        }
+
     }
     
     
@@ -167,14 +146,14 @@
     }
     
     //? alt grid
-    .gridFlip {
-        display: grid;
-        max-width: 115rem;
-        grid-template-columns: repeat(1, 1fr);
-        grid-gap: 2.5rem;
-        padding: 2rem 2rem;
-        margin: 0 auto 0 auto;
-    }
+    // .gridFlip {
+    //     display: grid;
+    //     max-width: 115rem;
+    //     grid-template-columns: repeat(1, 1fr);
+    //     grid-gap: 2.5rem;
+    //     padding: 2rem 2rem;
+    //     margin: 0 auto 0 auto;
+    // }
     
     
     .navPagination {
@@ -191,10 +170,10 @@
     
     
     
-    //? pagination inc.
-    .footerQuestionmark {
-        border-bottom: 200px  var(--grey) solid;
-    }
+    // //? pagination inc.
+    // .footerQuestionmark {
+    //     border-bottom: 200px  var(--grey) solid;
+    // }
     
     }
     
@@ -238,9 +217,9 @@
             //grid-template-rows: repeat(12, 400px);
         }
     
-        .gridFlip {
-            grid-auto-rows: minmax(100px, auto); 
-        }
+        // .gridFlip {
+        //     grid-auto-rows: minmax(100px, auto); 
+        // }
     }
     }
     

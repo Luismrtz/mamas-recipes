@@ -19,86 +19,152 @@
    height: 300px;
      display: grid;
      position: relative;
-     
- }
- 
- .image {
-     grid-column: 1 / -1;
-     grid-row: 1 / -1;
-     width: 100%;
-     height: 100%;
-     object-fit: cover;
-     background-position: center;
-    //  border-radius: .5rem;
- }
- 
- //? container for image overlay
- .overlayContainer {
-     opacity: 0;
 
-     grid-column: 1 / -1;
-     grid-row: 1 / -1;
-     position: relative;
-     display: grid;
-     grid-template-columns: repeat(4, 1fr);
-     grid-template-rows: repeat(4, 1fr);
-     transition: all 250ms ease-out;
-     
-     
-     &:hover {
-         opacity: 1;
-     } 
-
-    //  .circle{
-      
-    //     line-height: 3rem;
-    //     text-align: center;
-    //      width:3rem;
-    //      height:3rem;
-    //      padding: .5rem;
-    //      border-radius: 50%;
-    //      background-color: aqua;
-    //     position: absolute;
-    //     z-index: 5;
-    //     top: 2rem;
-    //     left: 2rem;
-
-    //  }
-
-    //  .liked {
+     .image {
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background-position: center;
+       //  border-radius: .5rem;
+    }
+    
+    //? container for image overlay
+    .overlayContainer {
+        opacity: 0;
+   
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        transition: all 250ms ease-out;
         
-    //      z-index: 10;
-    //      top: 2rem;
-    //      right: 1.5rem;
-    //     position: absolute;
-     
         
-    //  }
- 
- }
+        &:hover {
+            opacity: 1;
+        } 
+   
 
+        .overlay {
+   
+            z-index: 5;
+            background-color: var(--hoverColor);
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
+            position: relative;
+            border-radius: .5rem;
+        }
+        
+        //? button wrapper
+        .bwrapper {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        
+            
+                z-index: 10;
+            min-width: 1.5rem;
+        
+             display: flex;
+            flex-direction: column;
+            justify-content: center;
+             //! ADD FONT SIZE HERE
+            font-size: var(--sm)
+        }
+        
+       
+        .button1 {
+          
+           z-index: 3;
+           margin-bottom: 5px;
+           border: none;
+           cursor:pointer;
+           text-decoration: none;
+           background: none;
+         //  border: 2px solid red;
+           color:var(--mainDark);
+           text-transform: uppercase;
+           background:var(--mainWhite);
+           padding: 10px;
+       }
+       
+        
+        .button1:hover{
+            transition: all 250ms ease-out;
+            background-color:var(--mainDark);
+            color: var(--mainWhite);
+           }
+        
+        
+    
+    
+    }
+     
+ }
+ 
+
+
+//? title and rating/review
  .infoWrap {
      height: 9rem;
-     padding: 2.5rem 2rem;
+     padding: 1.5rem 2rem 2.5rem;
 
      .title {
    
-         margin-bottom: 1.5rem;
-     }
+        margin-bottom: 1rem;
+    }
+
+     ul {
+        li {
+         //! ADD FONT SIZE HERE
+          font-size: var(--lg);
+          color: lightblue;
+          
+          margin-right: .5rem;
+          margin-bottom: 1.5rem;
+        }
+      }
+
+
  }
+
+ //? icons
  .textWrap {
      width: 100%;
      display: flex;
      justify-content: space-between;
 
-     .typeWrap {
-         padding: 1rem 0;
-         text-align: center;
-         border-top: 1px solid #dadada;
-        //  border-right: 1px solid #dadada;
-        width: 50%;
-     }
+     .recipeType {
+
+        padding: 1rem 0;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border-top: 1px solid #dadada;
+       //  border-right: 1px solid #dadada;
+       width: 50%;
+        display: flex;
+        // margin-left:2rem;
+      
+        .iconFlex {
+          display: flex;
+        }
+
+      }
+
+
+      .iconGap {
+        margin-left: .7rem;
+      }
+
      .timeWrap {
+         display: flex;
+         align-items: center;
+         justify-content: center;
         padding: 1rem 0;
         text-align: center;
         border-top: 1px solid #dadada;
@@ -109,200 +175,6 @@
  }
 }
 
- //? global for reusability
-//  .liked {
-//      transition: all 250ms ease-out;
-//      cursor: pointer;
-//      text-decoration: none;
-//      color: var(--mainDark);
-//      font-size: 3rem;
-//           &:hover {
-            
-//              color: var(--mainWhite);
-//           }
- 
-//  }
-
-//  .saleWrapper {
-//      position: absolute;
-//     display:flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-content: center;
-//     align-items: center;
-//     z-index: 5;
-//     top: 2rem;
-//     left: 1.5rem;
-//  }
-
-//  .circle{
-      
-//     line-height: 3rem;
-//     text-align: center;
-//      width:3rem;
-//      height:3rem;
-//      padding: .6rem;
-//      border-radius: 50%;
-//      background-color: aqua;
-
-//  }
-
-//  .circleNum {
-//      margin-bottom: 1rem;
-   
-//  }
-
-//  .circleString {
-
-//  }
-
-//  .saleString {
-//      font-size: 1.3rem;
-//  }
-
- 
- //? visible during list View
-//  .listIcons {
-//      width: 100%;
-//      justify-content: flex-start;
-//      padding-left: 2rem;
-//      display: flex;
-//          .button2 {
-//              color: var(--mainWhite);
-//              background-color:var(--mainDark);
-//              margin-right: 2rem;
-//              &:hover {
-//                  color: var(--mainDark);
-//                  background-color: var(--mainWhite);
-//              }
-//          }
-//  }
- 
- //? add Link tag to image
- .overlay {
-   
-     z-index: 5;
-     background-color: var(--hoverColor);
-     grid-column: 1 / -1;
-     grid-row: 1 / -1;
-     position: relative;
-     border-radius: .5rem;
- }
- 
- //? button wrapper
- .bwrapper {
-     position: absolute;
-     left: 50%;
-     top: 50%;
-     transform: translate(-50%, -50%);
- 
-     
-         z-index: 10;
-     min-width: 1.5rem;
- 
-      display: flex;
-     flex-direction: column;
-     justify-content: center;
-     font-size: 1.3rem;
- }
- 
- //? global for transition reusability
- .button1:hover, .button2:hover {
-     transition: all 250ms ease-out;
-     background-color:var(--mainDark);
-     color: var(--mainWhite);
-    }
- 
- 
- 
- 
- .button1 {
-   
-     z-index: 3;
-     margin-bottom: 5px;
-     border: none;
-     cursor:pointer;
-     text-decoration: none;
-     background: none;
-   //  border: 2px solid red;
-     color:var(--mainDark);
-     text-transform: uppercase;
-     background:var(--mainWhite);
-     padding: 10px;
- }
- 
- 
-//  .button2 {
-//          display: flex;
-//          flex-direction: column;
-//          justify-content: center;
-//      text-decoration: none;
-//      z-index: 3;
-//      cursor:pointer;
-//      background: none;
-//      border: none;
-//      color: var(--mainDark);
-//      text-transform: uppercase;
-//      background: var(--mainWhite);
-//      padding: 10px;
- 
-   
-//  }
- 
- 
- //? item description/ icons wrapper
-//  .contents {
-    
-//      z-index: 4;
-//      overflow: hidden;
-//      display: flex;
-//      flex-direction: column;
-//      align-items: flex-start;
-//  }
- 
- //? default description
-//  .contDesc {
-//      .title {
-//          font-size: 2rem;
-//      }
-
-//      .price {
-//          font-size: 2rem;
-//          padding-top: .5rem;
-//      }
-//      .discountWrapper {
-//          display: flex;
-//          align-content: center;
-         
-//          .sale{
-//              text-decoration: line-through;
-//              font-size: 1rem;
-//              padding-left: .5rem;
-//              padding-top: .7rem;
-
-//          }
-
-//          .price {
-//            font-size: 2rem;
-//          }
-//      }
-//  }
-
- 
- 
- 
-//  //? manually display block
-//  .visible {
-//      display: block;
-//  }
- 
- 
-//  //? manually display none
-//  .nope {
-//      display: none;
-//  }
- 
-
 
  //768 px
  @media (max-width: 48rem) {
@@ -311,17 +183,4 @@
         height: 400px;
           
       }
- }
- 
- 
- 
- //! DELETE : JUST A TEST
- .show {
-     display: block;
- }
- 
- 
- //? manually display none
- .none {
-     display: none;
  }

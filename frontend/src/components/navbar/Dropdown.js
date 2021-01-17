@@ -54,7 +54,7 @@ const Dropdown = () => {
 
           <li className={styles.hamburgerDiv} onClick={(e) => setOpen(!open)}>
             {/* <FaIcons.FaBars  /> */}
-            <div className={styles.hamburgerToggle}>hamburger</div>
+            <div className={cx(styles.hamburgerToggle, 'fa fa-bars')}></div>
           </li>
         </ul>
 
@@ -71,7 +71,7 @@ const Dropdown = () => {
         <div className={styles.exitDiv}>
           {/* <AiIcons.AiOutlineClose /> */}
           <div onClick={(e) => setOpen(!open)}
-            className={styles.exitToggle}> CLOSE ME </div>
+            className={cx(styles.exitToggle, "fa fa-times")}></div>
         </div>
         <div className={styles.wrappTest}>
           <div>
@@ -89,7 +89,7 @@ const Dropdown = () => {
               className={styles.dropdownMenuItem}
               onClick={(e) => setOpen2(!open2)}
             >
-              Store
+              Recipes
               <span className={styles.collapsePlus}>
                 <div className={styles.signSize}>
                   {open2 === false ? "+" : "-"}
@@ -103,15 +103,10 @@ const Dropdown = () => {
                   : cx(styles.dropdownMenuInner, styles.show)
               }
             >
-              <Link to={"/shop/jars"} onClick={(e) => setOpen(!open)}>
-                <li className={styles.dropdownMenuItemSec}>Jars</li>
+              <Link to={"/showAll"} onClick={(e) => setOpen(!open)}>
+                <li className={styles.dropdownMenuItemSec}>All</li>
               </Link>
-              <Link to={"/shop/cups"} onClick={(e) => setOpen(!open)}>
-                <li className={styles.dropdownMenuItemSec}>Cups</li>
-              </Link>
-              <Link to={"/shop"} onClick={(e) => setOpen(!open)}>
-                <li className={styles.dropdownMenuItemSec}>Sales</li>
-              </Link>
+
             </ul>
           </div>
 
@@ -139,15 +134,10 @@ const Dropdown = () => {
       <Link to={"/profile"} onClick={(e) => setOpen(!open)}>
         <li className={styles.dropdownMenuItemSec}>Account</li>
       </Link>
+
       { userInfo.isAdmin && (
-      <Link to={"/ordermenu"} onClick={(e) => setOpen(!open)}>
-        <li className={styles.dropdownMenuItemSec}>Orders</li>
-      </Link>
-            )
-          }
-      { userInfo.isAdmin && (
-              <Link  to={"/pushItems"} onClick={(e) => setOpen(!open)}>
-              <li className={styles.dropdownMenuItemSec}>Push Items</li>
+              <Link  to={"/new"} onClick={(e) => setOpen(!open)}>
+              <li className={styles.dropdownMenuItemSec}>Create</li>
             </Link>
         )
       }

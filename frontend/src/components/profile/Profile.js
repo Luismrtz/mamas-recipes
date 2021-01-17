@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Profile.module.css";
+import styles from "./Profile.module.scss";
 // import { Link } from "react-router-dom";
 import cx from "classnames";
-// import Footer from "../Footer/Footer";
+import Footer from '../footer/Footer';
 import Loading from '../loading/Loading'
 import ErrorMsg from '../errormsg/ErrorMsg';
 import { logout, update } from "../../actions/userActions";
@@ -52,13 +52,12 @@ const Profile = (props) => {
     <React.Fragment>
       <div className={styles.profile}>
         <div className={styles.profileInfo}>
+              <h2 className={styles.title}>Update Account Info c:</h2>
           <div className={styles.form}>
           
-            <form onSubmit={submitHandler}>
-              <ul className={styles.formContainer}>
-                <li>
-                  <h2 className={styles.title}>Update User</h2>
-                </li>
+            <form>
+              <ul>
+       
                 <li>
                   {loading && <div><Loading/></div>}
                   {error && <ErrorMsg variant="danger">{error}</ErrorMsg>}
@@ -68,7 +67,7 @@ const Profile = (props) => {
                   <label htmlFor="name">Name</label>
                   <input
                     value={name || ""}
-                    type="name"
+                    type="text"
                     name="name"
                     id="name"
                     onChange={(e) => setName(e.target.value)}
@@ -104,13 +103,13 @@ const Profile = (props) => {
                     onChange={(e) => setNewPassword(e.target.value)}
                   ></input>
                 </li>
-
-                <li>
-                  <button type="submit" className={styles.button}>
+          <div>
+      
+                  <button type="submit" className={cx(styles.button, styles.btnUpdate)}>
                     Update
                   </button>
-                </li>
-                <li className={styles.text}>
+               
+         
                   <button
                     type="button"
                     onClick={handleLogout}
@@ -122,14 +121,18 @@ const Profile = (props) => {
                   >
                     Logout
                   </button>
-                </li>
+           
+
+
+          </div>
+               
               </ul>
             </form>
           </div>
         </div>
       
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </React.Fragment>
   );
 };

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { detailsRecipe } from '../../actions/recipeActions';
 import styles from './ShowRecipe.module.scss';
+import cx from 'classnames';
 // import {Link} from 'react-router-dom';
 // import Banner from '../Banner/Banner';
 // import Loading from '../spinner/Loading'
@@ -10,7 +11,7 @@ import styles from './ShowRecipe.module.scss';
 // import { useSelector, useDispatch } from 'react-redux';
 // import { bannerProduct} from '../../actions/bannerActions';
 // import { listProducts} from '../../actions/productActions';
-// import Footer from '../Footer/Footer';
+import Footer from '../footer/Footer';
 
 
 const useViewport = () => {
@@ -47,22 +48,6 @@ const ShowRecipe = (props) => {
 
 
   console.log(recipe)
-//*let value = useContext(ProductContext);  every products had value.products/currentPosts, originally. But can just destructure
-// let {products, isGlobalSpinnerOn} = useContext(ProductContext);
-
-// const pList = useSelector(state => state.pList);
-// const bList = useSelector(state => state.bList);
-// const { products, loading, error } = pList;
-// const { banners} = bList;
-// const dispatch = useDispatch();
-
-// useEffect(() => {
-//     dispatch(listProducts());
-//     dispatch(bannerProduct());
-//     return () => {
-//        //
-//     }
-// }, [dispatch])
 
 
 
@@ -72,42 +57,49 @@ const ShowRecipe = (props) => {
     // return loading ? <div><Loading/></div> :
     // error || !banners ? <ErrorMsg variant="danger">{error}</ErrorMsg> :
     return (
-
-      <div className={styles.spacing}>
+      <div>
+   <div className={styles.spacing}>
 
 <h1 className={styles.recTitle}>{recipe && recipe.nameOfRecipe}</h1>
-<div style={{display:'flex', marginTop:'2rem'}}>
-<h4>pic|| </h4>
-<h4>Mama|| </h4>
-<h4>{recipe && recipe.beverage ? 'beverage' : ''}|| </h4>
-<h4>{recipe && recipe.dessert ? 'dessert' : ''}|| </h4>
-<h4>{recipe && recipe.dish ? 'dish' : ''}|| </h4>
-<h4>5 stars</h4>
+<div className={styles.infoWrap} >
+  <div  className={styles.flex} >
+    <div className={styles.momPic}>
+          <img className={styles.image} src='/images/bannerLarge1.jpg' alt="mom"/>
+      </div>
+      <h4 className={styles.author}>Mama</h4>
+      <div className={styles.recipeType}>
+        <div className={cx(styles.iconFlex, (recipe && recipe.beverage) && "fa fa-coffee" )} aria-hidden="true"><h4 className={styles.iconGap}>{recipe && recipe.beverage ? 'beverage' : ''}</h4></div>
+        <div className={cx(styles.iconFlex, (recipe && recipe.dessert) && "fa fa-birthday-cake" )} aria-hidden="true"><h4 className={styles.iconGap}>{recipe && recipe.dessert ? 'dessert' : ''}</h4></div>
+        <div className={cx(styles.iconFlex, (recipe && recipe.dish) && "fa fa-cutlery" )} aria-hidden="true"><h4 className={styles.iconGap}>{recipe && recipe.dish ? 'dish' : ''}</h4></div>
+      </div>
+
+      <div className={styles.commentCount}>
+        <div className="fa fa-comment-o" aria-hidden="true"></div>
+        <div className={styles.comNum}>0</div>
+      </div>
+
+  </div>
+
+    <ul>
+      <li className="fa fa-star" aria-hidden="true" ></li>
+      <li className="fa fa-star" aria-hidden="true" ></li>
+      <li className="fa fa-star" aria-hidden="true" ></li>
+      <li className="fa fa-star" aria-hidden="true" ></li>
+      <li className="fa fa-star" aria-hidden="true" ></li>
+
+    </ul>
 </div>
 
   <div className={styles.lineTitle}>
                 <div className={styles.divLine}></div>
-                {/* <div className={styles.title}>
-                     NEW & SPECIALS
-                </div> */}
-                {/* <div className={styles.divLine}></div> */}
+   
   </div>
-<div className={styles.recDesc}>{recipe && recipe.description}</div>
+<div className={styles.recipeDesc}>{recipe && recipe.description}</div>
 <div className={styles.slider}>
           <div className={styles.slide}>
           <div className={styles.bContainer}>
                 <img src={width < breakpoint ? '/images/bannerLarge1.jpg' : '/images/bannerLarge2.jpg'} alt="slider-img"  className={styles.imgStyles}></img>
-               {/* <div className={styles.bannerTitle}>
-                    <h3>Do you like cooking?</h3>
-                    <h1>Mama's got you covered</h1>
-                    <BannerSearch />
-               </div> */}
-                
-                {/* <Link to={`${link}`} className={styles.block}>
-                    <div className={styles.innerBlock}>
-                        <div  className={styles.bannerText}>{info}</div>
-                    </div>
-                </Link> */}
+
             </div>
 
 
@@ -125,13 +117,11 @@ const ShowRecipe = (props) => {
 
                       id={ingredient._id}  
                       name="strike" 
-                
-                      // value={isDessert || ''} 
-                      // onChange={(e) => setIsDessert(!isDessert)}
+         
                       />
          
           
-              {/* <span htmlFor={ingredient._id}></span> */}
+           
                         <label htmlFor={ingredient._id}>
                                {ingredient.ingredient}
                           </label>
@@ -151,6 +141,9 @@ const ShowRecipe = (props) => {
           </ol>
 
       </div>
+          <Footer/>
+      </div>
+   
     )
 }
 

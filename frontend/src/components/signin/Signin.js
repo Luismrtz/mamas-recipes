@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import styles from './Signin.module.css';
+import styles from './Signin.module.scss';
 import {Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import ErrorMsg from '../errormsg/ErrorMsg';
@@ -35,6 +35,8 @@ const Signin = (props) => {
     // error || !product ? <ErrorMsg variant="danger">{error}</ErrorMsg> :
     return(
     <React.Fragment>
+
+        <div className={styles.signin}>
         <div className={styles.form}>
             <form onSubmit={submitHandler}>
             <ul className={styles.formContainer}>
@@ -69,6 +71,8 @@ const Signin = (props) => {
             </ul>
             </form>
         </div>
+        </div>
+       
 
 
     {/* <Footer/> */}

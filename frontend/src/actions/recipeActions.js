@@ -70,7 +70,10 @@ const saveRecipe = (recipe) => async (dispatch, getState) => {
 
 
     } catch (error) {
-        dispatch({type: RECIPE_SAVE_FAIL, payload: error.message});
+        dispatch({type: RECIPE_SAVE_FAIL, payload: error.response && error.response.data.message ?
+            error.response.data.message
+             :
+            error.message });
     }
 }
 

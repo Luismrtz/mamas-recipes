@@ -3,14 +3,14 @@ const { RECIPE_LIST_REQUEST, RECIPE_LIST_SUCCESS, RECIPE_LIST_FAIL, RECIPE_SAVE_
 function recipeListReducer(state= { loading: true, recipes: []}, action) {
 
     switch (action.type) {
-        case RECIPE_LIST_REQUEST: //send request to server to get list of products
-            return { loading: true, recipes: []}; // for loading box during this case
-        case RECIPE_LIST_SUCCESS: // received data from server
-            return { ...state, loading: false, recipes: action.payload}; // 
-        case RECIPE_LIST_FAIL: // in case of an error
+        case RECIPE_LIST_REQUEST: 
+            return { loading: true, recipes: []}; 
+        case RECIPE_LIST_SUCCESS: 
+            return { ...state, loading: false, recipes: action.payload}; 
+        case RECIPE_LIST_FAIL:
             return { loading: false, error: action.payload}
         default: 
-            return state; // do not change state at all
+            return state; 
         }
 }
 
@@ -18,28 +18,28 @@ function recipeListReducer(state= { loading: true, recipes: []}, action) {
 function recipeDetailsReducer(state= {loading: true}, action) {
 
     switch (action.type) {
-        case RECIPE_DETAILS_REQUEST: //send request to server to get list of recipes
-            return { loading: true}; // for loading box during this case
-        case RECIPE_DETAILS_SUCCESS: // received data from server
-            return { loading: false, recipe: action.payload}; // 
-        case RECIPE_DETAILS_FAIL: // in case of an error
+        case RECIPE_DETAILS_REQUEST:
+            return { loading: true}; 
+        case RECIPE_DETAILS_SUCCESS: 
+            return { loading: false, recipe: action.payload};  
+        case RECIPE_DETAILS_FAIL: 
             return { loading: false, error: action.payload}
         default: 
-            return state; // do not change state at all
+            return state; 
         }
 }
 
 function recipeFilterReducer(state= { loading: true, rec: []}, action) {
 
     switch (action.type) {
-        case RECIPE_FILTER_REQUEST: //send request to server to get list of recipes
-            return { ...state, loading: true}; // for loading box during this case
-        case RECIPE_FILTER_SUCCESS: // received data from server
-            return { ...state, loading: false, rec: action.payload}; // 
-        case RECIPE_FILTER_FAIL: // in case of an error
+        case RECIPE_FILTER_REQUEST: 
+            return { ...state, loading: true}; 
+        case RECIPE_FILTER_SUCCESS: 
+            return { ...state, loading: false, rec: action.payload}; 
+        case RECIPE_FILTER_FAIL: 
             return { loading: false, error: action.payload}
         default: 
-            return state; // do not change state at all
+            return state; 
         }
 }
 
@@ -47,14 +47,14 @@ function recipeFilterReducer(state= { loading: true, rec: []}, action) {
 function recipeSaveReducer(state= {}, action) {
 
     switch (action.type) {
-        case RECIPE_SAVE_REQUEST: //send request to server to get list of products
-            return { loading: true}; // for loading box during this case
-        case RECIPE_SAVE_SUCCESS: // received data from server
-            return {...state, loading: false, success: true, recipe: action.payload}; // 
-        case RECIPE_SAVE_FAIL: // in case of an error
+        case RECIPE_SAVE_REQUEST: 
+            return { loading: true}; 
+        case RECIPE_SAVE_SUCCESS: 
+            return {...state, loading: false, success: true, recipe: action.payload}; 
+        case RECIPE_SAVE_FAIL: 
             return { loading: false, error: action.payload}
         default: 
-            return state; // do not change state at all
+            return state; 
         }
 }
 
@@ -62,14 +62,14 @@ function recipeSaveReducer(state= {}, action) {
 function recipeDeleteReducer(state= {}, action) {
 
     switch (action.type) {
-        case RECIPE_DELETE_REQUEST: //send request to server to get list of products
-            return { loading: true}; // for loading box during this case
-        case RECIPE_DELETE_SUCCESS: // received data from server
-            return {...state, loading: false, product: action.payload, success: true}; // 
-        case RECIPE_DELETE_FAIL: // in case of an error
+        case RECIPE_DELETE_REQUEST: 
+            return { loading: true}; 
+        case RECIPE_DELETE_SUCCESS: 
+            return {...state, loading: false, product: action.payload, success: true};  
+        case RECIPE_DELETE_FAIL:
             return { loading: false, error: action.payload}
         default: 
-            return state; // do not change state at all
+            return state; 
         }
 }
 

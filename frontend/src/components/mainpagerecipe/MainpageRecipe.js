@@ -3,9 +3,10 @@ import styles from './MainpageRecipe.module.scss';
 import {Link} from 'react-router-dom';
 
 import cx from 'classnames';
+
 import PropTypes from 'prop-types';
 
-const MainpageRecipe = ({recipe: {_id, nameOfRecipe, description}}) => {
+const MainpageRecipe = ({recipe: {_id, nameOfRecipe, description, beverage, dessert, dish}}) => {
 
 
 
@@ -32,32 +33,32 @@ const MainpageRecipe = ({recipe: {_id, nameOfRecipe, description}}) => {
             <div className={styles.infoWrap}>
 
                 <h1 className={styles.title}>{nameOfRecipe}</h1>
+
+                <ul>
+                    <li className="fa fa-star" aria-hidden="true" ></li>
+                    <li className="fa fa-star" aria-hidden="true" ></li>
+                    <li className="fa fa-star" aria-hidden="true" ></li>
+                    <li className="fa fa-star" aria-hidden="true" ></li>
+                    <li className="fa fa-star" aria-hidden="true" ></li>
+
+                </ul>
                 <p>{description}</p>
 
             </div>
 
             <div className={styles.textWrap}>
-                    <div className={styles.typeWrap}><p>dessert</p></div>
-                    <div className={styles.timeWrap}><p>fa-time 1hr 20mins</p></div>
+                    {/* <div className={styles.typeWrap}><div className="fa fa-clock-o"></div><p>dessert</p></div> */}
+
+                    <div className={styles.recipeType}>
+                        <div className={cx(styles.iconFlex, (beverage) && "fa fa-coffee fa-lg" )} aria-hidden="true"><p className={styles.iconGap}>{beverage ? 'beverage' : ''}</p></div>
+                        <div className={cx(styles.iconFlex, (dessert) && "fa fa-birthday-cake fa-lg" )} aria-hidden="true"><p className={styles.iconGap}>{dessert ? 'dessert' : ''}</p></div>
+                        <div className={cx(styles.iconFlex, (dish) && "fa fa-cutlery fa-lg" )} aria-hidden="true"><p className={styles.iconGap}>{dish ? 'dish' : ''}</p></div>
+                    </div>
+                    <div className={styles.timeWrap}><div className="fa fa-clock-o fa-lg"></div><p className={styles.iconGap}>1hr 20mins</p></div>
                 
                     
             </div>
             
-
-
-            {/* <div className={styles.contents}>
-                <div className={ styles.contDesc}>
-                    <h1 className={styles.title}>{title}</h1>
-                {sale === false ? (<h2 className={styles.price}>${price.toFixed(2)}</h2>) : 
-                        (<div className={styles.discountWrapper}> 
-                            <h2 className={styles.price}>${discount.toFixed(2)}</h2>
-                            <h2 className={styles.sale}>${price.toFixed(2)}</h2>
-                        </div>) }
-                    <h3 className={ styles.nope}>{info}</h3>
-                  
-                </div>
-     
-            </div> */}
             
         </div> 
      

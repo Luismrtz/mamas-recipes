@@ -4,7 +4,7 @@ import { listRecipes, filterRecipes} from '../../actions/recipeActions';
 import { useHistory } from 'react-router-dom';
 import styles from './SearchBar.module.scss'
 import cx from "classnames";
-const NavSearch = ({props, location}) => {
+const NavSearch = ({props, location, open}) => {
 
   const history = useHistory();
 
@@ -20,7 +20,7 @@ useEffect(() => {
      }
 }, [dispatch])
 
-
+console.log(open)
     const [display, setDisplay] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const wrapRef = useRef(null);
@@ -90,12 +90,18 @@ useEffect(() => {
 
     return (
         <div ref={wrapRef} >
-         <form  onSubmit={handleSubmit}>
-      <input  type="text" placeholder="Search" value={searchTerm} onClick={displayTextbox} onChange={handleChange} onKeyPress={keySubmit}/>
-        <ul>
+         <form  onSubmit={handleSubmit} className={ open === false ? 
+          cx( styles.inactive)
+        : cx(styles.active)
+           }>
+         <div className={styles.navFlex}>
+          <input  type="text" placeholder="Search" value={searchTerm} onClick={displayTextbox} onChange={handleChange} onKeyPress={keySubmit}/>
+          <button type="submit" className={cx(styles.navBtn, 'fa fa-search')}></button>
+        </div>
+        <ul className={styles.queryWrap}>
           {searchTerm !== '' && display === true ?
           (results && results.slice(0,5).map(recipe => {
-            return <li onClick={setTextName(recipe)} onKeyPress={setTextName(recipe)} key={recipe._id} tabIndex="0">
+            return <li className={styles.query} onClick={setTextName(recipe)} onKeyPress={setTextName(recipe)} key={recipe._id} tabIndex="0">
                 
                 {recipe.nameOfRecipe}
                 
@@ -104,7 +110,7 @@ useEffect(() => {
           : ''
         }
         </ul>
-        <button type="submit" className={styles.color}>submit form</button>
+       
       </form>
         </div>
     )

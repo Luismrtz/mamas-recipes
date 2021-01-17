@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import styles from './NewRecipe.module.css';
+import styles from './NewRecipe.module.scss';
 import {useSelector, useDispatch} from 'react-redux';
 import {Link} from 'react-router-dom';
 import cx from 'classnames';
+import Filter from '../allrecipes/Filter';
+import Footer from '../footer/Footer';
 // import Loading from '../spinner/Loading';
-// import ErrorMsg from '../ErrorMsg/ErrorMsg';
+// import ErrorMsg from '../errormsg/ErrorMsg';
 import { listRecipes, saveRecipe, deleteRecipe} from '../../actions/recipeActions';
-import Beverages from '../allrecipes/Beverages';
+
 // import Axios from 'axios';
 
 
@@ -19,6 +21,9 @@ const NewRecipe = (props) => {
     const [isDessert, setIsDessert] = useState(false);
     const [isBeverage, setIsBeverage] = useState(false);
     const [isDish, setIsDish] = useState(false);
+
+    const [sort, setSort]= useState('');
+    const [filter, setFilter] = useState(null);
 
     // const onChangeField = fieldName => ({target}) => setIngredients(state => {(...state, [fieldName]:target.value)})
 
@@ -86,9 +91,11 @@ const NewRecipe = (props) => {
     }
 
     function handleRemove(i) {
+        if(window.confirm('Are you sure you want to delete?')) {
         const values = [...ingredients];
         values.splice(i, 1);
         setIngredients(values);
+        }
       }
 
       function handleAdd() {
@@ -105,9 +112,11 @@ const NewRecipe = (props) => {
     }
 
     function handleRemove2(i) {
+        if(window.confirm('Are you sure you want to delete?')) {
         const values = [...instructions];
         values.splice(i, 1);
         setInstructions(values);
+        }
       }
 
 
@@ -117,37 +126,93 @@ const NewRecipe = (props) => {
         setInstructions(values);
       }
 
-    console.log(recipes)
-    console.log(ingredients)
-    console.log(instructions)
+      let sorting = (e) => {
+        console.log(e.target.value);
+      
+         const sorting = e.target.value;
+        
+        let recipesNew = recipes.filter(filtRec => {
+          switch (sorting) {
+            case 'all':
+              return  filtRec;
+            case 'dish':
+              return filtRec.dish === true;
+            case 'dessert':
+              return filtRec.dessert === true;
+            case 'beverage':
+              return filtRec.beverage === true;
+              default:
+                return null;
+          }
+        })
+        setSort(sorting)
+        setFilter(recipesNew);
+      
+      //   let savory = recipes.filter(sav => {
+      //     return (
+      //      sav.dish === true 
+      //      //|| e.sale === true
+      //      )
+      //  })
+      //   setFilter(savory);
+      
+      
+      
+      }
 
+
+
+
+ const currentPosts =(filter === null ? (recipes && recipes) : (filter && filter)); 
+
+const newCurP = [...currentPosts].sort((a,b) => {
+
+   return a.nameOfRecipe.localeCompare(b.nameOfRecipe)
+})
+
+console.log(errorSave)
 
     return (
-    <div className={styles.pageWrapper}>
+    <div className={styles.pageContainer}>
 
-        <div className={styles.content}>
-            <div >
+            <div className={styles.titleWrapper}>
                 <h3>PRODUCTS</h3>
-               
+            </div> 
+            {/* {errorSave && <ErrorMsg variant="danger">{errorSave}</ErrorMsg>} */}
+
+        <div className={styles.filterTableWrapper}>
+            
+
+
+            <div className={styles.filterWrapper}>
+                <Link to={"/"} className={styles.btn}>
+                    <button className={cx(styles.button, styles.buttonSize)}>HOME</button>
+                </Link>
+                <div>
+                    <Filter 
+                        sorting={sorting}
+                        sort={sort}
+                       />
+                </div> 
             </div>
-            <Link to={"/"} className={styles.btn}>
-            <button>HOME</button>
-          </Link>
+   
            
-            <div className={styles.productList}>
+            <div className={styles.tableWrapper}>
+
                 <table className={styles.table}>
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Recipe</th>                        
+                            <th>Recipe</th>     
+                            <th>Buttons</th>                   
                         </tr>
                     </thead>
 
                     <tbody>
-                        {recipes && recipes.map((recipe) => (
+                        {newCurP && newCurP.map((recipe) => (
                             <tr key={recipe._id}>
-                                <td>{recipe._id}</td>
-                                <td>{recipe.nameOfRecipe}</td>
+                                <td><Link to={'/showrecipe/' + recipe._id}>{recipe._id}</Link></td>
+                                <td><Link to={'/showrecipe/' + recipe._id}>{recipe.nameOfRecipe}</Link></td>
                              
                                 <td className={styles.btnwrap}>
                                     <button className={styles.button} onClick={()=> editItem(recipe)}>
@@ -165,49 +230,53 @@ const NewRecipe = (props) => {
 
 
             </div>
-            <div className={styles.buttonContainer}>
+            <div className={styles.buttonWrapper}>
                     {visibility === false ? 
 
                     <button className={styles.button} onClick={() => editItem({})}>Create Product</button>
                     : 
                     <button type="button" className={cx(styles.button)} onClick={(e) => setVisibility(!visibility)}>Back</button>
                     }
-                 </div>
+            </div>
         </div>
 
        {visibility && 
         <div className={styles.form}>
             <form onSubmit={submitHandler}>
-            <ul className={styles.formContainer}>
+            <ul className={styles.formWrapper}>
                 <li>
                     <h2 className={styles.title}>Create a Recipe</h2>
                 </li>
-   
+                {/* {errorSave && <ErrorMsg variant="danger">{errorSave}</ErrorMsg>} */}
                 <li>
-                    <label htmlFor="name">
-                        Name of Recipe
+                    <label htmlFor="name"  className={styles.formMargin}>
+                        <h3>Name of Recipe</h3>
                     </label>
                     <input type="text" name="name" id="name" value={name || ''} onChange={(e) => setName(e.target.value)}></input>
                 </li>
 
 
                 <li>
-                    <label htmlFor="description">
-                        Description
+                    <label htmlFor="description"  className={styles.formMargin}>
+                       <h3>Description</h3> 
                     </label>
                     <input type="text" name="description" id="description" value={description || ''} onChange={(e) => setDescription(e.target.value)}></input>
                 </li>
                 <li>
-                    <label htmlFor="ingredients">
-                        Ingredients
-                    </label>
-                    <button type="button" onClick={() => handleAdd()}>
-                         +
-                    </button>
+                    <div className={cx(styles.lineFlex, styles.formMargin, styles.alignCenter)}>
+                        <label htmlFor="ingredients">
+                            <h3>Ingredients</h3>
+                        </label>
+                        <button  className={cx(styles.button, styles.btnAdd)} type="button" onClick={() => handleAdd()}>
+                            +
+                        </button>
+                        <p>(Click to add another line)</p>
+                    </div>
+           
                     {
                         ingredients && ingredients.map((ingredient, idx) => {
                             return(
-                                <div key={`${ingredient}-${idx}`}>
+                                <div  className={styles.lineFlex} key={`${ingredient}-${idx}`}>
                                     <textarea 
                                         type="text"
                                         name="ingredient"
@@ -216,7 +285,7 @@ const NewRecipe = (props) => {
                                         value={ingredient.ingredient || ''}
                                         onChange={e => handleChange(idx, e)}
                                     />
-                                 <button type="button" onClick={() => handleRemove(idx)}>
+                                 <button className={cx(styles.button, styles.btnDel)} type="button" onClick={() => handleRemove(idx)}>
                                       X
                                  </button>
                                 </div>
@@ -226,16 +295,19 @@ const NewRecipe = (props) => {
                     {/* <textarea type="text" name="ingredients" id="ingredients" value={ingredients.field1 || ''} onChange={onChangeField('field1')}></textarea> */}
                 </li>
                 <li>
+                <div className={cx(styles.lineFlex,styles.formMargin, styles.alignCenter)}>
                     <label htmlFor="instructions">
-                        Instructions
+                        <h3>Instructions</h3>
                     </label>
-                    <button type="button" onClick={() => handleAdd2()}>
+                    <button className={cx(styles.button, styles.btnAdd)} type="button" onClick={() => handleAdd2()}>
                          +
                     </button>
+                    <p>(Click to add another line)</p>
+                    </div>
                     {
                         instructions && instructions.map((step, idx) => {
                             return(
-                                <div key={`${step}-${idx}`}>
+                                <div className={styles.lineFlex}  key={`${step}-${idx}`}>
                                     <textarea 
                                         type="text"
                                         name="step"
@@ -244,7 +316,7 @@ const NewRecipe = (props) => {
                                         value={step.step || ''}
                                         onChange={e => handleChange2(idx, e)}
                                     />
-                                 <button type="button" onClick={() => handleRemove2(idx)}>
+                                 <button className={cx(styles.button, styles.btnDel)} type="button" onClick={() => handleRemove2(idx)}>
                                       X
                                  </button>
                                 </div>
@@ -253,38 +325,45 @@ const NewRecipe = (props) => {
                     }
                     {/* <textarea type="text" name="instructions" id="instructions" value={instructions || ''} onChange={(e) => setInstructions(e.target.value)}></textarea> */}
                 </li>
-                <li>
-                    <label htmlFor="isDessert">
-                        Dessert? {isDessert}
-                    </label>
-                    <input type="checkbox"  checked={isDessert || ''}   name="isDessert" id="isDessert" value={isDessert || ''} onChange={(e) => setIsDessert(!isDessert)}></input>
-                </li>
-                <li>
-                    <label htmlFor="isDish">
-                        Dish? {isDish}
-                    </label>
-                    <input type="checkbox"  checked={isDish || ''}   name="isDish" id="isDish" value={isDish || ''} onChange={(e) => setIsDish(!isDish)}></input>
-                </li>
-                <li>
-                    <label htmlFor="isBeverage">
-                        Beverage {isBeverage}
-                    </label>
-                    <input type="checkbox"  checked={isBeverage || ''}   name="isBeverage" id="isBeverage" value={isBeverage || ''} onChange={(e) => setIsBeverage(!isBeverage)}></input>
-                </li>
+                <h3 className={styles.formMargin}> Choose one please!</h3>
+                <div className={styles.checkWrapper}>
+                   
+                    <li className={styles.checkFlex}>
+                        <input type="checkbox"  checked={isDessert || ''}   name="isDessert" id="isDessert" value={isDessert || ''} onChange={(e) => setIsDessert(!isDessert)}></input>
+                        <label htmlFor="isDessert">
+                            Dessert 
+                        </label>
+                    </li>
+                    <li className={styles.checkFlex}>
+                        <input type="checkbox"  checked={isDish || ''}   name="isDish" id="isDish" value={isDish || ''} onChange={(e) => setIsDish(!isDish)}></input>
+                        <label htmlFor="isDish">
+                            Dish 
+                        </label>
+                    </li>
+                    <li className={styles.checkFlex}>
+                        <input type="checkbox"  checked={isBeverage || ''}   name="isBeverage" id="isBeverage" value={isBeverage || ''} onChange={(e) => setIsBeverage(!isBeverage)}></input>
+                        <label htmlFor="isBeverage">
+                            Beverage 
+                        </label>
+                    </li>
+                </div>
 
+
+                    <div  className={styles.buttonWrapper}>
+                            <li>
+                            <button type="submit" className={cx(styles.button, styles.buttonSize)}>{id? "Update" : "Create"}</button>
+                        </li>
+                        <li>
+                            <button type="button" className={cx(styles.button, styles.buttonSize)} onClick={(e) => setVisibility(!visibility)}>Back</button>
+                        </li>
+                    </div>
   
-                <li>
-                    <button type="submit" className={cx(styles.button, styles.buttonSize)}>{id? "Update" : "Create"}</button>
-                </li>
-                <li>
-                    <button type="button" className={cx(styles.button, styles.buttonSize)} onClick={(e) => setVisibility(!visibility)}>Back</button>
-                </li>
               
             </ul>
             </form>
         </div>
 }
-
+    <Footer/>
     </div>
       
     )

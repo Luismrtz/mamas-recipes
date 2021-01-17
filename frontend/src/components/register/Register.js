@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import styles from './Register.module.css';
+import styles from './Register.module.scss';
 import {Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import ErrorMsg from '../errormsg/ErrorMsg';
@@ -47,6 +47,8 @@ const Register = (props) => {
     // error || !product ? <ErrorMsg variant="danger">{error}</ErrorMsg> :
     return(
     <React.Fragment>
+
+        <div className={styles.register}>
         <div className={styles.form}>
             <form onSubmit={submitHandler}>
             <ul className={styles.formContainer}>
@@ -55,13 +57,13 @@ const Register = (props) => {
                 </li>
                 <li>
                     {loading && <div><Loading/></div>}
-                    {error && <ErrorMsg variant="danger">{error}</ErrorMsg>}
+                    {regError && <ErrorMsg variant="danger">{regError}</ErrorMsg>}
                 </li>
                 <li>
                     <label htmlFor="name">
                         Name
                     </label>
-                    <input type="name" name="name" id="name" onChange={(e) => setName(e.target.value)}></input>
+                    <input type="text" name="name" id="name" onChange={(e) => setName(e.target.value)}></input>
                 </li>
                 <li>
                     <label htmlFor="email">
@@ -90,6 +92,8 @@ const Register = (props) => {
             </ul>
             </form>
         </div>
+        </div>
+        
 
 
     {/* <Footer/> */}

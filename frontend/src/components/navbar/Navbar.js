@@ -12,8 +12,9 @@ import {useSelector } from "react-redux";
 function Navbar({noov}) {
   const history = useHistory();
   const [navbar, setNavbar] = useState(false);
+  const [open, setOpen] = useState(false);
 
-
+  // console.log(open)
 
   const changeBackground = () => {
     if (window.scrollY >= 10) {
@@ -41,6 +42,8 @@ function Navbar({noov}) {
             : cx(styles.secNavContainer)
         }
       >
+
+
         <div className={styles.navStart}>
           <ul className={cx(styles.navTitle)}>
             <Link to={"/"} className={styles.titleColor}>
@@ -48,9 +51,10 @@ function Navbar({noov}) {
               Mamas Recipes{" "}
             </Link>
           </ul>
-          <NavSearch  className={styles.oranges}/>
-          <div onClick={handleChange}> test </div>
-          {/* <CardList  recipes={rFilter}/> */}
+
+
+
+
 
           {/* //!switch between this for full screen  */}
           <ul className={cx(styles.navLinksContainer, styles.yup)}>
@@ -63,7 +67,13 @@ function Navbar({noov}) {
               </Link>
             </li>
 
-            <NavHoverLinks />
+
+
+
+
+
+
+                    <NavHoverLinks />
 
             <li className={styles.navLinkItem}>
               {userInfo ? (
@@ -77,7 +87,7 @@ function Navbar({noov}) {
                         {/* <MdIcon.MdKeyboardArrowDown
                           className={styles.arrowDown}
                         /> */}
-                        <div   className={styles.arrowDown}>^</div>
+                        <div   className={cx(styles.arrowDown, "fa fa-angle-down")}></div>
                       </div>
                     </div>
                   </li>
@@ -90,15 +100,13 @@ function Navbar({noov}) {
                         Account
                       </Link>
                       
-                      <Link to={"/ordermenu"} className={styles.iconButtonHov}>
-                        Orders
-                      </Link>
+
                       {userInfo.isAdmin && (
                         <Link
-                          to={"/pushItems"}
+                          to={"/new"}
                           className={styles.iconButtonHov}
                         >
-                          Push Items
+                          Create
                         </Link>
                       )}
                     </div>
@@ -113,6 +121,41 @@ function Navbar({noov}) {
                 </Link>
               )}
             </li>
+            <ul className={styles.searchTogContainer}>
+
+              <li className={styles.hamburgerDiv} onClick={(e) => setOpen(!open)}>
+                  {/* <FaIcons.FaBars  /> */}
+                  {open === false ? (
+
+                    <div className={cx(styles.hamburgerToggle, 'fa fa-search')}></div>
+                  )
+                      :(
+                        <div className={styles.hamburgerToggle}>X</div>
+                      )
+                  }
+
+              </li>
+
+              <div className={ open === false ? 
+                    cx(styles.fadeOut)
+                  : cx(styles.searchContainer, styles.fadeIn)
+                    }>
+                  <NavSearch  open={open}/>
+      {/* 
+                        <div className={styles.exitSearchWrap}>
+              
+                          <div onClick={(e) => setOpen(!open)}
+                            className={styles.toggleSearch}> X
+                          </div>
+                        </div> */}
+              </div>
+
+            </ul>
+
+
+
+
+
 
  
           </ul>
@@ -120,23 +163,64 @@ function Navbar({noov}) {
 
           <ul className={cx(styles.navLinksContainer, styles.nope)}>
             <li>
-              <Link    
-                      to={`${userInfo ? "/profile" : "/signin"}`}      
-                className={cx(styles.mobileIcon, styles.borderbotNone)}
+              <Link to={`${userInfo ? "/profile" : "/signin"}`}      
+                className={cx(styles.mama, styles.borderbotNone)}
               >
                       {/*//todo replace with fa icon */}
                 {/* <FaIcons.FaUser /> */}
-                <div>User</div>
+                {userInfo ? <div>{userInfo.name}</div> :
+                  <div></div>
+                }
+                
               </Link>
             </li>
 
             <li className={styles.mobileIcon}>
               <Dropdown />
             </li>
+
+            <ul className={styles.searchTogContainer}>
+
+      <li className={styles.hamburgerDiv} onClick={(e) => setOpen(!open)}>
+          {/* <FaIcons.FaBars  /> */}
+          {open === false ? (
+
+            <div className={cx(styles.hamburgerToggle, 'fa fa-search')}></div>
+          )
+              :(
+                <div className={cx(styles.hamburgerToggle, 'fa fa-times')}></div>
+              )
+          }
+
+      </li>
+
+<div className={ open === false ? 
+      cx(styles.fadeOut)
+    : cx(styles.searchContainer, styles.fadeIn)
+      }>
+    <NavSearch  className={styles.oranges} open={open}/>
+{/* 
+          <div className={styles.exitSearchWrap}>
+
+            <div onClick={(e) => setOpen(!open)}
+              className={styles.toggleSearch}> X
+            </div>
+          </div> */}
+</div>
+
+</ul>
+
+            
           </ul>
 
           {/* //!switch for both end */}
         </div>
+
+
+
+
+
+
       </div>
     </nav>
   );
@@ -149,11 +233,11 @@ function NavHoverLinks() {
       <li>
         <div className={cx(styles.iconButton)}>
           {" "}
-          Store
+          Recipes
           <div>
                 {/*//todo replace with fa icon */}
             {/* <MdIcon.MdKeyboardArrowDown className={styles.arrowDown} />  */}
-            <div className={styles.arrowDown}>^</div>
+            <div className={cx(styles.arrowDown, "fa fa-angle-down")}></div>
           </div>
         </div>
       </li>
@@ -162,15 +246,10 @@ function NavHoverLinks() {
         <div className={styles.onHoverBlock}>
           <span className={styles.onHoverArrow}></span>
 
-          <Link to={"/shop/jars"} className={styles.iconButtonHov}>
-            Jars
+          <Link to={"/showAll"} className={styles.iconButtonHov}>
+            All
           </Link>
-          <Link to={"/shop/cups"} className={styles.iconButtonHov}>
-            Cups
-          </Link>
-          <Link to={"/shop"} className={styles.iconButtonHov}>
-            sales
-          </Link>
+  
         </div>
       </div>
     </ul>
