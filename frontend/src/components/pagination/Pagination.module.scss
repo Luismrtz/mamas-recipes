@@ -15,8 +15,9 @@
     border: solid transparent 1px;
 
     &:hover {
-        border: solid black 1px;
-      background: gray;
+        border: solid var(--contender3-black) 1px;
+      background: var(--table);
+      color: var(--mainWhite);
     }
 
 

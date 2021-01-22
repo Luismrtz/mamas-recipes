@@ -24,31 +24,48 @@ body {
 
 
 :root {
-    --hoverColor: rgba(0, 0, 0, 0.196);
-    --hoverColor2: #ac9d6732;
-    --lightBlack: #242526;
-    --black: #1c1b1b;
-    --grey: #484a4d;
-    --lightGrey:  #afafaf;
-    --mainBlue: #2a2a72;
+    
+    --contender2-black: #1c1b1b;/* todo CONTENDER */
+    --contender1-black:  rgb(34, 34, 34);  /* todo CONTENDER */
+    --contender3-black: #232528;/* todo CONTENDER */
+    
+    --ratingColor: rgb(246, 90, 0); /* *NEW */
+    
+    --borderColor: #dadada; /* *NEW */
+    --boxShadow: rgba(41, 48, 55, 0.09); /* *NEW */
+    
+    --hoverColor: rgba(0, 0, 0, 0.196); /* !used often */
+    --light-tint: rgba(0, 0, 0, 0.186); /* ? tint */
+    --dark-tint: rgba(0, 0, 0, 0.246); /* ? tint */
+    /* --darker-tint: rgba(0, 0, 0, 0.286); ? tint */
+    --darkest-tint: rgba(0, 0, 0, 0.596);/* ? mobile nav tint */
+
+    --table: #484a4d; /* *NEW Table */
+    --formDark: #949494;/* *NEW Inputs */
+    --form: #fbfbfb;/* *NEW Inputs */
+    --inputShadow: rgba(38, 142, 228, 0.5);
+    --inputBorder: #50a4e9;
+
+
+    --navFontHover: #afafaf; /* ? mobile nav font */
+
+
+    --lightGrey:  #afafaf; /* todo CONTENDER, but not being used */
+
     /* --lightBlue: #009ffd; */
-    --blue: rgba(38, 142, 228, 0.5);
-    --darkBlue: #2199df;
-    --lightBlue: #50a4e9;
-    --mainWhite: #ececec;
-    --mainDark: #232528;
-    --orange: orange;
-    --red:  rgb(134, 11, 11);
-    --red2: #c04000;
-    --formWhite: #949494;
-    --form: #fbfbfb;
+
+    --mainWhite: #ececec; /* !used often */
+
+    --red:  rgb(134, 11, 11); /* !used often */
+
 
     /* font  */
-    --sm: 1.1rem;
+    --sm: 1.2rem;
     --md: 1.5rem;
     --lg: 1.7rem;
     --xl: 2rem;
     --xxl: 2.5rem;
+    --xx1l: 3.3rem;
     --xxxl: 4rem;
 
 }

@@ -1,6 +1,6 @@
 .container {
     color: var(--mainWhite);
-    background-color: var(--black);
+    background-color: var(--contender1-black);
     height: auto;
     bottom: 0;
 
@@ -27,13 +27,13 @@
     .textLarge {
         font-weight: 700;
         //! ADD FONT SIZE HERE
-        font-size: --lg;
+        font-size: var(--lg);
     }
 
     .textSmall {
         margin-top: 1.8rem;
         //! ADD FONT SIZE HERE
-        font-size: --sm;
+        font-size: var(--sm);
      
     }
 
@@ -45,9 +45,9 @@
     width: 100%;
     padding-bottom: 2rem;
     padding-top: 2rem;
-    background-color: var(--black);
+    background-color: var(--contender1-black);
     //! ADD FONT SIZE HERE
-    font-size: --sm;
+    font-size: var(--sm);
 
 }
 }

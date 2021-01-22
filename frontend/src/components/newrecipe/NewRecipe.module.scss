@@ -32,17 +32,7 @@
 
 
     .tableWrapper {
-      // padding: 0 2rem;
-      // max-width: 115rem;
-      // display: flex;
-      // flex-direction: column;
-      // margin: auto;
-      // align-content: space-between;
-      // justify-content: space-between;
-      // display: flex;
-      // flex-direction: column;
-      // align-content: space-between;
-      // justify-content: space-between;
+
 
       overflow-x: auto;
       min-height: 50vh;
@@ -57,46 +47,45 @@
           /* text-transform: uppercase;
           text-align: center; */
           //! ADD FONT SIZE HERE
-          font-size: var(--sm);
+          font-size: var(--md);
           text-align: left;
         }  
 
         tr td,
         tr th {
-          border: 0.1rem solid #dbdbdb;
+          border: 0.1rem solid var(--borderColor);
           padding: 0.5rem;
           
         }
         td a {
           text-decoration: none;
+          font-size: var(--sm);
         }
 
         tbody > tr:nth-child(odd) {
        
-          background-color: var(--grey);
+          background-color: var(--table);
         }  
         
         tbody > tr:nth-child(odd) > td a {
-          color: white;
+          color: var(--mainWhite);
         
         }  
   
         tbody > tr:nth-child(even) > td a {
-          color: var(--mainDark);
+          color: var(---contender3-black);
         
         }  
 
         tbody tr > td:last-child {
-          //  height: 2rem;
-          // background-color: pink; 
+  
           padding: 0;
          
           display: flex;
           flex-wrap: nowrap;
         }
         tbody tr > td button:first-child {
-          //  height: 2rem;
-          // background-color: pink; 
+
           margin-right: .3rem;
         }
 
@@ -120,11 +109,6 @@
   border: 1px solid transparent;
   width: 100%;
 
-    // margin-right: .2rem;
-    // margin-top: 2rem;
-    // left: 1rem;
-    // bottom: 2rem;
-    // position: absolute;
     z-index: 3;
     // width: 6rem;
     text-align: center;
@@ -132,14 +116,15 @@
     cursor:pointer;
     text-decoration: none;
     text-transform: uppercase;
-    background-color:var(--mainDark);
+    font-size: var(--sm);
+    background-color:var(--contender3-black);
     color: var(--mainWhite);
     padding: 1rem 3rem;
     transition: all 250ms ease-out;
 
     &:hover {
-      border: 1px solid var(--mainDark);
-        color:var(--mainDark);
+      border: 1px solid var(--contender3-black);
+        color:var(--contender3-black);
         background:var(--mainWhite);
 
 
@@ -171,6 +156,19 @@
   margin: auto;
   padding: 0 2rem;
 
+
+  h2 {
+    font-size: var(--xl);
+  }
+
+  h3 {
+    font-size: var(--md);
+  }
+
+  p{
+    font-size: var(--md);
+  }
+
   .formWrapper {
 
     .alignCenter{
@@ -193,15 +191,16 @@
         }
         .btnDel {
           border: 1px solid transparent;
-          background-color:rgb(158, 6, 6);
+          // background-color:rgb(158, 6, 6);
+          background-color: var(--red);
           color: var(--mainWhite);
           //! ADD FONT SIZE HERE
           font-size: var(--md);
           font-weight: bold;
 
           &:hover {
-            border: 1px solid var(--mainDark);
-            color:var(--mainDark);
+            border: 1px solid var(--contender3-black);
+            color:var(--contender3-black);
             background:var(--mainWhite);
           }
         }
@@ -258,7 +257,7 @@
 .form textarea {
   width: 100%;
   padding: 0.3rem;
-  border: 1px solid var(--formWhite);
+  border: 1px solid var(--formDark);
   border-radius: 8px;
   background-color: var(--form);
 
@@ -274,25 +273,25 @@
 }
 .form input:focus,
 .form textarea:focus {
-  border: 1px solid var(--lightBlue);
-  box-shadow: inset 0px 0px 5px var(--blue);
+  border: 1px solid var(--inputBorder);
+  box-shadow: inset 0px 0px 5px var(--inputShadow);
   outline: none;
 }
 .form input[type="submit"] {
   padding: 0.5rem 0.5rem;
-  border: 1px solid grey;
+  border: 1px solid var(--table);
   border-radius: 8px;
-  background-color: red;
-  color: white;
+  background-color:var(--red);
+  color: var(--mainWhite);
 
   transition: all .2s ease;
 }
 
 
 .form input[type="submit"]:hover {
-  border: 1px solid grey;
-  color: red;
-  background-color: white;
+  border: 1px solid var(--table);
+  color: var(--red);
+  background-color: var(--mainWhite);
 }
 
 

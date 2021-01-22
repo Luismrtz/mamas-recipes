@@ -1,6 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { listRecipes, filterRecipes} from '../../actions/recipeActions';
+import { listRecipes} from '../../actions/recipeActions';
 import { useHistory } from 'react-router-dom';
 import styles from './SearchBar.module.scss'
 import cx from "classnames";
@@ -9,7 +9,7 @@ const NavSearch = ({props, location, open}) => {
   const history = useHistory();
 
     const rList = useSelector(state => state.rList);
-const {recipes, loading, error } = rList;
+const {recipes} = rList;
 
 const dispatch = useDispatch();
 
@@ -20,7 +20,6 @@ useEffect(() => {
      }
 }, [dispatch])
 
-console.log(open)
     const [display, setDisplay] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const wrapRef = useRef(null);
@@ -30,13 +29,10 @@ console.log(open)
         recipe.nameOfRecipe.toLowerCase().includes(searchTerm.toLowerCase())
         )
 
-        const params = new URLSearchParams(location);
-        const q = params.get(searchTerm)
+        // const params = new URLSearchParams(location);
+        // const q = params.get(searchTerm)
+      // console.log(q)
 
-        console.log(q)
-        console.log(results)
-        console.log(recipes)
-        console.log(recipes)
 
     const handleChange = e => {
         setSearchTerm(e.target.value);

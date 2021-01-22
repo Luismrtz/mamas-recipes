@@ -38,45 +38,7 @@
         justify-content: center;
       
       }
-    
-    //   .subTitle {
-    //     font-size: 1.3rem;
-    //     font-weight: 400;
-    //   }
-    
-    //   .cStyle {
-    //     text-decoration: none;
-    //     color: var(--mainDark);
-    //    }
-    
-       // type of products Filter 
-    // .typeFilter {
-    //     display: flex;
-    //     align-content: center;
-    //     text-align: center;
-    //     justify-content: center;
-    //     margin-top: 4rem;
-    //     .typePerPage {
-    //         margin: 0 2rem;
-    //         text-align: center;
-    //         font-size: 1.9rem;
-    //         font-weight: 400;
-    //         letter-spacing: .2rem;
-    //         padding: 0 .3rem;
-    //         transition: all .3s ease;
-    //         border-bottom: 1px solid transparent;
-             
-    //     }
-    //     .borderLine {
-                
-    //         border-bottom: 1px solid black;
-    
-    //     }  
-    // }
-       
-    
-    
-    //number filter
+
     
     .textPerPage {
         //! ADD FONT SIZE HERE
@@ -100,7 +62,7 @@
             
             .numPerPageWrap {
                 display: flex;
-                
+            
                 .showBtn {
                     //! ADD FONT SIZE HERE
                     font-size: var(--sm);
@@ -111,15 +73,12 @@
                     margin:0 .3rem;
                     width: 2rem;
                     height: 2rem;
-        
-                    border-bottom: 1px solid transparent;
-            
+                    transition: all .2s ease;
+                    font-size: var(--sm);
                 }
     
-            .borderLine {
-                
-                border-bottom: 1px solid black;
-        
+            .borderLine {  
+                border-bottom: 1px solid var(--contender3-black);
             }  
             }
     

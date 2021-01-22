@@ -13,6 +13,7 @@ router.post("/add", async(req, res) => {
 
         const newRecipe = new Recipe({
             nameOfRecipe: req.body.nameOfRecipe,
+            img: req.body.img,
             description: req.body.description,
             ingredients: req.body.ingredients,
             instructions: req.body.instructions,
@@ -51,11 +52,9 @@ router.get("/show:id", async (req, res) => {
 router.get("/filter", async (req, res) => {
     try {
         let q = req.query.q;
-      //  let poopers = JSON.stringify(poop)
-      //  console.log(poopers)
+
         const someRecipes = await Recipe.find({ $text: {$search: q }});
         res.json(someRecipes);
-      //  console.log(someRecipes)
     } catch (error) {
         res.json({message: error.message})
     }

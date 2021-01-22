@@ -48,6 +48,8 @@
                         // transition: transform 800ms ease;
                     }
                 }
+
+   
         
     
                 .columnFlex {
@@ -81,12 +83,13 @@
     justify-content: center;
     max-width: 115rem;
     margin: 5.5rem auto;
+    color: var(--contender3-black);
     .divLine {
 
      
         width: 100%;
         height: 0;
-        border: .1px solid black;
+        border: .1px solid var(--contender3-black);
     }
 
     .title {
@@ -158,14 +161,14 @@
     cursor:pointer;
     text-decoration: none;
     text-transform: uppercase;
-    background-color:var(--mainDark);
+    background-color:var(--contender3-black);
     color: var(--mainWhite);
     padding: 1rem 2rem;
     transition: all 250ms ease-out;
 
     &:hover {
-        border: 1px solid var(--mainDark);
-        color:var(--mainDark);
+        border: 1px solid var(--contender3-black);
+        color:var(--contender3-black);
         background:var(--mainWhite);
 
 

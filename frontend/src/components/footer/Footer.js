@@ -18,7 +18,7 @@ function Footer() {
 
                 <div >
                     <h2 className={styles.textLarge}>Navigation</h2>
-                    <div className={styles.textSmall}><Link to="/showall">All</Link></div>
+                    <div className={styles.textSmall}><Link to="/showall">All Recipes</Link></div>
                 </div>
     
                 <div >
@@ -36,7 +36,7 @@ function Footer() {
                     
                 </div>
                 <div >
-                    <h2 className={styles.textLarge}><Link to="/">SYMBOLS</Link></h2>
+                    <h2 className={styles.textLarge}><Link to="/">Mama's Recipes</Link></h2>
 
                 </div>
             </div>

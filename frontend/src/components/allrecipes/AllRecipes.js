@@ -80,7 +80,6 @@ const fifteen = () => {
 
 
 let sorting = (e) => {
-  console.log(e.target.value);
 
    const sorting = e.target.value;
   

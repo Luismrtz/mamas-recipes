@@ -5,16 +5,15 @@ import {Link} from 'react-router-dom';
 import cx from 'classnames';
 import Filter from '../allrecipes/Filter';
 import Footer from '../footer/Footer';
-// import Loading from '../spinner/Loading';
-// import ErrorMsg from '../errormsg/ErrorMsg';
+import Axios from 'axios';
+import ErrorMsg from '../errormsg/ErrorMsg';
 import { listRecipes, saveRecipe, deleteRecipe} from '../../actions/recipeActions';
-
-// import Axios from 'axios';
 
 
 const NewRecipe = (props) => {
     const [id, setId] = useState('');
     const [name, setName] = useState('');
+    const [img, setImg] = useState('');
     const [description, setDescription] = useState('');
     const [ingredients, setIngredients] = useState([]);
     const [instructions, setInstructions] = useState([]);
@@ -24,22 +23,22 @@ const NewRecipe = (props) => {
 
     const [sort, setSort]= useState('');
     const [filter, setFilter] = useState(null);
-
-    // const onChangeField = fieldName => ({target}) => setIngredients(state => {(...state, [fieldName]:target.value)})
+    const [uploading, setUploading] = useState(false);
+    const [errorUpload, setErrorUpload] = useState('');
 
     const [visibility, setVisibility] = useState(false);
 
     const rList = useSelector(state => state.rList);
     const {recipes} = rList;
-    //const {products, loading, error} = pList;
 
-
+    const userSignin = useSelector((state) => state.userSignin);
+    const { userInfo } = userSignin;
 
     const recipeSave = useSelector(state => state.recipeSave);
-    const {loading: loadingSave, success: successSave, error: errorSave} = recipeSave;
+    const { success: successSave, error: errorSave} = recipeSave;
 
     const recipeDelete = useSelector(state => state.recipeDelete);
-    const { success: successDelete, error: errorDelete} = recipeDelete;
+    const { success: successDelete} = recipeDelete;
 
     const dispatch = useDispatch();
 
@@ -52,13 +51,13 @@ const NewRecipe = (props) => {
             //
             
         }
-    // }, [dispatch,successSave, successDelete])
     }, [dispatch, successSave, successDelete])
 
     const editItem = (recipe) => {
         setVisibility(true);
         setId(recipe._id);
         setName(recipe.nameOfRecipe);
+        setImg(recipe.img);
         setDescription(recipe.description);
         setIngredients(recipe.ingredients || '');
         setInstructions(recipe.instructions || '');
@@ -68,11 +67,37 @@ const NewRecipe = (props) => {
        
        
     }
+
+    const uploadFileHandler = async(e) => {
+        const file = e.target.files[0];
+        const bodyFormData = new FormData();
+  
+
+        bodyFormData.append('image', file);
+        setUploading(true);
+
+        try{
+            const {data} = await Axios.post('/uploads/s3', bodyFormData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: 'Bearer ' + userInfo.token,
+                },
+            });
+            setImg(data);
+            setUploading(false);
+        } catch (error) {
+            setErrorUpload(error.message);
+            setUploading(false);
+        }
+
+
+
+    }
     
 
     const submitHandler = (e) => {
         e.preventDefault();
-        dispatch(saveRecipe({ _id: id, nameOfRecipe: name, description, ingredients, instructions, beverage: isBeverage, dish: isDish, dessert: isDessert
+        dispatch(saveRecipe({ _id: id, nameOfRecipe: name, img, description, ingredients, instructions, beverage: isBeverage, dish: isDish, dessert: isDessert
         }));
     }
 
@@ -127,7 +152,7 @@ const NewRecipe = (props) => {
       }
 
       let sorting = (e) => {
-        console.log(e.target.value);
+
       
          const sorting = e.target.value;
         
@@ -148,15 +173,7 @@ const NewRecipe = (props) => {
         setSort(sorting)
         setFilter(recipesNew);
       
-      //   let savory = recipes.filter(sav => {
-      //     return (
-      //      sav.dish === true 
-      //      //|| e.sale === true
-      //      )
-      //  })
-      //   setFilter(savory);
-      
-      
+ 
       
       }
 
@@ -170,15 +187,13 @@ const newCurP = [...currentPosts].sort((a,b) => {
    return a.nameOfRecipe.localeCompare(b.nameOfRecipe)
 })
 
-console.log(errorSave)
-
     return (
     <div className={styles.pageContainer}>
 
             <div className={styles.titleWrapper}>
                 <h3>PRODUCTS</h3>
             </div> 
-            {/* {errorSave && <ErrorMsg variant="danger">{errorSave}</ErrorMsg>} */}
+          
 
         <div className={styles.filterTableWrapper}>
             
@@ -242,19 +257,29 @@ console.log(errorSave)
 
        {visibility && 
         <div className={styles.form}>
+              {errorSave && <ErrorMsg variant="danger">{errorSave}</ErrorMsg>}
             <form onSubmit={submitHandler}>
             <ul className={styles.formWrapper}>
                 <li>
                     <h2 className={styles.title}>Create a Recipe</h2>
                 </li>
-                {/* {errorSave && <ErrorMsg variant="danger">{errorSave}</ErrorMsg>} */}
+          
                 <li>
                     <label htmlFor="name"  className={styles.formMargin}>
                         <h3>Name of Recipe</h3>
                     </label>
                     <input type="text" name="name" id="name" value={name || ''} onChange={(e) => setName(e.target.value)}></input>
                 </li>
-
+                <li htmlFor="img">
+                    <h3>
+                        Image
+                    </h3>
+                    
+                    <input type="text" name="image" id="img" value={img || ''} onChange={(e) => setImg(e.target.value)}></input>
+                    <input type="file" label="Choose Image" id="imgFile" onChange={uploadFileHandler}></input>
+                    {uploading && <div>Uploading...</div>}
+                    {errorUpload && <ErrorMsg variant="danger">{errorUpload}</ErrorMsg>}
+                </li>
 
                 <li>
                     <label htmlFor="description"  className={styles.formMargin}>
@@ -292,7 +317,7 @@ console.log(errorSave)
                             )
                         })
                     }
-                    {/* <textarea type="text" name="ingredients" id="ingredients" value={ingredients.field1 || ''} onChange={onChangeField('field1')}></textarea> */}
+                   
                 </li>
                 <li>
                 <div className={cx(styles.lineFlex,styles.formMargin, styles.alignCenter)}>
@@ -323,7 +348,7 @@ console.log(errorSave)
                             )
                         })
                     }
-                    {/* <textarea type="text" name="instructions" id="instructions" value={instructions || ''} onChange={(e) => setInstructions(e.target.value)}></textarea> */}
+                   
                 </li>
                 <h3 className={styles.formMargin}> Choose one please!</h3>
                 <div className={styles.checkWrapper}>

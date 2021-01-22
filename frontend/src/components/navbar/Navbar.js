@@ -2,19 +2,16 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
 import NavSearch from '../searchbar/NavSearch'
-import { useHistory } from 'react-router-dom';
-// import * as FaIcons from "react-icons/fa";
-// import * as MdIcon from "react-icons/md";
+
 import styles from "./Navbar.module.scss";
 import cx from "classnames";
 import {useSelector } from "react-redux";
 
-function Navbar({noov}) {
-  const history = useHistory();
+function Navbar() {
   const [navbar, setNavbar] = useState(false);
   const [open, setOpen] = useState(false);
 
-  // console.log(open)
+
 
   const changeBackground = () => {
     if (window.scrollY >= 10) {
@@ -29,10 +26,6 @@ function Navbar({noov}) {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
-  const handleChange = e => {
-     e.preventDefault();
-    history.push(`/search?q=test`);
-  }
   return (
     <nav className={styles.mainNavContainer}>
       <div
@@ -48,7 +41,7 @@ function Navbar({noov}) {
           <ul className={cx(styles.navTitle)}>
             <Link to={"/"} className={styles.titleColor}>
               {" "}
-              Mamas Recipes{" "}
+              Mama's Recipes{" "}
             </Link>
           </ul>
 
@@ -130,7 +123,7 @@ function Navbar({noov}) {
                     <div className={cx(styles.hamburgerToggle, 'fa fa-search')}></div>
                   )
                       :(
-                        <div className={styles.hamburgerToggle}>X</div>
+                         <div  className={cx(styles.hamburgerToggle, "fa fa-times")}></div>
                       )
                   }
 
@@ -141,13 +134,7 @@ function Navbar({noov}) {
                   : cx(styles.searchContainer, styles.fadeIn)
                     }>
                   <NavSearch  open={open}/>
-      {/* 
-                        <div className={styles.exitSearchWrap}>
-              
-                          <div onClick={(e) => setOpen(!open)}
-                            className={styles.toggleSearch}> X
-                          </div>
-                        </div> */}
+
               </div>
 
             </ul>
@@ -199,13 +186,7 @@ function Navbar({noov}) {
     : cx(styles.searchContainer, styles.fadeIn)
       }>
     <NavSearch  className={styles.oranges} open={open}/>
-{/* 
-          <div className={styles.exitSearchWrap}>
 
-            <div onClick={(e) => setOpen(!open)}
-              className={styles.toggleSearch}> X
-            </div>
-          </div> */}
 </div>
 
 </ul>

@@ -90,6 +90,11 @@ const recipeSchema = new mongoose.Schema(
       required: true,
       maxlength: 32
     },
+    img: {
+      type: String,
+      required: false,
+
+  },
     description: {
       type: String,
       trim: true,

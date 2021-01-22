@@ -30,14 +30,14 @@
   align-items: center;
   justify-content: center;
    transition: all 600ms ease;
-  color: var(--lightBlack);
+  color: var(--contender3-black);
   text-decoration: none;
   cursor: pointer;
   border-bottom: 1.5px solid transparent;
 
 
   &:hover {
-     border-bottom: 1.5px solid var(--lightBlack);
+     border-bottom: 1.5px solid var(--contender3-black);
    }
 }
 //? global styles END ****
@@ -65,7 +65,7 @@
   
   //* tied to secNavContainer
   .scrollCss{
-    box-shadow: 0 3.5px 1.5px -3.9px var(--lightBlack);
+    box-shadow: 0 3.5px 1.5px -3.9px var(--contender3-black);
 
       }
 
@@ -116,7 +116,7 @@
           cursor: pointer;
       
           .titleColor {
-            color: var(--lightBlack);
+            color: var(--contender3-black);
           }
         }
 
@@ -153,7 +153,7 @@
                 //  justify-content: flex-end;
                  align-items: center;
                 // margin-right: 2.1rem;
-                 color: var(--black);
+                 color: var(--contender3-black);
                  outline: none;
                  font-size: 16px;
           
@@ -172,12 +172,6 @@
                //!! THE SEARCH TOGGLE BUTTON START
 .searchContainer {
 
-  // todo temporary color
-  //* change color 
-  //!chagne color
-  //? change color
-  // background-color: orangered;
-  // background-color: var(--mainWhite);
 
   z-index: 15; 
   // padding:1rem;
@@ -199,7 +193,7 @@
 
           .mama{
             font-size:1.6rem;
-            color: black;
+            color: var(--contender3-black);
             text-decoration: none;
             // margin-right: 1.5rem;
           }
@@ -212,7 +206,7 @@
             padding:.1rem .5rem .1rem .5rem;
             margin: .1rem 1.5rem .1rem 1.5rem;
             transition: filter 300ms;
-            color: var(--lightBlack);
+            color: var(--contender3-black);
             text-decoration: none;
             cursor: pointer;
 
@@ -254,7 +248,7 @@
 
       
       .arrowDown {
-        color: var(--lightGrey);
+        color: var(--navFontHover);
         width: 15px;
         height: 15px;
         margin-bottom: -.3rem;
@@ -293,7 +287,7 @@
           align-items: center;
           justify-content: center;
           transition: filter 300ms;
-          color: var(--lightBlack);
+          color: var(--contender3-black);
           text-decoration: none;
           cursor: pointer;
           white-space: nowrap;
@@ -303,7 +297,7 @@
           &:hover {
             transition: all 300ms ease;
             color: var(--mainWhite);
-            background-color: var(--black);
+            background-color: var(--contender3-black);
           }
         }
       }
@@ -313,13 +307,12 @@
       top: 2.8rem;
         // max-width: 11rem;
       min-height: 3rem;
-      // padding: .5rem;
       position: absolute;
-      background: lightgrey;
+      // background-color: orangered;
       border-radius: .5rem;
       // box-shadow: 0 50px 100px rgba(50,50,93,.1), 0 15px 35px rgba(50,50,93,.15), 0 5px 15px rgba(0,0,0,.1);
       // box-shadow: 0px 0px 15px rgba(41, 48, 55, 0.09);
-      box-shadow: 0 0 3px rgba(0,0,0,.35);
+      box-shadow: 0 0 3px var(--darkest-tint);
       transition: all 0.3s, opacity 0.1s, transform 0.2s;
       transform-origin: 50% 0;
       display: flex;
@@ -350,7 +343,7 @@
      position: absolute;
      width: 100vw;
      height: 100vh;
-     background-color: rgba(0, 0, 0, 0.596);
+     background-color: var(--darkest-tint);
      z-index: 19;
      left: 0;
      top: 0;
@@ -394,7 +387,7 @@
      width: 50%;
      height: 100vh;
      padding: 0 1.8rem;
-     background-color: var(--black);
+     background-color: var(--contender3-black);
      cursor: default;
  
  //*close menu start
@@ -410,8 +403,8 @@
        align-items: center;
        width: 100%;
        padding: 2rem 0;
-       background-color: var(--black);
-       color: var(--black);
+       background-color: var(--contender3-black);
+       color: var(--contender3-black);
        outline: none;
        font-size: 20px;
  
@@ -420,8 +413,8 @@
          display: flex;
          align-items: center;
          justify-content: center;
-         color: white;
-        background-color: var(--black);
+         color: var(--mainWhite);
+        background-color: var(--contender3-black);
         padding: .1rem;
         cursor: pointer;
       }
@@ -440,7 +433,7 @@
 
          
      .borderlineBotm {
-       border-bottom: 1px solid #ececec;
+       border-bottom: 1px solid var(--mainWhite);
      }
 
      
@@ -462,9 +455,9 @@
       justify-content: center;
       height: 7.5rem;
       width: 100%;
-      background-color: var(--black);
+      background-color: var(--contender3-black);
       color: var(--mainWhite);
-      border-top: 1px solid #ececec;
+      border-top: 1px solid var(--mainWhite);
       outline: none;
       font-size: 16px;
       cursor: pointer;
@@ -472,7 +465,7 @@
    
    
        &:hover {
-         color: var(--lightGrey);
+         color: var(--navFontHover);
        }
    
    
@@ -507,8 +500,8 @@
      .dropdownMenuInner {
        text-align: start;
        width: 100%;
-       color: white;
-       background-color: var(--black);
+       color: var(--mainWhite);
+       background-color: var(--contender3-black);
        z-index: 20;
        list-style: none;
        position: relative;
@@ -526,7 +519,7 @@
 
 
        &:hover {
-         color: var(--lightGrey);
+         color: var(--navFontHover);
        }
  
      }

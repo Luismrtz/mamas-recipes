@@ -87,7 +87,7 @@
 //? global for transition reusability
 .button1:hover {
     transition: all 250ms ease-out;
-    background-color:var(--mainDark);
+    background-color:var(--contender3-black);
     color: var(--mainWhite);
    }
 
@@ -103,7 +103,7 @@
     text-decoration: none;
     background: none;
   //  border: 2px solid red;
-    color:var(--mainDark);
+    color:var(--contender3-black);
     text-transform: uppercase;
     background:var(--mainWhite);
     padding: 10px;
@@ -130,22 +130,6 @@
  }
  
 
- 
-
- 
- 
- 
-//  //! media queries
-//  //1000px
-//  @media (max-width: 62.5rem) {
-
-//  }
- 
-//  //600px
-//  @media (max-width: 37.5rem) {
-
-//  }
- 
  
  
  

@@ -3,7 +3,6 @@ import styles from './Register.module.scss';
 import {Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import ErrorMsg from '../errormsg/ErrorMsg';
-// import Footer from '../Footer/Footer';
 import Loading from '../loading/Loading'
 import { register } from '../../actions/userActions';
 
@@ -16,16 +15,15 @@ const Register = (props) => {
     const [rePassword, setRePassword] = useState('');
 
     const userSignin = useSelector(state => state.userSignin);
-    const {loading, userInfo, error} = userSignin;
+    const {loading, userInfo} = userSignin;
     const userRegister = useSelector(state => state.userRegister);
-    const {loading: regLoading, userInfo: regUser, error: regError} = userRegister;
+    const {userInfo: regUser, error: regError} = userRegister;
     const dispatch = useDispatch();
     const redirect = props.location.search?props.location.search.split("=")[1]:'/';
-    // const params = new URLSearchParams(location);
-    // const redirect = params ? params.split("=")[1]: '/';
-   console.log(userInfo);
+
+
     useEffect(() => {
-        console.log(userInfo);
+     
         if (userInfo || regUser) {
             props.history.push(redirect);
         }
@@ -36,9 +34,7 @@ const Register = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-       // if(password !== rePassword) {
-        //    alert('Password and confirm password do not match')
-      //  } else {
+     
             dispatch(register(name, email, password, rePassword));
       //  }
     }

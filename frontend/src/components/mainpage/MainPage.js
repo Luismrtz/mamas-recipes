@@ -15,10 +15,9 @@ const MainPage = () => {
 
 
 const rList = useSelector(state => state.rList);
-const {recipes, loading, error } = rList;
+const {recipes} = rList;
 
-const recipeFilter = useSelector(state => state.recipeFilter);
-const {rFilter, loading: rLoading, error: rError} = recipeFilter;
+
 
 
 

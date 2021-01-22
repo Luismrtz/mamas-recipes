@@ -2,15 +2,13 @@
 
 //? global 
 input[type="text"] {
-//   padding: 0.3rem;
-// border: 1px solid #000000;
+
+background-color: var(--form);
 
 border: none;
 }
 
 input:focus {
-    // border: 1px solid rgb(59, 145, 173);
-//   box-shadow: inset 0px 0px 5px rgb(26, 52, 61);
 
   outline: none;  
 }
@@ -18,9 +16,7 @@ input:focus {
 //? global end
 
 //!nav
-// .navForm {
-//     max-width: 20rem;
-// }
+
 
 
 .active {
@@ -40,7 +36,7 @@ input:focus {
   
     height: 4.5rem;
     display: flex;
-    border: 1px solid #c2c2c2;
+    border: 1px solid var(--formDark);
     input {
         padding: 0 0.5rem;
         // border: none;
@@ -58,33 +54,20 @@ input:focus {
     display:flex;
     flex-direction: column;
     justify-content: center;
-    // border-bottom-right-radius: 8px;
-    // border-top-right-radius: 8px;
-    // margin-top: 2rem;
-    // left: 1rem;
-    // bottom: 2rem;
-    // position: absolute;
     z-index: 3;
-    // width: 10rem;
-    // height: 100%;
+
 
     text-align: center;
     font-size: 2rem;
     cursor:pointer;
     text-decoration: none;
     text-transform: uppercase;
-    color:grey;
-    background-color: white;
+    color:var(--formDark);
+    background-color: var(--form);
     // padding: 1rem 0;
     transition: all 250ms ease-out;
 
-    // &:hover {
-    //     background-color:var(--mainDark);
-    //     color:var(--mainWhite);
 
-
-
-    // }
 }
 
 
@@ -98,18 +81,13 @@ input:focus {
     max-width: 90rem;
     // min-width: 10rem;
     position: absolute;
-    // width: 100rem;
 
- 
-    // flex-direction: column;
-    // align-items: center;
-    
 
 }
 
 
 .query:first-child {
-    border-top: 1px solid black;
+    border-top: 1px solid var(--contender3-black);
 }
 
 //! .map search query color
@@ -119,18 +97,14 @@ input:focus {
     font-size: 1.2rem;
     padding:.5rem .2rem;
     background-color: var(--mainWhite);
-    border: 1px solid black;
+    border: 1px solid var(--contender3-black);
     border-top: none;
     
-    // width: 100%;
-    // max-width: 90rem;
-    // min-width: 10rem;
-    //  margin: 0 2rem 0 0;
-    
+
     &:hover {
         // background-color: rgb(0, 106, 177); 
         background-color: rgb(104, 104, 104);
-        color: white;
+        color: var(--form);
     }
 }
 
@@ -141,14 +115,9 @@ input:focus {
     position: relative;
     width: 100%;
     max-width: 70rem;
-    border: 1px solid #c2c2c2;
+    border: 1px solid var(--formDark);
     
 
-    // form {
-    //     width: 100%;
-    //     max-width: 90rem;
-    //     min-width: 10rem;
-    // }
 }
 .bannerForm:focus-within {
     // border: 2px solid green;
@@ -174,10 +143,7 @@ input:focus {
         padding: 0 0.5rem;
         font-size: 2rem;
         flex: 1 1 0;
-        // height: 100%;
-    //    border-bottom-left-radius: 8px;
-    //    border-top-left-radius: 8px;
-        // border: none;
+    
     }
 
 }
@@ -193,33 +159,19 @@ input:focus {
     display:flex;
     flex-direction: column;
     justify-content: center;
-    // border-bottom-right-radius: 8px;
-    // border-top-right-radius: 8px;
-    // margin-top: 2rem;
-    // left: 1rem;
-    // bottom: 2rem;
-    // position: absolute;
     z-index: 3;
-    // width: 10rem;
-    // height: 100%;
+ 
 
     text-align: center;
     font-size: 2rem;
     cursor:pointer;
     text-decoration: none;
     text-transform: uppercase;
-    color:grey;
-    background-color: white;
+    color:var(--formDark);
+    background-color: var(--form);
     // padding: 1rem 0;
     transition: all 250ms ease-out;
 
-    // &:hover {
-    //     background-color:var(--mainDark);
-    //     color:var(--mainWhite);
-
-
-
-    // }
 }
 
 .bWrapper {
@@ -228,51 +180,4 @@ input:focus {
 
 
 
-//! Search
-
-
-
-// .searchForm {
-//         // border-radius: 8px;
-//         position: relative;
-//         width: 100%;
-//         max-width: 70rem;
-//         border: 1px solid #c2c2c2;
-        
-    
-//         // form {
-//         //     width: 100%;
-//         //     max-width: 90rem;
-//         //     min-width: 10rem;
-//         // }
-
-//         &:focus-within {
-//             // border: 2px solid green;
-         
-//             border: 1px solid #50a4e9;
-//             box-shadow: inset 0px 0px 5px rgba(38, 142, 228, 0.5);
-        
-            
-//         }
-
-//         .searchFlex {
-    
-//             display: flex;
-//             min-height: 2.5rem;
-            
-//             // max-width: 50rem;
-//             //  width: 100%;
-//             input {
-//                 // width: 100%;
-//                 padding: 0 0.5rem;
-//                 font-size: 1.3rem;
-//                 flex: 1 1 0;
-//                 // height: 100%;
-//             //    border-bottom-left-radius: 8px;
-//             //    border-top-left-radius: 8px;
-//                 // border: none;
-//             }
-        
-//         }
-// }
 

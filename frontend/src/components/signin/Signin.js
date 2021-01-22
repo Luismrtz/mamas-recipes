@@ -3,7 +3,6 @@ import styles from './Signin.module.scss';
 import {Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import ErrorMsg from '../errormsg/ErrorMsg';
-// import Footer from '../Footer/Footer';
 import { signin } from '../../actions/userActions';
 import Loading from '../loading/Loading.js'
 
@@ -17,7 +16,6 @@ const Signin = (props) => {
     const dispatch = useDispatch();
     const redirect = props.location.search?props.location.search.split("=")[1]:'/';
     useEffect(() => {
-        console.log(userInfo);
      if (userInfo) {
          props.history.push(redirect);
      }

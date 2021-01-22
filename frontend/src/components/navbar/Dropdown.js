@@ -1,7 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-// import * as FaIcons from "react-icons/fa";
-// import * as AiIcons from "react-icons/ai";
 import cx from "classnames";
 import styles from "./Navbar.module.scss";
 import { useSelector } from "react-redux";

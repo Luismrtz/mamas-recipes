@@ -6,10 +6,11 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import recipeRoute from './routes/recipeRoute';
 import userRoute from './routes/userRoute';
+import uploadRoute from './routes/uploadRoute';
 import "regenerator-runtime/runtime.js";
 
 const app = express();
-// const path = require('path');
+const path = require('path');
 // dotenv.config();
 app.use(bodyParser.json());
 
@@ -40,9 +41,10 @@ mongoose.connect( uri, {
 
 app.use('/recipes', recipeRoute);
 app.use('/users', userRoute);
+app.use('/uploads', uploadRoute);
 // app.use('/users', userRoute);
-
-// app.use('/uploads', express.static(path.join(__dirname, '/../uploads')));
+const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 // app.use(express.static(path.join(__dirname, '/../frontend/build')));
 // app.get('*', (req, res) => {
 //     res.sendFile(path.join(__dirname, '/../frontend/build/index.html'));

@@ -4,9 +4,8 @@ import {Link} from 'react-router-dom';
 
 import cx from 'classnames';
 
-import PropTypes from 'prop-types';
 
-const MainpageRecipe = ({recipe: {_id, nameOfRecipe, description, beverage, dessert, dish}}) => {
+const MainpageRecipe = ({recipe: {_id, img, nameOfRecipe, description, beverage, dessert, dish}}) => {
 
 
 
@@ -16,7 +15,7 @@ const MainpageRecipe = ({recipe: {_id, nameOfRecipe, description, beverage, dess
            
 
             <div   className={styles.imgOverlay}>
-              <img className={styles.image} src='images/morning.jpg' alt="duckens"/>
+              <img className={styles.image} src={ img ? img : '/images/morning.jpg'} alt="duckens"/>
     
                                
               <div className={styles.overlayContainer}>
@@ -42,12 +41,12 @@ const MainpageRecipe = ({recipe: {_id, nameOfRecipe, description, beverage, dess
                     <li className="fa fa-star" aria-hidden="true" ></li>
 
                 </ul>
-                <p>{description}</p>
+                <p className={styles.description}>{description}</p>
 
             </div>
 
             <div className={styles.textWrap}>
-                    {/* <div className={styles.typeWrap}><div className="fa fa-clock-o"></div><p>dessert</p></div> */}
+           
 
                     <div className={styles.recipeType}>
                         <div className={cx(styles.iconFlex, (beverage) && "fa fa-coffee fa-lg" )} aria-hidden="true"><p className={styles.iconGap}>{beverage ? 'beverage' : ''}</p></div>

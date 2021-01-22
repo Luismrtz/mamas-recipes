@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './Search.module.scss';
 
-import { listRecipes, filterRecipes} from '../../actions/recipeActions';
+import { filterRecipes} from '../../actions/recipeActions';
 import {useLocation} from 'react-router-dom'
-import {Link} from 'react-router-dom';
 
 import Searchbar from '../searchbar/SearchBar'
 import Footer from '../footer/Footer';
@@ -16,10 +15,10 @@ const {search} = useLocation();
 
 
 const rList = useSelector(state => state.rList);
-const {recipes, loading, error } = rList;
+const {recipes,error } = rList;
 
 const recipeFilter = useSelector(state => state.recipeFilter);
-const {rec, loading: rLoading, error: rError} = recipeFilter;
+const {rec, error: rError} = recipeFilter;
 
 
 const searchParams = new URLSearchParams(search);
@@ -30,11 +29,6 @@ const q = searchParams.get('q')
 
 
 const dispatch = useDispatch();
-console.log(q)
-    console.log(recipes)
-    console.log(rec.message)
-    console.log(rError)
-console.log(props.location.pathname)
     useEffect(() => {
         if(q === null) {
             props.history.push('/')
@@ -47,7 +41,7 @@ console.log(props.location.pathname)
            //
         }
       }, [dispatch, q, props.history])
-      console.log(rec && rec);
+
 
 
 

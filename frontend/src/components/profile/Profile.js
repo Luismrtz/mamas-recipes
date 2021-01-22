@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Profile.module.scss";
-// import { Link } from "react-router-dom";
 import cx from "classnames";
 import Footer from '../footer/Footer';
 import Loading from '../loading/Loading'
@@ -55,7 +54,7 @@ const Profile = (props) => {
               <h2 className={styles.title}>Update Account Info c:</h2>
           <div className={styles.form}>
           
-            <form>
+            <form  onSubmit={submitHandler}>
               <ul>
        
                 <li>
