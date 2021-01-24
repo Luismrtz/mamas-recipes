@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch backend --exec babel-node backend/server.js"
+    "start": "nodemon --watch backend --exec babel-node backend/server.js",
+    "build": "rm -rf dist && babel backend -d dist  && cd frontend && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -29,5 +30,9 @@
     "eslint": "^7.13.0",
     "eslint-plugin-react": "^7.21.5",
     "nodemon": "^2.0.6"
+  },
+  "engines": {
+    "node": "12.14.0",
+    "npm": "6.13.4"
   }
 }
