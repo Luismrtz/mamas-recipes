@@ -1,9 +1,9 @@
 import express from 'express';
 import Recipe from '../models/recipeModel';
-
+import {isAuth, isAdmin} from '../util'
 const router = express.Router();
 
-router.post("/add", async(req, res) => {
+router.post("/add", isAuth, isAdmin, async(req, res) => {
     
     try {
 
@@ -14,6 +14,7 @@ router.post("/add", async(req, res) => {
         const newRecipe = new Recipe({
             nameOfRecipe: req.body.nameOfRecipe,
             img: req.body.img,
+            time: req.body.time,
             description: req.body.description,
             ingredients: req.body.ingredients,
             instructions: req.body.instructions,
@@ -72,7 +73,7 @@ router.get("/filter", async (req, res) => {
 //   });
 
 
-  router.delete("/:id",  async (req, res) => {
+  router.delete("/:id", isAuth, isAdmin, async (req, res) => {
     const recipe = await Recipe.findOne({ _id: req.params.id });
     if (recipe) {
       const deletedRecipe = await recipe.remove();
@@ -85,7 +86,7 @@ router.get("/filter", async (req, res) => {
 
 
   //*UPDATE
-router.patch('/update/:id', async(req,res) => {
+router.patch('/update/:id', isAuth, isAdmin, async(req,res) => {
     try {
         const recipe = await Recipe.updateOne(
             {_id: req.params.id},

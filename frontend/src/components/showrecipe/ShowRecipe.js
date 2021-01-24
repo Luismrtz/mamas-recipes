@@ -40,42 +40,61 @@ const ShowRecipe = (props) => {
 <h1 className={styles.recTitle}>{recipe && recipe.nameOfRecipe}</h1>
 <div className={styles.infoWrap} >
   <div  className={styles.flex} >
+    <div className={styles.picwrapper}>
     <div className={styles.momPic}>
           <img className={styles.image} src='/images/bannerLarge1.jpg' alt="mom"/>
       </div>
       <h4 className={styles.author}>Mama</h4>
+    </div>
+
       <div className={styles.recipeType}>
 
         {(recipe && recipe.beverage) ? 
-         <div className={cx(styles.iconFlex, (recipe && recipe.beverage) && "fa fa-coffee" )} aria-hidden="true"><h4 className={styles.iconGap}>{recipe && recipe.beverage ? 'beverage' : ''}</h4></div>
+         <div className={cx(styles.iconFlex, (recipe && recipe.beverage) && "fa fa-coffee" )} aria-hidden="true"><h4 className={styles.iconGap}>{recipe && recipe.beverage ? 'Beverage' : ''}</h4></div>
          : (recipe && recipe.dessert) ?
-<div className={cx(styles.iconFlex, (recipe && recipe.dessert) && "fa fa-birthday-cake" )} aria-hidden="true"><h4 className={styles.iconGap}>{recipe && recipe.dessert ? 'dessert' : ''}</h4></div>
+<div className={cx(styles.iconFlex, (recipe && recipe.dessert) && "fa fa-birthday-cake" )} aria-hidden="true"><h4 className={styles.iconGap}>{recipe && recipe.dessert ? 'Dessert' : ''}</h4></div>
         : (recipe && recipe.dish) ?
-      <div className={cx(styles.iconFlex, (recipe && recipe.dish) && "fa fa-cutlery" )} aria-hidden="true"><h4 className={styles.iconGap}>{recipe && recipe.dish ? 'dish' : ''}</h4></div>
+      <div className={cx(styles.iconFlex, (recipe && recipe.dish) && "fa fa-cutlery" )} aria-hidden="true"><h4 className={styles.iconGap}>{recipe && recipe.dish ? 'Dish' : ''}</h4></div>
       :
       <div></div>
       }
        
-        
+       <div className={styles.timeWrap}><div className="fa fa-clock-o fa-lg"></div><h4 className={styles.iconGap}>{recipe && recipe.time? recipe.time : 'N/A'}</h4></div>
        
       </div>
 
-      <div className={styles.commentCount}>
-        <div className="fa fa-comment-o" aria-hidden="true"></div>
-        <div className={styles.comNum}>0</div>
-      </div>
+     
+
+
+  
 
   </div>
 
+</div>
+
+
+<div className={styles.comRevWrapper}> 
+    <div className={styles.commentCount}>
+            <div className="fa fa-comment-o" aria-hidden="true"></div>
+            <div className={styles.comNum}>0</div>
+          </div>
+
     <ul className={styles.rating}>
-      <li className="fa fa-star" aria-hidden="true" ></li>
-      <li className="fa fa-star" aria-hidden="true" ></li>
-      <li className="fa fa-star" aria-hidden="true" ></li>
-      <li className="fa fa-star" aria-hidden="true" ></li>
-      <li className="fa fa-star" aria-hidden="true" ></li>
+          <li className="fa fa-star" aria-hidden="true" ></li>
+          <li className="fa fa-star" aria-hidden="true" ></li>
+          <li className="fa fa-star" aria-hidden="true" ></li>
+          <li className="fa fa-star" aria-hidden="true" ></li>
+          <li className="fa fa-star" aria-hidden="true" ></li>
 
     </ul>
+
 </div>
+
+
+
+
+
+
 
   <div className={styles.lineTitle}>
                 <div className={styles.divLine}></div>

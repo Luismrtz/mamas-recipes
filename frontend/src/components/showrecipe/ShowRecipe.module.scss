@@ -15,6 +15,7 @@
 
 
     h1 {
+        color: var(--secondary-color);
       margin-bottom: 2rem;
     }
 
@@ -23,14 +24,15 @@
     }
 
     .rating {
+      white-space: nowrap;
       font-size: var(--xl);
     }
 .recTitle {
-  //! ADD FONT SIZE HERE
+  
   font-size: var(--xxxl);
     margin-top: 10rem;
-    color:var(--red);
-    // white-space: nowrap;
+
+    color: var(--secondary-color);
     text-align:left;
 
 }
@@ -48,8 +50,7 @@
 
 
 
-
-//! comments/ratings 
+//! header info wrapper minus reviews
 .infoWrap {
  display:flex;
 margin-top:2rem;
@@ -57,26 +58,26 @@ margin-top:2rem;
 align-items: center;
 
 
-.momPic {
-  margin-right:1rem;
-//   max-width: 40rem;
-//   min-width: 10rem;
-width: 5rem;
-height: 5rem;
-  display: grid;
-  position: relative;
-  border-radius: 50%;
-  overflow: hidden;
-  
-  .image {
-      // border-radius: 50%;
-      grid-column: 1 / -1;
-      grid-row: 1 / -1;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      background-position: center;
-      // transition: transform 800ms ease;
+.picwrapper {
+  display: flex;
+  align-items: center;
+  .momPic {
+    margin-right:1rem;
+  width: 5rem;
+  height: 5rem;
+    display: grid;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    
+    .image {
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background-position: center;
+    }
   }
 }
 
@@ -84,6 +85,8 @@ height: 5rem;
 
 
 
+
+//? recipe type && time icons
 
 .recipeType {
   display: flex;
@@ -93,34 +96,66 @@ height: 5rem;
 
   .iconFlex {
     display: flex;
+    color: var(--primary-color);
     .iconGap {
+      color: var(--secondary-color);
       margin-left: .5rem;
       font-size: var(--md);
     }
   }
 
+
+  .timeWrap {
+    display: flex;
+    align-items: center;
+   font-size: var(--sm);
+   margin-left: 2rem;
+   color: var(--primary-color);
+
+   .iconGap {
+    margin-left: .7rem;
+    font-size: var(--sm);
+    color: var(--secondary-color);
+  }
+  }
+
 }
 
+
+} //? end of info wrap
+
+
+//! comments/ratings 
+.comRevWrapper {
+display: flex;
+align-items: center;
+margin-left: 1rem;
+
+margin-top: 4rem;
 .commentCount {
+  white-space: nowrap;
   display: flex;
   font-size: var(--md);
-  margin: 0 2rem;
+  margin-right: 2rem;
+    color: var(--primary-color);
 
   .comNum {
+      color: var(--secondary-color);
+    white-space: nowrap;
     margin-left: .4rem;
   }
 }
 
+
 ul {
   li {
   
-//! ADD FONT SIZE HERE
-    
-    color: var(--ratingColor);
+    color: var(--primary-color);
     margin-right: .5rem;
   }
 }
 }
+
 
 
 
@@ -149,7 +184,7 @@ border-bottom: 1px solid var(--formDark);
 //! 
 //? title divider description
   .recipeDesc {
-    //! ADD FONT SIZE HERE
+      color: var(--secondary-color);
     font-size: var(--xl);
   }
 
@@ -163,20 +198,17 @@ ol {
   margin-bottom: 8rem;
 
   li::before {
-    //! ADD FONT SIZE HERE
+    
     font-size: var(--sm);
     font-weight: bold;
-    // border: 1px solid orangered;
-    background-color: var(--ratingColor);
+    background-color: var(--primary-color);
     border-radius: 50%;
     content: counter(li);
     color: var(--mainWhite);
     display: inline-block;
     min-width: 1.5rem;
     min-height: 1.5rem;
-    // margin-left: -1rem;
     margin-right: 1rem;
-    // margin-bottom: 1rem; 
     padding: .35rem;
    
     text-align: center;
@@ -196,11 +228,11 @@ ol {
 
     p {
       max-width: 50rem;
-      //! ADD FONT SIZE HERE
+      
  
       white-space: pre-wrap;
     
-      color: var(--contender3-black);
+      color: var(--secondary-color);
     }
   }
 }
@@ -254,19 +286,13 @@ ol {
 }
 
 
-//! COME BACK TO THIS
 //? checkbox start
 .divy {
   display: flex;
   align-items: baseline;
-  // align-items: center;
-  // justify-items: center;
-  // align-items: center;
   margin-bottom: 4rem;
   
  
-
-/* Base for label styling */
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
 position: absolute;
@@ -296,22 +322,22 @@ cursor: pointer;
     border-radius: 50%;
     box-shadow: inset 0 1px 3px var(--hoverColor);
   }
-  /* checked mark aspect */
+  // checked mark 
   [type="checkbox"]:not(:checked) + label:after,
   [type="checkbox"]:checked + label:after {
     content: '\2714\0020';
     position: absolute;
     top: .65rem;
      left: .4rem;
-    //! ADD FONT SIZE HERE
+    
     font-size: 1.8rem;
     line-height: 0.8;
-    color: var(--ratingColor);
+    color: var(--primary-color);
     transition: all .2s;
   }
 
 
-/* checked mark aspect changes */
+// checked mark transform
 [type="checkbox"]:not(:checked) + label:after {
   opacity: 0;
   transform: scale(0);
@@ -328,11 +354,11 @@ cursor: pointer;
 
   
   input[type=checkbox]:checked + label {
-      color: var(--red2);
+      color: var(--primary-color);
       text-decoration: line-through;
-    } /*This is the MDN spec for doing this*/
+    } 
     label {
-      //! ADD FONT SIZE HERE
+      
       font-size: var(--md);
     
     }
@@ -377,16 +403,10 @@ cursor: pointer;
               margin-left:1.2rem;
             }
           }
-          .commentCount {
-            margin-top: 1.5rem;
-            margin-left:0;
-          }
+  
         }
       
-        ul {
-          margin-top: 2rem;
-        }
-  
+ 
       }    
     }
 

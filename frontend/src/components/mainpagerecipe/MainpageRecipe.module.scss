@@ -4,7 +4,10 @@
     border-radius: 5px;
     overflow: hidden;
     box-sizing: border-box;
-    // background-color: #ffff;
+
+    background-color: var(--footer);
+
+
     border: 1px solid var(--borderColor);
     box-shadow: 0px 0px 15px var(--boxShadow);
  
@@ -72,7 +75,7 @@
              display: flex;
             flex-direction: column;
             justify-content: center;
-             //! ADD FONT SIZE HERE
+             
             font-size: var(--sm)
         }
         
@@ -85,8 +88,10 @@
            cursor:pointer;
            text-decoration: none;
            background: none;
+           border-radius: .5rem;
+             font-size: var(--lg);
          //  border: 2px solid red;
-           color:var(--contender2-black);
+           color:var(--primary-color);
            text-transform: uppercase;
            background:var(--mainWhite);
            padding: 10px;
@@ -95,7 +100,7 @@
         
         .button1:hover{
             transition: all 250ms ease-out;
-            background-color:var(--contender2-black);
+            background-color:var(--primary-color);
             color: var(--mainWhite);
            }
         
@@ -114,15 +119,16 @@
      padding: 1.5rem 2rem 2.5rem;
 
      .title {
-   
+     color: var(--secondary-color);
         margin-bottom: 1rem;
     }
 
      ul {
         li {
-         //! ADD FONT SIZE HERE
+         
           font-size: var(--lg);
-          color: var(--ratingColor);
+          // color: var(--ratingColor);
+          color: var(--primary-color);
           
           margin-right: .5rem;
           margin-bottom: 1.5rem;
@@ -130,6 +136,7 @@
       }
 
       .description {
+          color: var(--secondary-color);
         font-size: var(--sm);
       }
 
@@ -147,13 +154,15 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        border-top: 1px solid var(--borderColor);
-       //  border-right: 1px solid #dadada;
+        border-top: 1px solid rgb(212, 212, 212);
+        // border-top: 1px solid var(--borderColor);
+        color: var(--primary-color);
        width: 50%;
         display: flex;
         // margin-left:2rem;
       
         .iconFlex {
+          
           display: flex;
         }
 
@@ -161,6 +170,8 @@
 
 
       .iconGap {
+        color: var(--secondary-color);
+        font-size: var(--sm);
         margin-left: .7rem;
       }
 
@@ -170,8 +181,9 @@
          justify-content: center;
         padding: 1rem 0;
         text-align: center;
-        border-top: 1px solid #dadada;
-        border-left: 1px solid #dadada;
+        color: var(--primary-color);
+        border-top: 1px solid  rgb(212, 212, 212);
+        border-left: 1px solid  rgb(212, 212, 212);
         
         width: 50%;
      }

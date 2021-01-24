@@ -10,14 +10,9 @@
     
     
     .itemsContainer {
-        background-color: var(--mainWhite);
+        // background-color: var(--bodyWhite);
         margin: 6rem auto 0 auto;
     }
-    
-    // .nope {
-    
-    //    margin: 6rem auto 0 auto;
-    // }
     
     
     
@@ -27,7 +22,7 @@
       }
     
       .title {
-        //! ADD FONT SIZE HERE
+        
         font-size: var(--xl);
         padding-bottom: 1rem;
       }
@@ -41,7 +36,7 @@
 
     
     .textPerPage {
-        //! ADD FONT SIZE HERE
+        
         font-size: var(--sm);
         margin-right:1rem;
         width: 18rem;
@@ -64,7 +59,7 @@
                 display: flex;
             
                 .showBtn {
-                    //! ADD FONT SIZE HERE
+                    
                     font-size: var(--sm);
                     margin-right: .5rem;
                 }
@@ -78,7 +73,7 @@
                 }
     
             .borderLine {  
-                border-bottom: 1px solid var(--contender3-black);
+                border-bottom: 1px solid var(--primary-color);
             }  
             }
     
@@ -104,16 +99,7 @@
         max-width: 115rem;
     }
     
-    //? alt grid
-    // .gridFlip {
-    //     display: grid;
-    //     max-width: 115rem;
-    //     grid-template-columns: repeat(1, 1fr);
-    //     grid-gap: 2.5rem;
-    //     padding: 2rem 2rem;
-    //     margin: 0 auto 0 auto;
-    // }
-    
+
     
     .navPagination {
        
@@ -125,17 +111,12 @@
         justify-content: center;
     }
     
-    
-    
-    
-    
-    // //? pagination inc.
-    // .footerQuestionmark {
-    //     border-bottom: 200px  var(--grey) solid;
-    // }
+   
     
     }
-    
+
+
+
     
     //! media queries
     //1300px
@@ -172,13 +153,10 @@
         .mainContainer {
         .grid {
             grid-template-columns: 1fr;
-           // grid-auto-rows: minmax(600px, auto);
-            //grid-template-rows: repeat(12, 400px);
+
         }
     
-        // .gridFlip {
-        //     grid-auto-rows: minmax(100px, auto); 
-        // }
+
     }
     }
     

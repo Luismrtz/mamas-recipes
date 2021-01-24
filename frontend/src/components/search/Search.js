@@ -15,10 +15,10 @@ const {search} = useLocation();
 
 
 const rList = useSelector(state => state.rList);
-const {recipes,error } = rList;
+const {error } = rList;
 
 const recipeFilter = useSelector(state => state.recipeFilter);
-const {rec, error: rError} = recipeFilter;
+const {rec,} = recipeFilter;
 
 
 const searchParams = new URLSearchParams(search);

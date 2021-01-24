@@ -3,7 +3,7 @@ import styles from './NewRecipe.module.scss';
 import {useSelector, useDispatch} from 'react-redux';
 import {Link} from 'react-router-dom';
 import cx from 'classnames';
-import Filter from '../allrecipes/Filter';
+import Filter from '../filter/Filter';
 import Footer from '../footer/Footer';
 import Axios from 'axios';
 import ErrorMsg from '../errormsg/ErrorMsg';
@@ -14,6 +14,7 @@ const NewRecipe = (props) => {
     const [id, setId] = useState('');
     const [name, setName] = useState('');
     const [img, setImg] = useState('');
+    const [time, setTime] = useState('');
     const [description, setDescription] = useState('');
     const [ingredients, setIngredients] = useState([]);
     const [instructions, setInstructions] = useState([]);
@@ -58,6 +59,7 @@ const NewRecipe = (props) => {
         setId(recipe._id);
         setName(recipe.nameOfRecipe);
         setImg(recipe.img);
+        setTime(recipe.time);
         setDescription(recipe.description);
         setIngredients(recipe.ingredients || '');
         setInstructions(recipe.instructions || '');
@@ -97,7 +99,7 @@ const NewRecipe = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        dispatch(saveRecipe({ _id: id, nameOfRecipe: name, img, description, ingredients, instructions, beverage: isBeverage, dish: isDish, dessert: isDessert
+        dispatch(saveRecipe({ _id: id, nameOfRecipe: name, img, description, ingredients, time, instructions, beverage: isBeverage, dish: isDish, dessert: isDessert
         }));
     }
 
@@ -229,11 +231,11 @@ const newCurP = [...currentPosts].sort((a,b) => {
                                 <td><Link to={'/showrecipe/' + recipe._id}>{recipe._id}</Link></td>
                                 <td><Link to={'/showrecipe/' + recipe._id}>{recipe.nameOfRecipe}</Link></td>
                              
-                                <td className={styles.btnwrap}>
+                                <td>
                                     <button className={styles.button} onClick={()=> editItem(recipe)}>
                                         Edit
                                     </button>{' '}
-                                    <button className={styles.button} onClick={() => deleteHandler(recipe)}>
+                                    <button className={cx(styles.button, styles.deleteColor)} onClick={() => deleteHandler(recipe)}>
                                         Delete
                                     </button>
                                 </td>
@@ -310,9 +312,15 @@ const newCurP = [...currentPosts].sort((a,b) => {
                                         value={ingredient.ingredient || ''}
                                         onChange={e => handleChange(idx, e)}
                                     />
-                                 <button className={cx(styles.button, styles.btnDel)} type="button" onClick={() => handleRemove(idx)}>
+                                    <div >
+                                    <button className={cx(styles.button, styles.btnDel)} type="button" onClick={() => handleRemove(idx)}>
                                       X
                                  </button>
+                                 <button  className={cx(styles.button, styles.btnAdd, styles.btnVisible)} type="button" onClick={() => handleAdd()}>
+                                      +
+                                </button>
+                                    </div>
+                     
                                 </div>
                             )
                         })
@@ -341,14 +349,26 @@ const newCurP = [...currentPosts].sort((a,b) => {
                                         value={step.step || ''}
                                         onChange={e => handleChange2(idx, e)}
                                     />
-                                 <button className={cx(styles.button, styles.btnDel)} type="button" onClick={() => handleRemove2(idx)}>
+                                    <div>
+                                    <button className={cx(styles.button, styles.btnDel)} type="button" onClick={() => handleRemove2(idx)}>
                                       X
                                  </button>
+                                 <button className={cx(styles.button, styles.btnAdd , styles.btnVisible)} type="button" onClick={() => handleAdd2()}>
+                                        +
+                                    </button>
+                                    </div>
+                    
                                 </div>
                             )
                         })
                     }
                    
+                </li>
+                <li>
+                <label htmlFor="description"  className={styles.formMargin}>
+                       <h3>Average cooking time</h3> 
+                    </label>
+                    <input type="text" name="time" id="time" value={time || ''} onChange={(e) => setTime(e.target.value)}></input>
                 </li>
                 <h3 className={styles.formMargin}> Choose one please!</h3>
                 <div className={styles.checkWrapper}>

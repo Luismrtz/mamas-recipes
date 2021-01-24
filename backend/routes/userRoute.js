@@ -11,7 +11,7 @@ const router = express.Router();
 
 
 //?get Specific post
-router.get('/:id', async (req, res) => {
+router.get('/:id', isAuth, isAdmin, async (req, res) => {
     try {
         const user = await User.findOne({_id: req.params.id});
         res.json(user)
@@ -21,7 +21,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // //? get ALL post * (isAuth, isAdmin) ADD LATER 
-router.get("/",  async (req, res) => {
+router.get("/", isAuth, isAdmin, async (req, res) => {
     // User.find() for promise version?
     try {
         const user = await User.find({});
@@ -57,16 +57,16 @@ router.get("/",  async (req, res) => {
 
 
 // //? try catch approach
-router.get("/createadmin", async (req, res) => {
-    // User.find() for promise version?
-    try {
-        const newUser = await User.find();
-        res.json(newUser);
+// router.get("/createadmin", async (req, res) => {
+//     // User.find() for promise version?
+//     try {
+//         const newUser = await User.find();
+//         res.json(newUser);
 
-    } catch (error) {
-        res.json({message: error.message})
-    }
-});
+//     } catch (error) {
+//         res.json({message: error.message})
+//     }
+// });
 
 //? 
 //* post signin
@@ -160,20 +160,20 @@ router.put('/:id', isAuth, async(req, res) => {
 
 ///! Just to push an admin
 //router.post(... in insomnia
-router.post("/createadmin", async(req, res) => {
-    try {
-        const user = new User({
-            name: 'mama',
-            email: 'mama@gmail.com',
-            password: bcrypt.hashSync('mamamom', 8),
-            isAdmin: true
-        });
-        const newUser = await user.save();
-        res.json(newUser);
-    } catch(error) {
-        res.json({message: error.message})
-    }
-})
+// router.post("/createadmin", async(req, res) => {
+//     try {
+//         const user = new User({
+//             name: '....',
+//             email: '...@email',
+//             password: bcrypt.hashSync('password....', 8),
+//             isAdmin: true
+//         });
+//         const newUser = await user.save();
+//         res.json(newUser);
+//     } catch(error) {
+//         res.json({message: error.message})
+//     }
+// })
 
 
 
@@ -268,18 +268,19 @@ router.post("/add", async(req, res) => {
 
 
 
- //delete specific post
-router.delete('/:id', async (req, res) => {
-    try {
-       const remove = await User.findByIdAndDelete(req.params.id)
+ //? delete specific post
+// router.delete('/:id', async (req, res) => {
+//     try {
+//        const remove = await User.findByIdAndDelete(req.params.id)
         
-        res.json({remove})
-    } catch(error) {
-        res.json({message: error})
-    }
-});
+//         res.json({remove})
+//     } catch(error) {
+//         res.json({message: error})
+//     }
+// });
 
 
+//? update v1
 // router.post('/update/:id', async(req, res) => {
 //     try {
 //         const user = await User.findById(req.params.id)

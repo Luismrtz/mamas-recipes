@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import styles from "./Footer.module.scss";
 import {useSelector } from "react-redux";
-
+import cx from 'classnames';
 function Footer() {
  
     const userSignin = useSelector((state) => state.userSignin);
@@ -18,7 +18,7 @@ function Footer() {
 
                 <div >
                     <h2 className={styles.textLarge}>Navigation</h2>
-                    <div className={styles.textSmall}><Link to="/showall">All Recipes</Link></div>
+                    <div className={styles.textSmall}><Link to="/showall" className={styles.primaryColor}>All Recipes</Link></div>
                 </div>
     
                 <div >
@@ -36,7 +36,7 @@ function Footer() {
                     
                 </div>
                 <div >
-                    <h2 className={styles.textLarge}><Link to="/">Mama's Recipes</Link></h2>
+                    <div ><Link className={styles.title} to="/">Mama's Recipes</Link></div>
 
                 </div>
             </div>

@@ -1,19 +1,21 @@
 .container {
-    color: var(--mainWhite);
-    background-color: var(--contender1-black);
+    // color: var(--mainWhite);
+    color: var(--secondary-color);
+
+        background-color: var(--footer);
     height: auto;
     bottom: 0;
 
       
       a {
-       color: var(--mainWhite);
+        color: var(--secondary-color);
+
         text-decoration: none;
       }
 
 
 
     .innerContainer {
-     //   margin: 2rem 1rem 0 1rem;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(1,1fr);
@@ -26,13 +28,28 @@
 
     .textLarge {
         font-weight: 700;
-        //! ADD FONT SIZE HERE
+        
         font-size: var(--lg);
     }
 
+    .title {
+        color: var(--primary-color);
+    }
+    .primaryColor {
+        color: var(--primary-color)
+    }
+    .title {
+        font-size: 2rem;
+        letter-spacing: .2rem;
+        // margin-left: 2.1rem;
+        cursor: pointer;
+    
+        color: var(--primary-color)
+      }
+
     .textSmall {
         margin-top: 1.8rem;
-        //! ADD FONT SIZE HERE
+        
         font-size: var(--sm);
      
     }
@@ -45,8 +62,8 @@
     width: 100%;
     padding-bottom: 2rem;
     padding-top: 2rem;
-    background-color: var(--contender1-black);
-    //! ADD FONT SIZE HERE
+
+    background-color: var(--footer);
     font-size: var(--sm);
 
 }

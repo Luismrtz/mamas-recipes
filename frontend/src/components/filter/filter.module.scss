@@ -1,0 +1,23 @@
+
+
+.filter {
+    display: block;
+    font-size: var(--md);
+    font-weight: 700;
+    padding: .3em 1em .3em .5em;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    background-color: var(--mainWhite);
+    color: var(--secondary-color);
+    // background-color: purple;
+
+
+}
+
+  .filter:focus {
+    border-color: transparent;
+    box-shadow: 0 0 1px 1px var(--primary-color);
+    color: var(--secondary-color); 
+    outline: none;
+  }

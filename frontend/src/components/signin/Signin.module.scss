@@ -6,7 +6,7 @@
 
     .title {
         text-align: center;
-         //! ADD FONT SIZE HERE
+         
         font-size: var(--xl);
         margin: 2rem 0 4rem;
     }
@@ -54,14 +54,14 @@ border: 1px solid transparent;
   cursor:pointer;
   text-decoration: none;
   text-transform: uppercase;
-  background-color:var(--contender3-black);
+  background-color:var(--primary-color);
   color: var(--mainWhite);
   padding: 1rem 3rem;
   transition: all 250ms ease-out;
 
   &:hover {
-    border: 1px solid var(--contender3-black);
-      color:var(--contender3-black);
+    border: 1px solid var(--primary-color);
+      color:var(--primary-color);
       background:var(--mainWhite);
 
 

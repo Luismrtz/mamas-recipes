@@ -30,14 +30,14 @@
   align-items: center;
   justify-content: center;
    transition: all 600ms ease;
-  color: var(--contender3-black);
+  color: var(--primary-color);
   text-decoration: none;
   cursor: pointer;
   border-bottom: 1.5px solid transparent;
 
 
   &:hover {
-     border-bottom: 1.5px solid var(--contender3-black);
+     border-bottom: 1.5px solid var(--primary-color);
    }
 }
 //? global styles END ****
@@ -65,7 +65,7 @@
   
   //* tied to secNavContainer
   .scrollCss{
-    box-shadow: 0 3.5px 1.5px -3.9px var(--contender3-black);
+    box-shadow: 0 3.5px 1.5px -3.9px var(--primary-color);
 
       }
 
@@ -75,7 +75,9 @@
       z-index: 10;
       position: fixed;
       width: 100%;
-      background-color: var(--mainWhite);
+ //! tampered
+      background-color: #f5f5f5;
+      // background-color: var(--mainWhite);
 
       .fadeIn {
         animation-name: fadeInOpacity;
@@ -116,7 +118,7 @@
           cursor: pointer;
       
           .titleColor {
-            color: var(--contender3-black);
+            color: var(--primary-color);
           }
         }
 
@@ -153,7 +155,7 @@
                 //  justify-content: flex-end;
                  align-items: center;
                 // margin-right: 2.1rem;
-                 color: var(--contender3-black);
+                 color: var(--primary-color);
                  outline: none;
                  font-size: 16px;
           
@@ -193,7 +195,7 @@
 
           .mama{
             font-size:1.6rem;
-            color: var(--contender3-black);
+            color: var(--primary-color);
             text-decoration: none;
             // margin-right: 1.5rem;
           }
@@ -206,7 +208,7 @@
             padding:.1rem .5rem .1rem .5rem;
             margin: .1rem 1.5rem .1rem 1.5rem;
             transition: filter 300ms;
-            color: var(--contender3-black);
+            color: var(--primary-color);
             text-decoration: none;
             cursor: pointer;
 
@@ -248,7 +250,7 @@
 
       
       .arrowDown {
-        color: var(--navFontHover);
+        color: var(--secondary-color);
         width: 15px;
         height: 15px;
         margin-bottom: -.3rem;
@@ -287,7 +289,7 @@
           align-items: center;
           justify-content: center;
           transition: filter 300ms;
-          color: var(--contender3-black);
+          color: var(--primary-color);
           text-decoration: none;
           cursor: pointer;
           white-space: nowrap;
@@ -297,7 +299,7 @@
           &:hover {
             transition: all 300ms ease;
             color: var(--mainWhite);
-            background-color: var(--contender3-black);
+            background-color: var(--primary-color);
           }
         }
       }
@@ -387,7 +389,7 @@
      width: 50%;
      height: 100vh;
      padding: 0 1.8rem;
-     background-color: var(--contender3-black);
+     background-color: var(--primary-color);
      cursor: default;
  
  //*close menu start
@@ -403,8 +405,8 @@
        align-items: center;
        width: 100%;
        padding: 2rem 0;
-       background-color: var(--contender3-black);
-       color: var(--contender3-black);
+       background-color: var(--primary-color);
+       color: var(--primary-color);
        outline: none;
        font-size: 20px;
  
@@ -414,7 +416,7 @@
          align-items: center;
          justify-content: center;
          color: var(--mainWhite);
-        background-color: var(--contender3-black);
+        background-color: var(--primary-color);
         padding: .1rem;
         cursor: pointer;
       }
@@ -455,7 +457,7 @@
       justify-content: center;
       height: 7.5rem;
       width: 100%;
-      background-color: var(--contender3-black);
+      background-color: var(--primary-color);
       color: var(--mainWhite);
       border-top: 1px solid var(--mainWhite);
       outline: none;
@@ -465,7 +467,7 @@
    
    
        &:hover {
-         color: var(--navFontHover);
+         color: var(--secondary-color);
        }
    
    
@@ -501,7 +503,7 @@
        text-align: start;
        width: 100%;
        color: var(--mainWhite);
-       background-color: var(--contender3-black);
+       background-color: var(--primary-color);
        z-index: 20;
        list-style: none;
        position: relative;
@@ -519,7 +521,7 @@
 
 
        &:hover {
-         color: var(--navFontHover);
+         color: var(--secondary-color);
        }
  
      }

@@ -54,8 +54,8 @@ useEffect(() => {
                   </div>
            
                   <div className={styles.columnFlex}>
-                    <h1>WELCOME!</h1>
-                    <h2>
+                    <h1 className={styles.colorSecondary}>WELCOME!</h1>
+                    <h2 className={styles.colorSecondary}>
                       Thank you for visiting! 
                     </h2>
                   </div>
@@ -73,7 +73,7 @@ useEffect(() => {
                   </div>
              
                   <div className={styles.columnFlex}>
-                    <h2>Come get your hands dirty with these recipes!</h2>
+                    <h2 className={styles.colorSecondary}>Dirty your hands with these recipes!</h2>
                     <Link to={'/showall'} className={cx(styles.mainButton, styles.btnPadding)}>All Recipes</Link>
                   </div>
 

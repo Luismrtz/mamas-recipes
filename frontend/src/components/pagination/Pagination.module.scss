@@ -8,14 +8,14 @@
 }
 // each individual container
 .pageItem {
-    //! ADD FONT SIZE HERE
+    
     font-size: var(--xl);
     cursor: pointer;
     margin: 5px;
     border: solid transparent 1px;
 
     &:hover {
-        border: solid var(--contender3-black) 1px;
+        border: solid var(--primary-color) 1px;
       background: var(--table);
       color: var(--mainWhite);
     }
@@ -31,7 +31,7 @@
     background-color: transparent;
     outline:none;
      text-decoration: none;
-     //! ADD FONT SIZE HERE ????? maybe
+      
     // font-size: var(--xxl);
 
 }

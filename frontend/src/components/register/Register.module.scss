@@ -6,7 +6,7 @@
 
          .title {
              text-align: center;
-             //! ADD FONT SIZE HERE
+             
             font-size: var(--xl);
             margin: 2rem 0 4rem;
          }
@@ -63,25 +63,19 @@ font-size: 1.3rem;
     // width: 100%;
   
       margin-right: 1rem;
-      // margin-top: 2rem;
-      // left: 1rem;
-      // bottom: 2rem;
-      // position: absolute;
       z-index: 3;
-      // width: 6rem;
       text-align: center;
-      // border-radius: .5rem;
       cursor:pointer;
       text-decoration: none;
       text-transform: uppercase;
-      background-color:var(--contender3-black);
+      background-color:var(--primary-color);
       color: var(--mainWhite);
       padding: 1rem 3rem;
       transition: all 250ms ease-out;
   
       &:hover {
-        border: 1px solid var(--contender3-black);
-          color:var(--contender3-black);
+        border: 1px solid var(--primary-color);
+          color:var(--primary-color);
           background:var(--mainWhite);
   
   
@@ -95,8 +89,8 @@ font-size: 1.3rem;
     color: var(--mainWhite);
 
     &:hover {
-        border: 1px solid var(--contender3-black);
-        color:var(--contender3-black);
+        border: 1px solid var(--primary-color);
+        color:var(--primary-color);
         background:var(--mainWhite);
     }
   }

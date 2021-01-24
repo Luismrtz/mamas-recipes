@@ -7,7 +7,7 @@ import Pagination from '../pagination/Pagination';
 import Loading from '../spinner/Loading';
 import ErrorMsg from '../errormsg/ErrorMsg';
 import Footer from '../footer/Footer';
-import Filter from './Filter'
+import Filter from '../filter/Filter'
 import cx from 'classnames';
 
 
@@ -171,7 +171,7 @@ error || !recipes ? <ErrorMsg variant="danger">{error}</ErrorMsg> :(
 
           </div>
           <div>
-            <Filter 
+            <Filter
                 sorting={sorting}
                 sort={sort}
               />

@@ -28,24 +28,24 @@ const listRecipes = () => async (dispatch) => {
 }
 
 const saveRecipe = (recipe) => async (dispatch, getState) => {
-    // const { userSignin: { userInfo }} = getState();
+    const { userSignin: { userInfo }} = getState();
     
     const requestPost = {
         method: 'POST',
         url: '/recipes/add',
         data: recipe,
-        // headers:  (userInfo && userInfo.token) ? {
-        //     Authorization: 'Bearer ' + userInfo.token
-        // } : {}
+        headers:  (userInfo && userInfo.token) ? {
+            Authorization: 'Bearer ' + userInfo.token
+        } : {}
     }
 
     const requestPatch = {
         method: 'PATCH',
         url: `/recipes/update/${recipe._id}`,
         data: recipe,
-        // headers:  (userInfo && userInfo.token) ? {
-        //     Authorization: 'Bearer ' + userInfo.token
-        // } : {}
+        headers:  (userInfo && userInfo.token) ? {
+            Authorization: 'Bearer ' + userInfo.token
+        } : {}
     }
     
     
@@ -80,9 +80,13 @@ const saveRecipe = (recipe) => async (dispatch, getState) => {
 
 
 const deleteRecipe = (recipeId) => async(dispatch, getState) => {
+    const { userSignin: { userInfo }} = getState();
     const requestDelete = {
         method: 'DELETE',
-        url: `/recipes/${recipeId}`
+        url: `/recipes/${recipeId}`,
+        headers:  (userInfo && userInfo.token) ? {
+            Authorization: 'Bearer ' + userInfo.token
+        } : {}
     }
 
     try {

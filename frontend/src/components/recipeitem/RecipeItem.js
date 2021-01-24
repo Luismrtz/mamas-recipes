@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './RecipeItem.module.scss';
 import {Link} from 'react-router-dom';
 
-const RecipeItem = ({recipe: {_id, nameOfRecipe, description}}) => {
+const RecipeItem = ({recipe: {_id, nameOfRecipe,img}}) => {
 
    
 
@@ -12,7 +12,7 @@ const RecipeItem = ({recipe: {_id, nameOfRecipe, description}}) => {
            
 
             <div   className={styles.imgOverlay}>
-              <img className={styles.image} src='images/morning.jpg' alt="duckens"/>
+              <img className={styles.image} src={ img ? img : '/images/morning.jpg'} alt="duckens"/>
    
               
               <div className={styles.overlayContainer}>

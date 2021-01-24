@@ -1,9 +1,10 @@
 import React from 'react'
-
+import styles from './filter.module.scss';
 const Filter = ({sorting, sort}) => {
     return (
         <div>
         <select
+        className={styles.filter}
             value={sort}
             onChange={sorting}
 

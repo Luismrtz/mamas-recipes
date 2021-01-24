@@ -12,7 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  //! ADD FONT SIZE HERE
+  
     font-size: var(--xxl);
     padding-bottom: 1rem;
   }
@@ -43,10 +43,12 @@
         border-spacing: 0;
         width: 100%;
 
+    
+
         thead tr th{
           /* text-transform: uppercase;
           text-align: center; */
-          //! ADD FONT SIZE HERE
+          
           font-size: var(--md);
           text-align: left;
         }  
@@ -59,7 +61,7 @@
         }
         td a {
           text-decoration: none;
-          font-size: var(--sm);
+          font-size: var(--md);
         }
 
         tbody > tr:nth-child(odd) {
@@ -69,20 +71,43 @@
         
         tbody > tr:nth-child(odd) > td a {
           color: var(--mainWhite);
+          
+        
+        }  
+        tbody > tr:nth-child(odd) > td:nth-child(3)  {
+          background-color: var(--mainWhite);
+          
         
         }  
   
         tbody > tr:nth-child(even) > td a {
-          color: var(---contender3-black);
+          color: var(---primary-color);
+          
         
         }  
+
+
+        tbody tr > td{
+
+          min-height: 5.5rem;
+          
+          white-space: nowrap;
+       
+        }
 
         tbody tr > td:last-child {
   
           padding: 0;
          
           display: flex;
-          flex-wrap: nowrap;
+
+       
+        }
+
+        tbody tr > td button {
+  
+          font-size: var(--md);
+
         }
         tbody tr > td button:first-child {
 
@@ -108,7 +133,7 @@
 .button {
   border: 1px solid transparent;
   width: 100%;
-
+  
     z-index: 3;
     // width: 6rem;
     text-align: center;
@@ -117,19 +142,29 @@
     text-decoration: none;
     text-transform: uppercase;
     font-size: var(--sm);
-    background-color:var(--contender3-black);
+    background-color:var(--primary-color);
     color: var(--mainWhite);
     padding: 1rem 3rem;
     transition: all 250ms ease-out;
 
     &:hover {
-      border: 1px solid var(--contender3-black);
-        color:var(--contender3-black);
+      border: 1px solid var(--primary-color);
+        color:var(--primary-color);
         background:var(--mainWhite);
 
 
 
     }
+}
+
+.deleteColor {
+  background-color:var(--red);
+  color: var(--mainWhite);
+  &:hover {
+    border: 1px solid var(--primary-color);
+      color:var(--primary-color);
+      background:var(--mainWhite);
+  }
 }
 
 .buttonWrapper {
@@ -184,6 +219,11 @@
          align-content: center;
          margin-bottom: 2rem;
         //  flex-wrap: nowrap;
+
+        // .flexColumn{
+        //   display: flex;
+        //   flex-direction: column;
+        // }
         .button {
           height: 4rem;
           border-radius: 8px;
@@ -194,21 +234,26 @@
           // background-color:rgb(158, 6, 6);
           background-color: var(--red);
           color: var(--mainWhite);
-          //! ADD FONT SIZE HERE
+          
           font-size: var(--md);
           font-weight: bold;
 
           &:hover {
-            border: 1px solid var(--contender3-black);
-            color:var(--contender3-black);
+            border: 1px solid var(--primary-color);
+            color:var(--primary-color);
             background:var(--mainWhite);
           }
         }
+
+       .btnVisible {
+        
+    visibility: hidden;
+      }
         
         .btnAdd {
           display: flex;
           align-items: center;
-          //! ADD FONT SIZE HERE
+          
           font-size: var(--xxl);
           font-weight: bold;
           margin:0 .5rem;
@@ -217,6 +262,16 @@
         }
 
        }
+
+       .lineFlex:last-child .btnVisible {
+        margin-top: 2rem;
+        visibility: visible;
+       }
+
+
+
+
+
        .formMargin {
          margin: 5rem 0 1rem;
        }
