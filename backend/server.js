@@ -43,7 +43,7 @@ app.use('/recipes', recipeRoute);
 app.use('/users', userRoute);
 app.use('/uploads', uploadRoute);
 // app.use('/users', userRoute);
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/../uploads')));
 app.use(express.static(path.join(__dirname, '/../frontend/build')));
 app.get('*', (req, res) => {
