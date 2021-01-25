@@ -1,73 +1,65 @@
 .signin {
+  margin: 10rem auto 15rem;
+  max-width: 80rem;
+  padding: 0 2rem;
 
-    margin: 10rem auto 15rem;
-    max-width: 80rem;
-    padding: 0 2rem;
+  .title {
+    text-align: center;
 
-    .title {
-        text-align: center;
-         
-        font-size: var(--xl);
-        margin: 2rem 0 4rem;
-    }
-/* //? form */
-.form label,
-.form input {
-display: block;
-}
-.form input {
-margin-bottom: 1.1rem;
-}
-.form label {
-margin-bottom: 0.2rem;
-}
-.form input[type="text"],
-.form input[type="email"],
-.form input[type="password"] {
-width: 100%;
-min-height: 2.5rem;
-padding: 0.3rem;
-border: 1px solid var(--formDark);
-border-radius: 8px;
-background-color: var(--form);
-//   font-size: var(--md-size);
-font-size: 1.3rem;
-}
-.form input:focus {
-border: 1px solid var(--inputBorder);
-box-shadow: inset 0px 0px 5px var(--inputShadow);
-outline: none;
-}
-
-
-
-//! buttons
-
-.button {
-border: 1px solid transparent;
-// width: 100%;
-
-  margin-right: 1rem;
-  z-index: 3;
-  // width: 6rem;
-  text-align: center;
-  cursor:pointer;
-  text-decoration: none;
-  text-transform: uppercase;
-  background-color:var(--primary-color);
-  color: var(--mainWhite);
-  padding: 1rem 3rem;
-  transition: all 250ms ease-out;
-
-  &:hover {
-    border: 1px solid var(--primary-color);
-      color:var(--primary-color);
-      background:var(--mainWhite);
-
-
-
+    font-size: var(--xl);
+    margin: 2rem 0 4rem;
   }
-}
+  /* //? form */
+  .form label,
+  .form input {
+    display: block;
+  }
+  .form input {
+    margin-bottom: 1.1rem;
+  }
+  .form label {
+    margin-bottom: 0.2rem;
+  }
+  .form input[type="text"],
+  .form input[type="email"],
+  .form input[type="password"] {
+    width: 100%;
+    min-height: 2.5rem;
+    padding: 0.3rem;
+    border: 1px solid var(--formDark);
+    border-radius: 8px;
+    background-color: var(--form);
+    //   font-size: var(--md-size);
+    font-size: 1.3rem;
+  }
+  .form input:focus {
+    border: 1px solid var(--inputBorder);
+    box-shadow: inset 0px 0px 5px var(--inputShadow);
+    outline: none;
+  }
 
+  //! buttons
 
+  .button {
+    border: 1px solid transparent;
+    // width: 100%;
+
+    margin-right: 1rem;
+    z-index: 3;
+    // width: 6rem;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: var(--primary-color);
+    color: var(--mainWhite);
+    padding: 1rem 3rem;
+    transition: all 250ms ease-out;
+
+    &:hover {
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+      background: var(--mainWhite);
+    }
+  }
 }

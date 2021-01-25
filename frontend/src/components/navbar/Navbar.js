@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
-import NavSearch from '../searchbar/NavSearch'
+import NavSearch from "../searchbar/NavSearch";
 
 import styles from "./Navbar.module.scss";
 import cx from "classnames";
-import {useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 function Navbar() {
   const [navbar, setNavbar] = useState(false);
   const [open, setOpen] = useState(false);
-
-
 
   const changeBackground = () => {
     if (window.scrollY >= 10) {
@@ -35,8 +33,6 @@ function Navbar() {
             : cx(styles.secNavContainer)
         }
       >
-
-
         <div className={styles.navStart}>
           <ul className={cx(styles.navTitle)}>
             <Link to={"/"} className={styles.titleColor}>
@@ -44,10 +40,6 @@ function Navbar() {
               Mama's Recipes{" "}
             </Link>
           </ul>
-
-
-
-
 
           {/* //!switch between this for full screen  */}
           <ul className={cx(styles.navLinksContainer, styles.yup)}>
@@ -60,13 +52,7 @@ function Navbar() {
               </Link>
             </li>
 
-
-
-
-
-
-
-                    <NavHoverLinks />
+            <NavHoverLinks />
 
             <li className={styles.navLinkItem}>
               {userInfo ? (
@@ -76,11 +62,13 @@ function Navbar() {
                       {" "}
                       {userInfo.name}
                       <div>
-                            {/*//todo replace with fa icon */}
+                        {/*//todo replace with fa icon */}
                         {/* <MdIcon.MdKeyboardArrowDown
                           className={styles.arrowDown}
                         /> */}
-                        <div   className={cx(styles.arrowDown, "fa fa-angle-down")}></div>
+                        <div
+                          className={cx(styles.arrowDown, "fa fa-angle-down")}
+                        ></div>
                       </div>
                     </div>
                   </li>
@@ -92,13 +80,9 @@ function Navbar() {
                       <Link to={"/profile"} className={styles.iconButtonHov}>
                         Account
                       </Link>
-                      
 
                       {userInfo.isAdmin && (
-                        <Link
-                          to={"/new"}
-                          className={styles.iconButtonHov}
-                        >
+                        <Link to={"/new"} className={styles.iconButtonHov}>
                           Create
                         </Link>
                       )}
@@ -115,50 +99,44 @@ function Navbar() {
               )}
             </li>
             <ul className={styles.searchTogContainer}>
-
-              <li className={styles.hamburgerDiv} onClick={(e) => setOpen(!open)}>
-                  {/* <FaIcons.FaBars  /> */}
-                  {open === false ? (
-
-                    <div className={cx(styles.hamburgerToggle, 'fa fa-search')}></div>
-                  )
-                      :(
-                         <div  className={cx(styles.hamburgerToggle, "fa fa-times")}></div>
-                      )
-                  }
-
+              <li
+                className={styles.hamburgerDiv}
+                onClick={(e) => setOpen(!open)}
+              >
+                {/* <FaIcons.FaBars  /> */}
+                {open === false ? (
+                  <div
+                    className={cx(styles.hamburgerToggle, "fa fa-search")}
+                  ></div>
+                ) : (
+                  <div
+                    className={cx(styles.hamburgerToggle, "fa fa-times")}
+                  ></div>
+                )}
               </li>
 
-              <div className={ open === false ? 
-                    cx(styles.fadeOut)
-                  : cx(styles.searchContainer, styles.fadeIn)
-                    }>
-                  <NavSearch  open={open}/>
-
+              <div
+                className={
+                  open === false
+                    ? cx(styles.fadeOut)
+                    : cx(styles.searchContainer, styles.fadeIn)
+                }
+              >
+                <NavSearch open={open} />
               </div>
-
             </ul>
-
-
-
-
-
-
- 
           </ul>
           {/* //! Switch to this for Mobile mode */}
 
           <ul className={cx(styles.navLinksContainer, styles.nope)}>
             <li>
-              <Link to={`${userInfo ? "/profile" : "/signin"}`}      
+              <Link
+                to={`${userInfo ? "/profile" : "/signin"}`}
                 className={cx(styles.mama, styles.borderbotNone)}
               >
-                      {/*//todo replace with fa icon */}
+                {/*//todo replace with fa icon */}
                 {/* <FaIcons.FaUser /> */}
-                {userInfo ? <div>{userInfo.name}</div> :
-                  <div></div>
-                }
-                
+                {userInfo ? <div>{userInfo.name}</div> : <div></div>}
               </Link>
             </li>
 
@@ -167,41 +145,36 @@ function Navbar() {
             </li>
 
             <ul className={styles.searchTogContainer}>
+              <li
+                className={styles.hamburgerDiv}
+                onClick={(e) => setOpen(!open)}
+              >
+                {/* <FaIcons.FaBars  /> */}
+                {open === false ? (
+                  <div
+                    className={cx(styles.hamburgerToggle, "fa fa-search")}
+                  ></div>
+                ) : (
+                  <div
+                    className={cx(styles.hamburgerToggle, "fa fa-times")}
+                  ></div>
+                )}
+              </li>
 
-      <li className={styles.hamburgerDiv} onClick={(e) => setOpen(!open)}>
-          {/* <FaIcons.FaBars  /> */}
-          {open === false ? (
-
-            <div className={cx(styles.hamburgerToggle, 'fa fa-search')}></div>
-          )
-              :(
-                <div className={cx(styles.hamburgerToggle, 'fa fa-times')}></div>
-              )
-          }
-
-      </li>
-
-<div className={ open === false ? 
-      cx(styles.fadeOut)
-    : cx(styles.searchContainer, styles.fadeIn)
-      }>
-    <NavSearch  className={styles.oranges} open={open}/>
-
-</div>
-
-</ul>
-
-            
+              <div
+                className={
+                  open === false
+                    ? cx(styles.fadeOut)
+                    : cx(styles.searchContainer, styles.fadeIn)
+                }
+              >
+                <NavSearch className={styles.oranges} open={open} />
+              </div>
+            </ul>
           </ul>
 
           {/* //!switch for both end */}
         </div>
-
-
-
-
-
-
       </div>
     </nav>
   );
@@ -216,7 +189,7 @@ function NavHoverLinks() {
           {" "}
           Recipes
           <div>
-                {/*//todo replace with fa icon */}
+            {/*//todo replace with fa icon */}
             {/* <MdIcon.MdKeyboardArrowDown className={styles.arrowDown} />  */}
             <div className={cx(styles.arrowDown, "fa fa-angle-down")}></div>
           </div>
@@ -230,7 +203,6 @@ function NavHoverLinks() {
           <Link to={"/showAll"} className={styles.iconButtonHov}>
             All
           </Link>
-  
         </div>
       </div>
     </ul>

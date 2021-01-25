@@ -1,63 +1,55 @@
 .container {
-    // color: var(--mainWhite);
+  // color: var(--mainWhite);
+  color: var(--secondary-color);
+
+  background-color: var(--footer);
+  height: auto;
+  bottom: 0;
+
+  a {
     color: var(--secondary-color);
 
-        background-color: var(--footer);
-    height: auto;
-    bottom: 0;
+    text-decoration: none;
+  }
 
-      
-      a {
-        color: var(--secondary-color);
-
-        text-decoration: none;
-      }
-
-
-
-    .innerContainer {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(1,1fr);
-        grid-gap: 2rem;
-        max-width: 115rem;
-        width: 100%;
-        margin: 0 auto;
-        padding: 2rem 0 0 0;
-    
+  .innerContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-gap: 2rem;
+    max-width: 115rem;
+    width: 100%;
+    margin: 0 auto 3rem;
+    padding: 2rem 0 0 0;
 
     .textLarge {
-        font-weight: 700;
-        
-        font-size: var(--lg);
+      font-weight: 700;
+
+      font-size: var(--lg);
     }
 
     .title {
-        color: var(--primary-color);
+      color: var(--primary-color);
     }
     .primaryColor {
-        color: var(--primary-color)
+      color: var(--primary-color);
     }
     .title {
-        font-size: 2rem;
-        letter-spacing: .2rem;
-        // margin-left: 2.1rem;
-        cursor: pointer;
-    
-        color: var(--primary-color)
-      }
+      font-size: 2rem;
+      letter-spacing: 0.2rem;
+      // margin-left: 2.1rem;
+      cursor: pointer;
 
-    .textSmall {
-        margin-top: 1.8rem;
-        
-        font-size: var(--sm);
-     
+      color: var(--primary-color);
     }
 
+    .textSmall {
+      margin-top: 1.8rem;
 
-
-}
-.copyRight {
+      font-size: var(--sm);
+    }
+  }
+  .copyRight {
     text-align: center;
     width: 100%;
     padding-bottom: 2rem;
@@ -65,38 +57,26 @@
 
     background-color: var(--footer);
     font-size: var(--sm);
-
-}
+  }
 }
 
 //! media
 
 //1200px
 @media (max-width: 75rem) {
-
-    .container {
-        padding-left: 2rem;
-        padding-right: 2rem;
- 
-    }
-
- 
-    
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
-
 
 //990px
 @media (max-width: 61.875rem) {
-
-    .container {
-
-    
-
+  .container {
     .innerContainer {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-         grid-gap: 3rem;
-
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      grid-gap: 3rem;
     }
-}
+  }
 }

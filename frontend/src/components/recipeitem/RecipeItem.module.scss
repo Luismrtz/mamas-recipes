@@ -1,135 +1,112 @@
 //? Main container
 .container {
-    padding-bottom: 2rem;
-    border-radius: 5px;
-    overflow: hidden;
-    box-sizing: border-box;
-    // border: 1px solid #ddd;
- }
- 
- 
- //? Main image container
- .imgOverlay {
-   height: 300px;
-     display: grid;
-     //display: block;
-    // overflow: hidden;
-     position: relative;
- }
- 
- .image {
-     grid-column: 1 / -1;
-     grid-row: 1 / -1;
-     width: 100%;
-     height: 100%;
-     object-fit: cover;
-     background-position: center;
- }
- 
- //? container for image overlay
- .overlayContainer {
-     opacity: 0;
- 
-     //background-color: black;
-     grid-column: 1 / -1;
-     grid-row: 1 / -1;
-     position: relative;
-     display: grid;
-     grid-template-columns: repeat(4, 1fr);
-     grid-template-rows: repeat(4, 1fr);
-     transition: all 250ms ease-out;
-     
-     &:hover {
-         opacity: 1;
-     }
- 
-     .liked {
-        
-         z-index: 10;
-         top: 20px;
-         right: 20px;
-        position: absolute;
- 
-        
-     }
- 
- }
+  padding-bottom: 2rem;
+  border-radius: 5px;
+  overflow: hidden;
+  box-sizing: border-box;
+  // border: 1px solid #ddd;
+}
 
+//? Main image container
+.imgOverlay {
+  height: 300px;
+  display: grid;
+  //display: block;
+  // overflow: hidden;
+  position: relative;
+}
 
- //? add Link tag to image
- .overlay {
-   
-    z-index: 5;
-    background-color: var(--hoverColor);
-    grid-column: 1 / -1;
-    grid-row: 1 / -1;
-    position: relative;
+.image {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-position: center;
+}
 
-  
+//? container for image overlay
+.overlayContainer {
+  opacity: 0;
+
+  //background-color: black;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  transition: all 250ms ease-out;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  .liked {
+    z-index: 10;
+    top: 20px;
+    right: 20px;
+    position: absolute;
+  }
+}
+
+//? add Link tag to image
+.overlay {
+  z-index: 5;
+  background-color: var(--hoverColor);
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  position: relative;
 }
 
 //? button wrapper
 .bwrapper {
-    z-index: 9;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 1.5rem;
+  z-index: 9;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 1.5rem;
 
-     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-size: 1.3rem;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.3rem;
 }
 
 //? global for transition reusability
 .button1:hover {
-    transition: all 250ms ease-out;
-    background-color:var(--primary-color);
-    color: var(--mainWhite);
-   }
-
-
-
-
-.button1 {
-  
-    z-index: 2;
-    margin-bottom: 5px;
-    border: none;
-    cursor:pointer;
-    text-decoration: none;
-    background: none;
-  //  border: 2px solid red;
-    color:var(--primary-color);
-    text-transform: uppercase;
-    background:var(--mainWhite);
-    padding: 10px;
+  transition: all 250ms ease-out;
+  background-color: var(--primary-color);
+  color: var(--mainWhite);
 }
 
+.button1 {
+  z-index: 2;
+  margin-bottom: 5px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  background: none;
+  //  border: 2px solid red;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  background: var(--mainWhite);
+  padding: 10px;
+}
 
+//? item description/ icons wrapper
+.contents {
+  z-index: 4;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
- //? item description/ icons wrapper
- .contents {
-    
-     z-index: 4;
-     overflow: hidden;
-     display: flex;
-     flex-direction: column;
-     align-items: flex-start;
- }
- 
- //? default description
- .contDesc {
-     .title {
-         font-size: 2rem;
-     }
-
- }
- 
-
- 
- 
- 
+//? default description
+.contDesc {
+  .title {
+    font-size: 2rem;
+  }
+}

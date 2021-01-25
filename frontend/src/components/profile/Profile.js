@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Profile.module.scss";
 import cx from "classnames";
-import Footer from '../footer/Footer';
-import Loading from '../loading/Loading'
-import ErrorMsg from '../errormsg/ErrorMsg';
+import Footer from "../footer/Footer";
+import Loading from "../loading/Loading";
+import ErrorMsg from "../errormsg/ErrorMsg";
 import { logout, update } from "../../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -24,43 +24,46 @@ const Profile = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(update({ userId: userInfo._id, email, name, password, newPassword }));
+    dispatch(
+      update({ userId: userInfo._id, email, name, password, newPassword })
+    );
   };
   const userUpdate = useSelector((state) => state.userUpdate);
   const { loading, success, error } = userUpdate;
 
-
   useEffect(() => {
     if (!userInfo) {
       props.history.push("/signin");
-    }
-    else {
-
+    } else {
       setEmail(userInfo.email);
       setName(userInfo.name);
     }
     return () => {};
-  }, [ userInfo, props.history]);
+  }, [userInfo, props.history]);
 
- 
-
-  return ( 
-  //   loading ? <div><Loading/></div> : error ? <ErrorMsg variant="danger">{error}</ErrorMsg>
-  // :
-  // (
+  return (
+    //   loading ? <div><Loading/></div> : error ? <ErrorMsg variant="danger">{error}</ErrorMsg>
+    // :
+    // (
     <React.Fragment>
       <div className={styles.profile}>
         <div className={styles.profileInfo}>
-              <h2 className={styles.title}>Update Account Info c:</h2>
+          <h2 className={styles.title}>Update Account Info c:</h2>
           <div className={styles.form}>
-          
-            <form  onSubmit={submitHandler}>
+            <form onSubmit={submitHandler}>
               <ul>
-       
                 <li>
-                  {loading && <div><Loading/></div>}
+                  {loading && (
+                    <div>
+                      <Loading />
+                    </div>
+                  )}
                   {error && <ErrorMsg variant="danger">{error}</ErrorMsg>}
-                  {success && <ErrorMsg variant="success">Profile Saved Successfully</ErrorMsg>}
+                  {success && (
+                    <ErrorMsg variant="success">
+                      Profile Saved Successfully
+                    </ErrorMsg>
+                  )}
                 </li>
                 <li>
                   <label htmlFor="name">Name</label>
@@ -85,7 +88,7 @@ const Profile = (props) => {
                 <li>
                   <label htmlFor="password">Verify password</label>
                   <input
-                   // value={password || ""}
+                    // value={password || ""}
                     type="password"
                     id="password"
                     name="password"
@@ -96,19 +99,20 @@ const Profile = (props) => {
                 <li>
                   <label htmlFor="password">New password</label>
                   <input
-                 //   value={newPassword || ""}
+                    //   value={newPassword || ""}
                     type="password"
                     name="password"
                     onChange={(e) => setNewPassword(e.target.value)}
                   ></input>
                 </li>
-          <div>
-      
-                  <button type="submit" className={cx(styles.button, styles.btnUpdate)}>
+                <div>
+                  <button
+                    type="submit"
+                    className={cx(styles.button, styles.btnUpdate)}
+                  >
                     Update
                   </button>
-               
-         
+
                   <button
                     type="button"
                     onClick={handleLogout}
@@ -120,16 +124,11 @@ const Profile = (props) => {
                   >
                     Logout
                   </button>
-           
-
-
-          </div>
-               
+                </div>
               </ul>
             </form>
           </div>
         </div>
-      
       </div>
       <Footer />
     </React.Fragment>

@@ -1,38 +1,31 @@
 //WHOLE container
 .pagination {
-    display: flex;
-    padding: 0;
-    list-style: none;
-    text-align: center;
-
+  display: flex;
+  padding: 0;
+  list-style: none;
+  text-align: center;
 }
 // each individual container
 .pageItem {
-    
-    font-size: var(--xl);
-    cursor: pointer;
-    margin: 5px;
-    border: solid transparent 1px;
+  font-size: var(--xl);
+  cursor: pointer;
+  margin: 5px;
+  border: solid transparent 1px;
 
-    &:hover {
-        border: solid var(--primary-color) 1px;
-      background: var(--table);
-      color: var(--mainWhite);
-    }
-
-
+  &:hover {
+    border: solid var(--primary-color) 1px;
+    background: var(--table);
+    color: var(--mainWhite);
+  }
 }
 //number
 .pageLink {
+  padding: 5px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  text-decoration: none;
 
-    padding: 5px 20px;
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    outline:none;
-     text-decoration: none;
-      
-    // font-size: var(--xxl);
-
+  // font-size: var(--xxl);
 }
-

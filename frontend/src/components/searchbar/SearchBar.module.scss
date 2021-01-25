@@ -1,183 +1,144 @@
-
-
-//? global 
+//? global
 input[type="text"] {
+  background-color: var(--form);
 
-background-color: var(--form);
-
-border: none;
+  border: none;
 }
 
 input:focus {
-
-  outline: none;  
+  outline: none;
 }
 
 //? global end
 
 //!nav
 
-
-
 .active {
-    // position: absolute;
-    max-width: 50rem;
-    display: block;
-    transform: translateX(0);
-    transition: all 350ms ease;
-  }
- 
-  .inactive {
-    display: none;
-    transform: translateX(100%);
-    transition: all 350ms ease;
-  }
+  // position: absolute;
+  max-width: 50rem;
+  display: block;
+  transform: translateX(0);
+  transition: all 350ms ease;
+}
+
+.inactive {
+  display: none;
+  transform: translateX(100%);
+  transition: all 350ms ease;
+}
 .navFlex {
-  
-    height: 4.5rem;
-    display: flex;
-    border: 1px solid var(--formDark);
-    input {
-        padding: 0 0.5rem;
-        // border: none;
-    }
+  height: 4.5rem;
+  display: flex;
+  border: 1px solid var(--formDark);
+  input {
+    padding: 0 0.5rem;
+    // border: none;
+  }
 }
 
 .navBtn {
-    background: none;
-	border: none;
-	padding: 0 .5rem;
-	cursor: pointer;
-    outline: inherit;
-    
+  background: none;
+  border: none;
+  padding: 0 0.5rem;
+  cursor: pointer;
+  outline: inherit;
 
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 3;
 
-
-    text-align: center;
-    font-size: 2rem;
-    cursor:pointer;
-    text-decoration: none;
-    text-transform: uppercase;
-    color:var(--formDark);
-    background-color: var(--form);
-    // padding: 1rem 0;
-    transition: all 250ms ease-out;
-
-
+  text-align: center;
+  font-size: 2rem;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--formDark);
+  background-color: var(--form);
+  // padding: 1rem 0;
+  transition: all 250ms ease-out;
 }
-
-
-
 
 .queryWrap {
+  z-index: 15;
 
-    z-index: 15; 
-
-    width: 100%;
-    max-width: 90rem;
-    // min-width: 10rem;
-    position: absolute;
-
-
+  width: 100%;
+  max-width: 90rem;
+  // min-width: 10rem;
+  position: absolute;
 }
 
-
 .query:first-child {
-    border-top: 1px solid var(--primary-color);
+  border-top: 1px solid var(--primary-color);
 }
 
 //! .map search query color
 //?
 .query {
-    text-align: start;
-    font-size: var(--lg);
-    padding:.5rem .2rem;
-    background-color: var(--mainWhite);
-    border: 1px solid var(--primary-color);
-    color: var(--secondary-color);
-    border-top: none;
-    cursor: pointer;
+  text-align: start;
+  font-size: var(--lg);
+  padding: 0.5rem 0.2rem;
+  background-color: var(--mainWhite);
+  border: 1px solid var(--primary-color);
+  color: var(--secondary-color);
+  border-top: none;
+  cursor: pointer;
 
-    &:hover {
-        background-color: var(--primary-color);
-        color: var(--mainWhite);
-    }
+  &:hover {
+    background-color: var(--primary-color);
+    color: var(--mainWhite);
+  }
 }
-
 
 //!Banner / Search page
 .bannerForm {
-    // border-radius: 8px;
-    position: relative;
-    width: 100%;
-    max-width: 70rem;
-    border: 1px solid var(--formDark);
-    
-
+  // border-radius: 8px;
+  position: relative;
+  width: 100%;
+  max-width: 70rem;
+  border: 1px solid var(--formDark);
 }
 .bannerForm:focus-within {
-    // border: 2px solid green;
- 
-    border: 1px solid #50a4e9;
-    box-shadow: inset 0px 0px 5px rgba(38, 142, 228, 0.5);
+  // border: 2px solid green;
 
-    
+  border: 1px solid #50a4e9;
+  box-shadow: inset 0px 0px 5px rgba(38, 142, 228, 0.5);
 }
-
-
-
-
-
 
 .banFlex {
-    
-    display: flex;
-    min-height: 4rem;
-    // width: 100%;
-    input {
-        width: 100%;
-        padding: 0 0.5rem;
-        font-size: 2rem;
-        flex: 1 1 0;
-    
-    }
-
+  display: flex;
+  min-height: 4rem;
+  // width: 100%;
+  input {
+    width: 100%;
+    padding: 0 0.5rem;
+    font-size: 2rem;
+    flex: 1 1 0;
+  }
 }
 .bannerBtn {
+  background: none;
+  border: none;
+  padding: 0 1.5rem;
+  cursor: pointer;
+  outline: inherit;
 
-    background: none;
-	border: none;
-	padding: 0 1.5rem;
-	cursor: pointer;
-    outline: inherit;
-    
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 3;
 
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    z-index: 3;
- 
-
-    text-align: center;
-    font-size: 2rem;
-    cursor:pointer;
-    text-decoration: none;
-    text-transform: uppercase;
-    color:var(--formDark);
-    background-color: var(--form);
-    // padding: 1rem 0;
-    transition: all 250ms ease-out;
-
+  text-align: center;
+  font-size: 2rem;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--formDark);
+  background-color: var(--form);
+  // padding: 1rem 0;
+  transition: all 250ms ease-out;
 }
 
 .bWrapper {
-    display: flex;
+  display: flex;
 }
-
-
-
-

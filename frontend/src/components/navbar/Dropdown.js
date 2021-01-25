@@ -47,16 +47,13 @@ const Dropdown = () => {
         onClick={(e) => setOpen(!open)}
       ></div>
 
+      <ul className={styles.cartItem}>
+        <li className={styles.hamburgerDiv} onClick={(e) => setOpen(!open)}>
+          {/* <FaIcons.FaBars  /> */}
+          <div className={cx(styles.hamburgerToggle, "fa fa-bars")}></div>
+        </li>
+      </ul>
 
-        <ul className={styles.cartItem}>
-
-          <li className={styles.hamburgerDiv} onClick={(e) => setOpen(!open)}>
-            {/* <FaIcons.FaBars  /> */}
-            <div className={cx(styles.hamburgerToggle, 'fa fa-bars')}></div>
-          </li>
-        </ul>
-
-   
       {/* //!open DROPDOWN START */}
       <div
         className={
@@ -65,11 +62,12 @@ const Dropdown = () => {
             : cx(styles.dropdownMenu, styles.active)
         }
       >
-
         <div className={styles.exitDiv}>
           {/* <AiIcons.AiOutlineClose /> */}
-          <div onClick={(e) => setOpen(!open)}
-            className={cx(styles.exitToggle, "fa fa-times")}></div>
+          <div
+            onClick={(e) => setOpen(!open)}
+            className={cx(styles.exitToggle, "fa fa-times")}
+          ></div>
         </div>
         <div className={styles.wrappTest}>
           <div>
@@ -104,65 +102,56 @@ const Dropdown = () => {
               <Link to={"/showAll"} onClick={(e) => setOpen(!open)}>
                 <li className={styles.dropdownMenuItemSec}>All</li>
               </Link>
-
             </ul>
           </div>
 
+          {userInfo ? (
+            <div className={styles.borderlineBotm}>
+              <button
+                className={styles.dropdownMenuItem}
+                onClick={(e) => setOpen3(!open3)}
+              >
+                {userInfo.name}
+                <span className={styles.collapsePlus}>
+                  <div className={styles.signSize}>
+                    {open3 === false ? "+" : "-"}
+                  </div>
+                </span>
+              </button>
+              <ul
+                className={
+                  open3 === false
+                    ? cx(styles.dropdownMenuInner, styles.hide)
+                    : cx(styles.dropdownMenuInner, styles.show)
+                }
+              >
+                <Link to={"/profile"} onClick={(e) => setOpen(!open)}>
+                  <li className={styles.dropdownMenuItemSec}>Account</li>
+                </Link>
 
-  {userInfo ? (
-    <div className={styles.borderlineBotm}>
-    <button
-      className={styles.dropdownMenuItem}
-      onClick={(e) => setOpen3(!open3)}
-    >
-      {userInfo.name}
-      <span className={styles.collapsePlus}>
-        <div className={styles.signSize}>
-          {open3 === false ? "+" : "-"}
-        </div>
-      </span>
-    </button>
-    <ul
-      className={
-        open3 === false
-          ? cx(styles.dropdownMenuInner, styles.hide)
-          : cx(styles.dropdownMenuInner, styles.show)
-      }
-    >
-      <Link to={"/profile"} onClick={(e) => setOpen(!open)}>
-        <li className={styles.dropdownMenuItemSec}>Account</li>
-      </Link>
-
-      { userInfo.isAdmin && (
-              <Link  to={"/new"} onClick={(e) => setOpen(!open)}>
-              <li className={styles.dropdownMenuItemSec}>Create</li>
-            </Link>
-        )
-      }
-  
-    </ul>
-    </div>
-
-  ) : (
-      <div>
-      <Link  to={"/signin"} onClick={(e) => setOpen(!open)}>
-        <button
-          className={cx(styles.dropdownMenuItem, styles.borderlineBotm)}
-        >
-          Sign In 
-        </button>
-      </Link>
-    </div>
-  )}
-
-
-         
-
+                {userInfo.isAdmin && (
+                  <Link to={"/new"} onClick={(e) => setOpen(!open)}>
+                    <li className={styles.dropdownMenuItemSec}>Create</li>
+                  </Link>
+                )}
+              </ul>
+            </div>
+          ) : (
+            <div>
+              <Link to={"/signin"} onClick={(e) => setOpen(!open)}>
+                <button
+                  className={cx(styles.dropdownMenuItem, styles.borderlineBotm)}
+                >
+                  Sign In
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* ))} */}
       </div>
-       {/* //!open DROPDOWN END */}
+      {/* //!open DROPDOWN END */}
     </div>
   );
 };

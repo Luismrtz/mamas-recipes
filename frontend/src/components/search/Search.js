@@ -1,93 +1,64 @@
-import React, {useEffect} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import styles from './Search.module.scss';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import styles from "./Search.module.scss";
 
-import { filterRecipes} from '../../actions/recipeActions';
-import {useLocation} from 'react-router-dom'
+import { filterRecipes } from "../../actions/recipeActions";
+import { useLocation } from "react-router-dom";
 
-import Searchbar from '../searchbar/SearchBar'
-import Footer from '../footer/Footer';
-import RecipeItem from '../recipeitem/RecipeItem';
-import cx from 'classnames';
+import Searchbar from "../searchbar/SearchBar";
+import Footer from "../footer/Footer";
+import RecipeItem from "../recipeitem/RecipeItem";
+import cx from "classnames";
 
 const Search = (props) => {
-const {search} = useLocation();
+  const { search } = useLocation();
 
+  const rList = useSelector((state) => state.rList);
+  const { error } = rList;
 
-const rList = useSelector(state => state.rList);
-const {error } = rList;
+  const recipeFilter = useSelector((state) => state.recipeFilter);
+  const { rec } = recipeFilter;
 
-const recipeFilter = useSelector(state => state.recipeFilter);
-const {rec,} = recipeFilter;
+  const searchParams = new URLSearchParams(search);
 
+  const q = searchParams.get("q");
 
-const searchParams = new URLSearchParams(search);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (q === null) {
+      props.history.push("/");
+    }
 
-const q = searchParams.get('q')
+    dispatch(filterRecipes(q));
 
+    return () => {
+      //
+    };
+  }, [dispatch, q, props.history]);
 
-
-
-const dispatch = useDispatch();
-    useEffect(() => {
-        if(q === null) {
-            props.history.push('/')
-        }
-        
-        
-         dispatch(filterRecipes(q));    
-
-        return () => {
-           //
-        }
-      }, [dispatch, q, props.history])
-
-
-
-
-
-
-    return  error  ? <div>{error}</div> :  (
-<div className={styles.mainContainer}>
-
-<div className={styles.titleContainer}>
-
+  return error ? (
+    <div>{error}</div>
+  ) : (
+    <div className={styles.mainContainer}>
+      <div className={styles.titleContainer}>
         <div className={styles.searchContainer}>
-
-            <Searchbar />
+          <Searchbar />
         </div>
-      <h1 className={cx(styles.title, styles.center)}>{q}</h1>
+        <h1 className={cx(styles.title, styles.center)}>{q}</h1>
+      </div>
 
+      <div className={styles.itemsContainer}>
+        <div className={styles.grid}>
+          {rec &&
+            rec.map((recipe) => {
+              return <RecipeItem key={recipe._id} recipe={recipe} />;
+            })}
+        </div>
+      </div>
 
-  </div>
-
-      
-      
-     <div className={ styles.itemsContainer }> 
-    
-  
-   
-
-          <div className={styles.grid}>
-              {rec && rec.map(recipe => {
-                 
-                  return (
-                      <RecipeItem  key={recipe._id} recipe={recipe} />
-                      ) 
-                  
-              })}
-          </div>
-
-          
-
-              
+      <Footer />
     </div>
+  );
+};
 
-<Footer/>
-</div>
-
-
-    )
-}
-
-export default Search
+export default Search;

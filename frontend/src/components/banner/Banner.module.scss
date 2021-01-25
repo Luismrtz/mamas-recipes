@@ -1,97 +1,75 @@
-
 .slider {
-    margin:1.5rem auto 2rem;
+  margin: 1.5rem auto 2rem;
 
+  position: relative;
+
+  width: 100%;
+  height: 60rem;
+
+  display: flex;
+  overflow: hidden;
+
+  .slide {
     position: relative;
-
-
     width: 100%;
-    height: 60rem;
-
-     display: flex;
+    height: 100%;
     overflow: hidden;
+    transition: 0.5s;
+    display: grid;
 
+    .bContainer {
+      overflow: hidden;
 
-    .slide {
- 
-        position:relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+
+      .cover {
+        background-color: var(--light-tint);
+        // background-color: rgba(0, 0, 0, 0.335);
         width: 100%;
         height: 100%;
-        overflow:hidden;
-        transition: .5s;
-         display: grid;
-    
-         .bContainer{
-            overflow:hidden;
-        
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr;
-          
+        object-fit: cover;
+        background-position: center;
+        z-index: 200;
+        position: absolute;
+      }
 
-            .cover {
-                background-color: var(--light-tint);
-                 // background-color: rgba(0, 0, 0, 0.335);
-                 width: 100%;
-                 height: 100%;
-                 object-fit: cover;
-                 background-position: center;
-                 z-index: 200;
-                 position: absolute;
-             }
-             
-        
-            .imgStyles {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                background-position: center;
-                z-index: 199;
-                position: absolute;
-            
-            }
+      .imgStyles {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background-position: center;
+        z-index: 199;
+        position: absolute;
+      }
 
+      .bannerTitle {
+        z-index: 400;
+        line-height: 8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        text-align: center;
 
+        margin: 0 2rem;
 
+        h1 {
+          color: var(--secondary-color);
 
-            .bannerTitle {
-                z-index: 400;
-                line-height: 8rem;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                align-content: center;
-                text-align: center;
-           
-            
-                margin: 0 2rem;
-         
-            
-                h1{
-               color: var(--secondary-color);
-             
-             font-size: var(--x3xl);
-            
-                }
-                h1:nth-child(1) {
-                    margin-bottom: 5rem;
-                }
-                
-            }
-            
-            }
-    
+          font-size: var(--x3xl);
+        }
+        h1:nth-child(1) {
+          margin-bottom: 5rem;
+        }
+      }
     }
-
+  }
 }
-
-
 
 //1200px
 // @media (max-width: 40rem) {
 
-    
 // }
-
-
