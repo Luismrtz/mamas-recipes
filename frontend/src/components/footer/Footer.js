@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Footer.module.scss";
 import { useSelector } from "react-redux";
-import cx from "classnames";
 function Footer() {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
