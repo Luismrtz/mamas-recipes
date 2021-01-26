@@ -71,7 +71,7 @@ const Signin = (props) => {
                   Sign-in
                 </button>
               </li>
-              <li className={styles.text}>New to Symbols?</li>
+              <li className={styles.text}>New to Mama's Recipes?</li>
               <li>
                 <Link
                   to={

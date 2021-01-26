@@ -27,6 +27,7 @@ input:focus {
   transition: all 350ms ease;
 }
 .navFlex {
+  margin-right: 1.5rem;
   height: 4.5rem;
   display: flex;
   border: 1px solid var(--formDark);
