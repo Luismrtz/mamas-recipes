@@ -1,5 +1,5 @@
 # Authentication
-> React/Redux/ css3/ MongoDB/ Express / Heroku <br />
+> React / Redux / css3 / MongoDB / Express / Heroku <br />
 > Website for storing family recipes.
 
 
