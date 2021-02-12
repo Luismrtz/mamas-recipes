@@ -63,8 +63,12 @@ input:focus {
 .queryWrap {
   z-index: 15;
 
-  width: 100%;
-  max-width: 90rem;
+  // position: relative;
+  max-width: 100%;
+  width: 80rem;
+
+
+  // max-width: 90rem;
   // min-width: 10rem;
   position: absolute;
 }
@@ -79,6 +83,9 @@ input:focus {
   text-align: start;
   font-size: var(--lg);
   padding: 0.5rem 0.2rem;
+  // width: 100%;
+  // max-width: 90rem;
+  // height: 2rem;
   background-color: var(--mainWhite);
   border: 1px solid var(--primary-color);
   color: var(--secondary-color);
@@ -89,6 +96,10 @@ input:focus {
     background-color: var(--primary-color);
     color: var(--mainWhite);
   }
+}
+
+.navQuery {
+  margin-right: 1.5rem;
 }
 
 //!Banner / Search page

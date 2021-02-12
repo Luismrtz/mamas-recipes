@@ -107,7 +107,7 @@ const NavSearch = ({ props, location, open }) => {
               results.slice(0, 5).map((recipe) => {
                 return (
                   <li
-                    className={styles.query}
+                    className={cx(styles.query, styles.navQuery)}
                     onClick={setTextName(recipe)}
                     onKeyPress={setTextName(recipe)}
                     key={recipe._id}
