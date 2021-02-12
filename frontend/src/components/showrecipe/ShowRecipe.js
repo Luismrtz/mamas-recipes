@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { detailsRecipe } from "../../actions/recipeActions";
+import Loading from "../spinner/Loading";
+import ErrorMsg from "../errormsg/ErrorMsg"
 import styles from "./ShowRecipe.module.scss";
 import cx from "classnames";
 import Footer from "../footer/Footer";
@@ -8,7 +10,7 @@ import Footer from "../footer/Footer";
 const ShowRecipe = (props) => {
   const dispatch = useDispatch();
   const rDetails = useSelector((state) => state.rDetails);
-  const { recipe } = rDetails;
+  const { recipe, loading, error } = rDetails;
 
   const productId = props.match.params.id;
 
@@ -17,9 +19,8 @@ const ShowRecipe = (props) => {
     return () => {};
   }, [dispatch, productId]);
 
-  // return loading ? <div><Loading/></div> :
-  // error || !banners ? <ErrorMsg variant="danger">{error}</ErrorMsg> :
-  return (
+  return loading ? <div><Loading/></div> :
+  error ? <ErrorMsg variant="danger">{error}</ErrorMsg> : (
     <div>
       <div className={styles.spacing}>
         <h1 className={styles.recTitle}>{recipe && recipe.nameOfRecipe}</h1>
